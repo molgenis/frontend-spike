@@ -1,28 +1,20 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <page-component id="app" v-on:contextLoaded="handleContextLoaded">
+      <router-view/>
+    </page-component>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import PageComponent from '@/components/menu/PageComponent.vue'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  components: { PageComponent },
+  methods: {
+    handleContextLoaded (context) {
+      console.log(context)
+    }
+  },
+  name: 'Molgenis'
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

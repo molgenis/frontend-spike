@@ -1,0 +1,101 @@
+const toMetaData = (entityType) => {
+  const data = entityType.data
+  const attributes = data.attributes && data.attributes.items ? data.attributes.items.map(toAttribute) : []
+
+  const idAttribute = attributes.find(a => a.idAttribute)
+  if (idAttribute === undefined) {
+    throw Error('Invalid metadata, metaData must contain a id attribute')
+  }
+
+  const labelAttribute = attributes.find(a => a.labelAttribute)
+
+  let metadata = {
+    id: data.id,
+    labelAttribute: labelAttribute === undefined ? undefined : labelAttribute,
+    idAttribute: idAttribute,
+    package: toPackage(data.package), // url
+    description: data.description || '',
+    label: data.label || '',
+    abstract: data.abstract,
+    attributes: attributes
+  }
+
+  if (data.extends) {
+    metadata = { ...metadata, extends: data.extends.links.self }
+  }
+
+  return metadata
+}
+
+const toAttribute = (responseAttribute) => {
+  const data = responseAttribute.data
+
+  const isReference = responseAttribute.data.refEntityType !== undefined
+
+  let attribute = {
+    id: data.id,
+    name: data.name,
+    type: data.type,
+    idAttribute: data.idAttribute,
+    labelAttribute: data.labelAttribute,
+    description: data.description || '',
+    label: data.label || '',
+    nullable: data.nullable,
+    auto: data.auto,
+    visible: data.visible,
+    unique: data.unique,
+    readOnly: data.readOnly,
+    aggregatable: data.aggregatable,
+    isReference
+  }
+
+  if (data.mappedBy) {
+    attribute = { ...attribute, mappedBy: toAttribute(data.mappedBy) }
+  }
+
+  if (data.orderBy) {
+    // TODO: implement
+  }
+
+  attribute = addOptional(attribute, 'lookupAttributeIndex', data.lookupAttributeIndex)
+
+  attribute = addOptional(attribute, 'enumOptions', data.enumOptions)
+
+  if (data.refEntityType) {
+    attribute = { ...attribute, refEntityType: data.refEntityType.self }
+  }
+
+  attribute = addOptional(attribute, 'categoricalOptions', data.categoricalOptions)
+
+  attribute = addOptional(attribute, 'defaultValue', data.defaultValue)
+
+  attribute = addOptional(attribute, 'range', data.range)
+
+  attribute = addOptional(attribute, 'parentAttributeId', data.parentAttributeId)
+
+  attribute = addOptional(attribute, 'expression', data.expression)
+
+  attribute = addOptional(attribute, 'nullableExpression', data.nullableExpression)
+
+  attribute = addOptional(attribute, 'visibleExpression', data.visibleExpression)
+
+  attribute = addOptional(attribute, 'validationExpression', data.validationExpression)
+
+  return attribute
+}
+
+const addOptional = (base, prop, value) => {
+  return value ? { ...base, [prop]: value } : base
+}
+
+const toPackage = (_package) => {
+  if (_package) {
+    return _package.links.self
+  }
+
+  return null
+}
+
+export {
+  toMetaData
+}

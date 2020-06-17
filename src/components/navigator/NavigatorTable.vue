@@ -28,11 +28,16 @@
         slot="label"
         slot-scope="label">
         <span v-if="label.item.type === 'ENTITY_TYPE' && dataExplorerUrl">
-          <a :href="dataExplorerUrl + '?entity=' + label.item.id + '&hideselect=true'">
+          <a v-if="legacy.explorer" :href="dataExplorerUrl + '?entity=' + label.item.id + '&hideselect=true'">
             <font-awesome-icon
               icon="list"
               fixed-width/> {{ label.item.label }}
           </a>
+          <router-link v-else :to="{name: 'dataexplorer-entity', params: {entity: label.item.id}}">
+            <font-awesome-icon
+              icon="list"
+              fixed-width/> {{ label.item.label }}
+          </router-link>
         </span>
         <span v-else-if="label.item.type === 'ENTITY_TYPE' || label.item.type === 'ENTITY_TYPE_ABSTRACT'">
           <font-awesome-icon
@@ -84,6 +89,7 @@ export default {
   },
   computed: {
     ...mapState('navigator', ['resources', 'selectedResources', 'showHiddenResources', 'clipboard']),
+    ...mapState({legacy: state => state.settings.legacy}),
     tableResources () {
       return this.resources.filter(resource => this.showHiddenResources || !resource.hidden).map(
         resource => Object.assign({}, resource)).sort((a, b) => {

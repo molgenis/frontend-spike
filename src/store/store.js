@@ -40,5 +40,15 @@ export default new Vuex.Store({
       getters: navigatorGetters,
     }
   },
+  state: {
+    settings: {
+      legacy: {
+        explorer: false,
+        navigator: false,
+        entityEditor: false
+      }
+    },
+  },
+
   strict: process.env.NODE_ENV !== 'production'
 })

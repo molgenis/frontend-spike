@@ -32,7 +32,6 @@ router.beforeEach((to, from, next) => {
 library.add(faCheckCircle, faClone, faCut, faEdit, faDownload, faFolderOpen, faHome, faHourglass, faList, faPaste, faPlus, faSearch, faTimes, faTimesCircle, faTrash, faUpload)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
-
 Vue.use(BootstrapVue)
 
 Vue.use(i18n, {

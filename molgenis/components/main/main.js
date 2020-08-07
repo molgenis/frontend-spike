@@ -1,4 +1,5 @@
-import PageComponent from '@/components/menu/PageComponent.vue'
+import PageComponent from '@molgenis/molgenis/menu/page/page.js'
+
 
 export default {
     components: { PageComponent },

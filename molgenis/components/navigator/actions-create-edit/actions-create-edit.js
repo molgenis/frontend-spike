@@ -1,19 +1,10 @@
-import { DOWNLOAD_SELECTED_RESOURCES } from '@/store/actions/navigator'
+import { DOWNLOAD_SELECTED_RESOURCES } from '@molgenis/molgenis/store/actions/navigator.js'
 import { mapGetters, mapState } from 'vuex'
 
 export default {
-    name: 'NavigatorActionsCreateEdit',
-    data() {
-        return {
-            metadataManagerUrl: window.__INITIAL_STATE__.pluginUrls['metadata-manager'],
-        }
-    },
     computed: {
         ...mapGetters('navigator', ['nrSelectedResources', 'query']),
         ...mapState('navigator', ['folder', 'selectedResources']),
-        getSelectedResourceType() {
-            return this.selectedResources[0].type
-        },
         canCreate() {
             return !(this.query || (this.folder && this.folder.readonly))
         },
@@ -31,10 +22,19 @@ export default {
             }
             return canEdit
         },
+        getSelectedResourceType() {
+            return this.selectedResources[0].type
+        },
+    },
+    data() {
+        return {
+            metadataManagerUrl: window.__INITIAL_STATE__.pluginUrls['metadata-manager'],
+        }
     },
     methods: {
         downloadSelectedResources: function() {
             this.$store.dispatch('navigator/' + DOWNLOAD_SELECTED_RESOURCES)
         },
     },
+    name: 'NavigatorActionsCreateEdit',
 }

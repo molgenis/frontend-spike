@@ -1,54 +1,56 @@
+import CustomCardContent from './custom-card-content/custom-card-content.js'
+import DefaultCardContent from './default-card-content/default-card-content.js'
+import ShoppingButton from '../shopping-button/shopping-button.js'
 import Vue from 'vue'
-import ShoppingButton from '../utils/ShoppingButton'
-import DefaultCardContent from './DefaultCardContent'
-import CustomCardContent from './CustomCardContent'
+
 
 export default Vue.extend({
-  name: 'ExplorerCard',
-  props: {
-    dataId: {
-      type: String,
-      required: true
+    components: { CustomCardContent, DefaultCardContent, ShoppingButton },
+    methods: {
+        handleDefaultCardExpand() {
+            this.$emit('expandCard', { id: this.dataId })
+        },
     },
-    dataTable: {
-      type: String,
-      required: true
+    name: 'ExplorerCard',
+    props: {
+        collapseLimit: {
+            default: () => 5,
+            type: Number,
+        },
+        customCode: {
+            required: false,
+            type: String,
+        },
+        dataContents: {
+            required: true,
+            type: Object,
+        },
+        dataId: {
+            required: true,
+            type: String,
+        },
+        dataLabel: {
+            required: true,
+            type: String,
+        },
+        dataTable: {
+            required: true,
+            type: String,
+        },
+        isSelected: {
+            default: () => false,
+            required: false,
+            type: Boolean,
+        },
+        isShop: {
+            default: () => false,
+            required: false,
+            type: Boolean,
+        },
+
+        numberOfAttributes: {
+            required: true,
+            type: Number,
+        },
     },
-    dataLabel: {
-      type: String,
-      required: true
-    },
-    dataContents: {
-      type: Object,
-      required: true
-    },
-    numberOfAttributes: {
-      type: Number,
-      required: true
-    },
-    isSelected: {
-      type: Boolean,
-      required: false,
-      default: () => false
-    },
-    isShop: {
-      type: Boolean,
-      required: false,
-      default: () => false
-    },
-    customCode: {
-      type: String,
-      required: false
-    },
-    collapseLimit: {
-      type: Number,
-      default: () => 5
-    }
-  },
-  components: { ShoppingButton, DefaultCardContent, CustomCardContent },
-  methods: {
-    handleDefaultCardExpand () {
-      this.$emit('expandCard', { id: this.dataId })
-    }
-  }
 })

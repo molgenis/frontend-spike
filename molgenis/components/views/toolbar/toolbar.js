@@ -1,14 +1,13 @@
-import Vue from 'vue'
-import { mapMutations, mapState } from 'vuex'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faPlusSquare, faShoppingBag, faShoppingCart, faSlidersH, faStore, faTh, faThList } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import SearchComponent from '@/components/explorer/SearchComponent'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import SearchComponent from '@molgenis/molgenis/components/explorer/search/search.js'
+import Vue from 'vue'
+import { faPlusSquare, faShoppingBag, faShoppingCart, faSlidersH, faStore, faTh, faThList } from '@fortawesome/free-solid-svg-icons'
+import { mapMutations, mapState } from 'vuex'
 
 library.add(faShoppingCart, faTh, faThList, faSlidersH, faStore, faShoppingBag, faPlusSquare)
 
 export default Vue.extend({
-    name: 'ToolbarView',
     components: { FontAwesomeIcon, SearchComponent },
     computed: {
         ...mapState('explorer', [
@@ -36,14 +35,14 @@ export default Vue.extend({
             'setFilterSelection',
             'setSearchText',
         ]),
-        toggleDataDisplayLayout() {
-            const value =
-        this.dataDisplayLayout === 'TableView' ? 'CardView' : 'TableView'
-            this.setDataDisplayLayout(value)
-        },
         openShoppingCart() {
             this.setShowShoppingCart(true)
             this.setHideFilters(true)
         },
+        toggleDataDisplayLayout() {
+            const value = this.dataDisplayLayout === 'TableView' ? 'CardView' : 'TableView'
+            this.setDataDisplayLayout(value)
+        },
     },
+    name: 'ToolbarView',
 })

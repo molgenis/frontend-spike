@@ -1,12 +1,17 @@
-import Vue from 'vue'
-import SelectLayoutView from './SelectLayoutView'
+import ActiveFilters from '@molgenis/molgenis/filter/ActiveFilters.vue'
 import ClipboardView from './ClipboardView'
+import SelectLayoutView from './SelectLayoutView'
+import Vue from 'vue'
 import { mapMutations, mapState } from 'vuex'
-import ActiveFilters from '@/components/filter/ActiveFilters.vue'
+
 
 export default Vue.extend({
-    name: 'DataView',
-    components: { SelectLayoutView, ClipboardView, ActiveFilters },
+
+    components: {
+        ActiveFilters,
+        ClipboardView,
+        SelectLayoutView,
+    },
     computed: {
         ...mapState('explorer', [
             'showShoppingCart',
@@ -16,6 +21,17 @@ export default Vue.extend({
             'searchText',
             'filters',
         ]),
+        activeFilterSelections: (vm) => {
+            return vm.searchText ? { ...vm.filters.selections, _search: vm.searchText } : vm.filters.selections
+        },
+        filterDefinitions: (vm) => {
+            const searchDef = {
+                label: 'search',
+                name: '_search',
+                type: 'string',
+            }
+            return vm.searchText ? [ ...vm.filters.definition, searchDef ] : vm.filters.definition
+        },
         searchText: {
             get() {
                 return this.$store.state.searchText
@@ -23,17 +39,6 @@ export default Vue.extend({
             set(value) {
                 this.$store.commit('explorer/setSearchText', value)
             },
-        },
-        activeFilterSelections: (vm) => {
-            return vm.searchText ? { ...vm.filters.selections, _search: vm.searchText } : vm.filters.selections
-        },
-        filterDefinitions: (vm) => {
-            const searchDef = {
-                type: 'string',
-                label: 'search',
-                name: '_search',
-            }
-            return vm.searchText ? [ ...vm.filters.definition, searchDef ] : vm.filters.definition
         },
     },
     methods: {
@@ -48,4 +53,5 @@ export default Vue.extend({
             this.setFilterSelection(newSelections)
         },
     },
+    name: 'DataView',
 })

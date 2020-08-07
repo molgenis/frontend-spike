@@ -1,19 +1,17 @@
-import TableRow from '@/components/explorer/dataView/TableRow'
-import TableHeader from '@/components/explorer/dataView/TableHeader'
-import { mapActions, mapGetters, mapState } from 'vuex'
-import { library } from '@fortawesome/fontawesome-svg-core'
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import TableHeader from '@molgenis/molgenis/components/explorer/table-header/table-header.js'
+import TableRow from '@molgenis/molgenis/components/explorer/table-row/table-row.js'
+import { mapActions, mapGetters, mapState } from 'vuex'
+
+
 library.add(faShoppingBag)
 
 export default {
-    name: 'TableView',
-    props: {
-        entitiesToShow: {
-            type: Array,
-            required: true,
-        },
+    components: {
+        TableHeader,
+        TableRow,
     },
-    components: { TableRow, TableHeader },
     computed: {
         ...mapState('explorer', ['tableName', 'tableMeta', 'shoppedEntityItems', 'isShop']),
         ...mapGetters('explorer', ['filterRsql']),
@@ -35,9 +33,13 @@ export default {
             return this.shoppedEntityItems.includes(this.getEntityId(entity))
         },
     },
-    /**
-  * Todo temp watch, remove watch when sync is done via url
-  */
+    name: 'TableView',
+    props: {
+        entitiesToShow: {
+            required: true,
+            type: Array,
+        },
+    },
     watch: {
         filterRsql: {
             handler: function() {

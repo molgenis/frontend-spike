@@ -1,60 +1,21 @@
-import Vue from 'vue'
 import DateRangePicker from 'vue2-daterange-picker'
-import 'vue2-daterange-picker/dist/vue2-daterange-picker.css'
+// import 'vue2-daterange-picker/dist/vue2-daterange-picker.css'
 
-import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import Vue from 'vue'
+
+
 library.add(faTimes)
 
 const emptyDateRange = {
-    startDate: null,
     endDate: null,
+    startDate: null,
 }
 
 export default Vue.extend({
-    name: 'DateTimeFilter',
     components: { DateRangePicker, FontAwesomeIcon },
-    props: {
-        max: {
-            default: () => null,
-            type: [String, null],
-        },
-        min: {
-            default: () => null,
-            type: [String, null],
-        },
-        name: {
-            type: String,
-            required: true,
-        },
-        opens: {
-            default: () => 'right',
-            type: String,
-        },
-        time: {
-            type: Boolean,
-            default: () => true,
-        },
-        range: {
-            type: Boolean,
-            default: () => true,
-        },
-        value: {
-            type: Object,
-            default: () => {
-                return emptyDateRange
-            },
-        },
-    },
-    data: function() {
-        return {
-            dateRange: {
-                startDate: this.value.startDate,
-                endDate: this.value.endDate,
-            },
-        }
-    },
     computed: {
         formattedDate: function() {
             const date = this.dateRange
@@ -66,10 +27,13 @@ export default Vue.extend({
             }
         },
     },
-    watch: {
-        value(newValue) {
-            this.dateRange = newValue
-        },
+    data: function() {
+        return {
+            dateRange: {
+                endDate: this.value.endDate,
+                startDate: this.value.startDate,
+            },
+        }
     },
     methods: {
         clearValue: function() {
@@ -78,6 +42,44 @@ export default Vue.extend({
         },
         updateValues: function() {
             this.$emit('input', this.dateRange)
+        },
+    },
+    name: 'DateTimeFilter',
+    props: {
+        max: {
+            default: () => null,
+            type: [String, null],
+        },
+        min: {
+            default: () => null,
+            type: [String, null],
+        },
+        name: {
+            required: true,
+            type: String,
+        },
+        opens: {
+            default: () => 'right',
+            type: String,
+        },
+        range: {
+            default: () => true,
+            type: Boolean,
+        },
+        time: {
+            default: () => true,
+            type: Boolean,
+        },
+        value: {
+            default: () => {
+                return emptyDateRange
+            },
+            type: Object,
+        },
+    },
+    watch: {
+        value(newValue) {
+            this.dateRange = newValue
         },
     },
 })

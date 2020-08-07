@@ -1,16 +1,15 @@
-import { DOWNLOAD_SELECTED_RESOURCES } from '@/store/actions/navigator'
+import { DOWNLOAD_SELECTED_RESOURCES } from '@molgenis/molgenis/store/actions/navigator.js'
 import { mapGetters, mapState } from 'vuex'
 
 export default {
-    name: 'NavigatorActionsTransfer',
     computed: {
         ...mapGetters('navigator', ['nrSelectedResources']),
         ...mapState('navigator', ['folder']),
-        getSelectedResourceType() {
-            return this.selectedResources[0].type
-        },
         canDelete() {
             return this.nrSelectedResources > 0 && !(this.folder && this.folder.readonly)
+        },
+        getSelectedResourceType() {
+            return this.selectedResources[0].type
         },
     },
     methods: {
@@ -18,4 +17,5 @@ export default {
             this.$store.dispatch('navigator/' + DOWNLOAD_SELECTED_RESOURCES)
         },
     },
+    name: 'NavigatorActionsTransfer',
 }

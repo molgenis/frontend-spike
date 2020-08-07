@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "attach",
+            "name": "Molgenis browser debugger",
+            "port": 9222,
+            "url": "http://localhost/",
+            "webRoot": "${workspaceFolder}/build",
+            "sourceMaps": true
+        }
+    ]
+}

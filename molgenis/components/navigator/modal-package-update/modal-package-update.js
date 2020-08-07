@@ -1,17 +1,7 @@
-import { UPDATE_RESOURCE } from '@/store/actions/navigator'
 import { mapState } from 'vuex'
+import { UPDATE_RESOURCE } from '@molgenis/molgenis/store/actions/navigator.js'
 
 export default {
-    name: 'NavigatorModalPackageUpdate',
-    data() {
-        return {
-            form: {
-                label: '',
-                description: '',
-            },
-            validated: false,
-        }
-    },
     computed: {
         ...mapState('navigator', ['resources', 'selectedResources']),
         selectedResource() {
@@ -19,12 +9,16 @@ export default {
             return this.resources.find(resource => resource.id === selectedResourceId)
         },
     },
+    data() {
+        return {
+            form: {
+                description: '',
+                label: '',
+            },
+            validated: false,
+        }
+    },
     methods: {
-        resetForm() {
-            this.form = {label: this.selectedResource.label, description: this.selectedResource.description}
-            this.validated = false
-            this.$refs.updatePackageLabelInput.$el.focus()
-        },
         handleOk(evt) {
             evt.preventDefault()
             if (!this.form.label) {
@@ -34,10 +28,21 @@ export default {
             }
         },
         handleSubmit() {
-            var updatedResource = Object.assign({}, this.selectedResource,
-                {label: this.form.label, description: this.form.description})
+            var updatedResource = Object.assign({}, this.selectedResource, {
+                description: this.form.description,
+                label: this.form.label,
+            })
             this.$store.dispatch('navigator/' + UPDATE_RESOURCE, updatedResource)
             this.$refs.packageUpdateModal.hide()
         },
+        resetForm() {
+            this.form = {
+                description: this.selectedResource.description,
+                label: this.selectedResource.label,
+            }
+            this.validated = false
+            this.$refs.updatePackageLabelInput.$el.focus()
+        },
     },
+    name: 'NavigatorModalPackageUpdate',
 }

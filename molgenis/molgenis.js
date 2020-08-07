@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import { sync } from 'vuex-router-sync'
+import components from './components.js'
 import store from './store/store'
 import router from './router/router.js'
 import App from './App'
@@ -12,11 +13,10 @@ import { faClone, faCut, faDownload, faEdit, faHome, faList, faPaste, faPlus, fa
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import i18n from '@molgenis/molgenis-i18n-js'
-import { SET_SHOW_HIDDEN_RESOURCES } from '@/store/mutations/navigator'
+import { SET_SHOW_HIDDEN_RESOURCES } from '@molgenis/molgenis/store/mutations/navigator.js'
 
 const {lng, fallbackLng, isSuperUser} = window.__INITIAL_STATE__
 Vue.config.productionTip = false
-
 Vue.prototype.$eventBus = new Vue()
 
 // Keeps the router and the store in sync @https://github.com/vuejs/vuex-router-sync
@@ -41,10 +41,10 @@ Vue.use(i18n, {
     callback() {
     /* eslint-disable no-new */
         global.app = new Vue({
-            el: '#app',
-            store,
-            router,
             components: { App },
+            el: '#app',
+            router,
+            store,
             template: '<App />',
         })
         store.commit('navigator/' + SET_SHOW_HIDDEN_RESOURCES, isSuperUser)

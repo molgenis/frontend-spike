@@ -1,44 +1,47 @@
-import Vue from 'vue'
 
-import { library } from '@fortawesome/fontawesome-svg-core'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import Vue from 'vue'
+
+
 library.add(faPlus)
 
 export default Vue.extend({
-  name: 'AddFilterModal',
-  components: { FontAwesomeIcon },
-  props: {
-    filters: {
-      type: Array,
-      required: true
+    components: { FontAwesomeIcon },
+    computed: {
+        options() {
+            return this.filters.map(it => ({
+                text: it.label,
+                value: it.name,
+            }))
+        },
     },
-    value: {
-      type: Array,
-      default: () => []
-    }
-  },
-  data () {
-    return {
-      selected: null
-    }
-  },
-  computed: {
-    options () {
-      return this.filters.map(it => ({
-        value: it.name,
-        text: it.label
-      }))
-    }
-  },
-  methods: {
-    resetModal () {
-      this.selected = this.filters[0].name
+    data() {
+        return {
+            selected: null,
+        }
     },
-    addFilter () {
-      if (this.selected != null) {
-        this.$emit('input', [ ...this.value, this.selected ])
-      }
-    }
-  }
+    methods: {
+        addFilter() {
+            if (this.selected != null) {
+                this.$emit('input', [ ...this.value, this.selected ])
+            }
+        },
+        resetModal() {
+            this.selected = this.filters[0].name
+        },
+
+    },
+    name: 'AddFilterModal',
+    props: {
+        filters: {
+            required: true,
+            type: Array,
+        },
+        value: {
+            default: () => [],
+            type: Array,
+        },
+    },
 })

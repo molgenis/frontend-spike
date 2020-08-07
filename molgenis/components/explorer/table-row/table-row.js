@@ -1,38 +1,42 @@
-import ShoppingButton from '../utils/ShoppingButton'
-import { library } from '@fortawesome/fontawesome-svg-core'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import ShoppingButton from '../utils/ShoppingButton'
+
 
 library.add(faEdit)
+
 export default {
-  name: 'TableRow',
-  props: {
-    id: {
-      type: String,
-      required: true
+    components: { FontAwesomeIcon, ShoppingButton },
+    name: 'TableRow',
+    props: {
+        id: {
+            required: true,
+            type: String,
+        },
+        isSelected: {
+            default: () => false,
+            required: false,
+            type: Boolean,
+        },
+        isShop: {
+            default: () => false,
+            required: false,
+            type: Boolean,
+        },
+        rowData: {
+            required: true,
+            type: Object,
+        },
+        tableName: {
+            required: true,
+            type: String,
+        },
+
+        visibleColumns: {
+            required: true,
+            type: Array,
+        },
     },
-    tableName: {
-      type: String,
-      required: true
-    },
-    rowData: {
-      type: Object,
-      required: true
-    },
-    visibleColumns: {
-      type: Array,
-      required: true
-    },
-    isSelected: {
-      type: Boolean,
-      required: false,
-      default: () => false
-    },
-    isShop: {
-      type: Boolean,
-      required: false,
-      default: () => false
-    }
-  },
-  components: { ShoppingButton, FontAwesomeIcon }
+
 }

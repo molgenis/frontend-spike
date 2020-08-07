@@ -1,21 +1,16 @@
+import { createBookmark } from '../mappers/bookmarkMapper'
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+import FilterContainer from '@molgenis/molgenis/filter/FilterContainer.vue'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
 import Vue from 'vue'
 import { mapMutations, mapState } from 'vuex'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import FilterContainer from '@/components/filter/FilterContainer.vue'
-import { createBookmark } from '../mappers/bookmarkMapper'
+
 
 library.add(faChevronLeft)
 
 export default Vue.extend({
-    name: 'FiltersView',
     components: { FilterContainer, FontAwesomeIcon },
-    data: () => {
-        return {
-            renderCount: 0,
-        }
-    },
     computed: {
         ...mapState('explorer', [
             'filters',
@@ -24,9 +19,6 @@ export default Vue.extend({
             'bookmarkedSelections',
             'componentRoute',
         ]),
-        isFilterDataLoaded() {
-            return this.tableMeta !== null
-        },
         filterSelections: {
             get() {
                 return this.filters.selections
@@ -45,6 +37,14 @@ export default Vue.extend({
                 this.addBookmark()
             },
         },
+        isFilterDataLoaded() {
+            return this.tableMeta !== null
+        },
+    },
+    data: () => {
+        return {
+            renderCount: 0,
+        }
     },
     methods: {
         ...mapMutations('explorer', [
@@ -54,10 +54,6 @@ export default Vue.extend({
             'setFilterSelection',
             'setComponentRoute',
         ]),
-        updateState(shownFilters) {
-            this.setFiltersShown(shownFilters)
-            this.addBookmark()
-        },
         addBookmark() {
             createBookmark(this.$router)
         },
@@ -65,7 +61,12 @@ export default Vue.extend({
             // Refresh the filtercomponent
             this.renderCount++
         },
+        updateState(shownFilters) {
+            this.setFiltersShown(shownFilters)
+            this.addBookmark()
+        },
     },
+    name: 'FiltersView',
     watch: {
         '$route.query': function(query) {
             // need to check if component triggered query, if so ignore.

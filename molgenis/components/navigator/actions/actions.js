@@ -1,7 +1,7 @@
-import NavigatorActionsCreateEdit from './NavigatorActionsCreateEdit'
-import NavigatorActionsTransfer from './NavigatorActionsTransfer'
 import NavigatorActionsClipboard from './NavigatorActionsClipboard'
+import NavigatorActionsCreateEdit from './NavigatorActionsCreateEdit'
 import NavigatorActionsDelete from './NavigatorActionsDelete'
+import NavigatorActionsTransfer from './NavigatorActionsTransfer'
 import NavigatorModalPackageCreate from './NavigatorModalPackageCreate'
 import NavigatorModalPackageUpdate from './NavigatorModalPackageUpdate'
 import NavigatorModalResourceDelete from './NavigatorModalResourceDelete'
@@ -9,10 +9,10 @@ import NavigatorModalResourceDelete from './NavigatorModalResourceDelete'
 export default {
     name: 'NavigatorActions',
     components: {
-        NavigatorActionsCreateEdit,
-        NavigatorActionsTransfer,
         NavigatorActionsClipboard,
+        NavigatorActionsCreateEdit,
         NavigatorActionsDelete,
+        NavigatorActionsTransfer,
         NavigatorModalPackageCreate,
         NavigatorModalPackageUpdate,
         NavigatorModalResourceDelete,

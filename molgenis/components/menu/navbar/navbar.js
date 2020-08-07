@@ -1,45 +1,41 @@
-import DropDownItems from './DropDownItems'
-import languageRepository from '@/repository/LanguageRepository'
-import languageService from '@/service/LanguageService'
-import eventUtilService from '@/service/EventUtilService'
+import DropDownItems from '../dropdown-items/dropdown-items.js'
+import eventUtilService from '@molgenis/molgenis/lib/service/event-util.js'
+import languageRepository from '@molgenis/molgenis/lib/repository/language.js'
+import languageService from '@molgenis/molgenis/lib/service/language.js'
+
 
 const href = (item) => item.params ? `${item.id}?${item.params}` : item.id
 
 export default {
-    name: 'NavBar',
-    props: ['molgenisMenu'],
+    beforeDestroy() {
+        window.removeEventListener('resize', this.handleResize)
+    },
     components: {
         DropDownItems,
     },
     data() {
         return {
-            selectedLanguage: null,
-            languages: [],
-            expectedNavHeight: null,
-            wrapMargin: null,
-            showHamburger: false,
             dynamicHamburgerBreakpoint: null,
+            expectedNavHeight: null,
+            languages: [],
+            selectedLanguage: null,
+            showHamburger: false,
+            wrapMargin: null,
         }
     },
     methods: {
-        href,
-        isSelectedPlugin(plugin) {
-            return plugin === this.molgenisMenu.selectedPlugin
+        debounce: eventUtilService.debounce,
+        getClientWidth() {
+            return window.innerWidth || document.documentElement.clientWidth ||
+            document.body.clientWidth
         },
-        logout() {
-            if (this.logoutFunction) {
-                this.logoutFunction()
-            }
-            document.getElementById('logout-form').submit()
+        getPixelValue(sourceObject, propertyName) {
+            return parseInt(sourceObject.getPropertyValue(propertyName), 10)
         },
         handleLanguageSelect() {
             languageRepository.setSelectedLanguage(this.selectedLanguage.id).then(() => {
                 location.reload(true)
             })
-        },
-        getClientWidth() {
-            return window.innerWidth || document.documentElement.clientWidth ||
-          document.body.clientWidth
         },
         handleResize() {
             if (this.showHamburger) {
@@ -55,9 +51,15 @@ export default {
                 }
             }
         },
-        debounce: eventUtilService.debounce,
-        getPixelValue(sourceObject, propertyName) {
-            return parseInt(sourceObject.getPropertyValue(propertyName), 10)
+        href,
+        isSelectedPlugin(plugin) {
+            return plugin === this.molgenisMenu.selectedPlugin
+        },
+        logout() {
+            if (this.logoutFunction) {
+                this.logoutFunction()
+            }
+            document.getElementById('logout-form').submit()
         },
     },
     mounted() {
@@ -80,12 +82,11 @@ export default {
             })
         }
     },
+    name: 'NavBar',
+    props: ['molgenisMenu'],
     updated() {
         if (this.expectedNavHeight) {
             this.handleResize()
         }
-    },
-    beforeDestroy() {
-        window.removeEventListener('resize', this.handleResize)
     },
 }

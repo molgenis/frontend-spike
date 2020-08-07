@@ -1,25 +1,25 @@
 import VRuntimeTemplate from 'v-runtime-template'
 
 export default {
-  name: 'CustomCardContent',
-  components: { VRuntimeTemplate },
-  props: {
-    id: {
-      type: String,
-      required: true
+    components: { VRuntimeTemplate },
+    computed: {
+        template: function() {
+            return '<div>' + this.customCode.trim() + '</div>'
+        },
     },
-    record: {
-      type: Object,
-      required: true
+    name: 'CustomCardContent',
+    props: {
+        customCode: {
+            required: true,
+            type: String,
+        },
+        id: {
+            required: true,
+            type: String,
+        },
+        record: {
+            required: true,
+            type: Object,
+        },
     },
-    customCode: {
-      type: String,
-      required: true
-    }
-  },
-  computed: {
-    template: function () {
-      return '<div>' + this.customCode.trim() + '</div>'
-    }
-  }
 }

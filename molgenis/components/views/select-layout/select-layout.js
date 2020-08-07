@@ -1,15 +1,22 @@
-import CardView from './CardView'
-import TableView from './TableView'
-import ExplorerCard from '@/components/explorer/dataView/ExplorerCard'
-import TableRow from '@/components/explorer/dataView/TableRow'
-import TableHeader from '@/components/explorer/dataView/TableHeader'
-import EndOfResults from '@/components/explorer/dataView/EndOfResults'
+import CardView from '../card/card.js'
+import EndOfResults from '@molgenis/molgenis/components/explorer/end-of-results/end-of-results.js'
+import ExplorerCard from '@molgenis/molgenis/components/explorer/explorer-card/explorer-card.js'
 import { mapState } from 'vuex'
+import TableHeader from '@molgenis/molgenis/components/explorer/table-header/table-header.js'
+import TableRow from '@molgenis/molgenis/components/explorer/table-row/table-row.js'
+import TableView from '../table/table.js'
 
 export default {
-    name: 'SelectLayoutView',
-    components: { ExplorerCard, TableRow, TableHeader, CardView, TableView, EndOfResults },
+    components: {
+        CardView,
+        EndOfResults,
+        ExplorerCard,
+        TableHeader,
+        TableRow,
+        TableView,
+    },
     computed: {
         ...mapState('explorer', ['dataDisplayLayout', 'dataDisplayLimit', 'tableMeta', 'tableData']),
     },
+    name: 'SelectLayoutView',
 }

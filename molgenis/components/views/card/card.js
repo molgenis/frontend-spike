@@ -2,13 +2,6 @@ import ExplorerCard from '../components/explorer/dataView/ExplorerCard'
 import { mapActions, mapGetters, mapState } from 'vuex'
 
 export default {
-    name: 'CardView',
-    props: {
-        entitiesToShow: {
-            type: Array,
-            required: true,
-        },
-    },
     components: { ExplorerCard },
     computed: {
         ...mapState('explorer', ['tableMeta', 'shoppedEntityItems', 'tableSettings', 'tableName']),
@@ -31,16 +24,20 @@ export default {
         getEntityLabel(entity) {
             return this.labelAttribute && entity[this.labelAttribute.name] ? entity[this.labelAttribute.name].toString() : this.getEntityId(entity).toString()
         },
-        isSelected(entity) {
-            return this.shoppedEntityItems.includes(this.getEntityId(entity))
-        },
         handleExpandCard(entity) {
             this.fetchRowDataLabels({ rowId: this.getEntityId(entity) })
         },
+        isSelected(entity) {
+            return this.shoppedEntityItems.includes(this.getEntityId(entity))
+        },
     },
-    /**
-   * Todo temp watch, remove watch when sync is done via url
-   */
+    name: 'CardView',
+    props: {
+        entitiesToShow: {
+            required: true,
+            type: Array,
+        },
+    },
     watch: {
         filterRsql: {
             handler: function() {

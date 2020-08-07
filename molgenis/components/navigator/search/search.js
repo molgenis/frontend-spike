@@ -1,5 +1,4 @@
 export default {
-    name: 'NavigatorSearch',
     computed: {
         query: {
             get: function() {
@@ -7,11 +6,12 @@ export default {
             },
             set: function(query) {
                 this.$router.push({
-                    path: '/',
                     params: {...this.$route.params, folder: undefined},
+                    path: '/',
                     query: query ? {...this.$route.query, q: query} : undefined,
                 })
             },
         },
     },
+    name: 'NavigatorSearch',
 }

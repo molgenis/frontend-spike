@@ -1,29 +1,22 @@
+import { CREATE_RESOURCE } from '@molgenis/molgenis/store/actions/navigator.js'
 import { mapGetters } from 'vuex'
-import { CREATE_RESOURCE } from '@/store/actions/navigator'
+
 
 export default {
-    name: 'NavigatorModalPackageCreate',
+    computed: {
+        ...mapGetters('navigator', ['folderId']),
+    },
     data() {
         return {
             form: {
-                label: '',
                 description: '',
+                label: '',
             },
             validated: false,
         }
     },
-    computed: {
-        ...mapGetters('navigator', ['folderId']),
-    },
+
     methods: {
-        resetForm() {
-            this.form = {
-                label: '',
-                description: '',
-            }
-            this.validated = false
-            this.$refs.createPackageLabelInput.$el.focus()
-        },
         handleOk(evt) {
             evt.preventDefault()
             if (!this.form.label) {
@@ -33,9 +26,21 @@ export default {
             }
         },
         handleSubmit() {
-            var folder = Object.assign({}, this.form, {type: 'PACKAGE', readonly: false})
+            var folder = Object.assign({}, this.form, {
+                readonly: false,
+                type: 'PACKAGE',
+            })
             this.$store.dispatch('navigator/' + CREATE_RESOURCE, folder)
             this.$refs.packageCreateModal.hide()
         },
+        resetForm() {
+            this.form = {
+                description: '',
+                label: '',
+            }
+            this.validated = false
+            this.$refs.createPackageLabelInput.$el.focus()
+        },
     },
+    name: 'NavigatorModalPackageCreate',
 }

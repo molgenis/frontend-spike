@@ -1,47 +1,49 @@
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { createBookmark } from '@molgenis/molgenis/mappers/bookmark.js'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { createBookmark } from '@/mappers/bookmarkMapper'
+import { library } from '@fortawesome/fontawesome-svg-core'
 
 library.add(faSearch)
 
 export default {
-  name: 'SearchComponent',
-  components: { FontAwesomeIcon },
-  props: {
-    value: {
-      type: String,
-      required: false
-    }
-  },
-  data () {
-    return {
-      searchText: this.value
-    }
-  },
-  methods: {
-    handleSearchAction () {
-      this.$emit('input', this.searchText)
-      createBookmark(this.$router)
-    }
-  },
-  watch: {
-    value: {
-      handler: function (val) {
-        if (val === '') {
-          this.searchText = ''
+
+    components: { FontAwesomeIcon },
+    data() {
+        return {
+            searchText: this.value,
         }
-      },
-      immediate: true
     },
-    searchText: {
-      // Add handler to support html5 clear search action
-      handler: function (val) {
-        if (val === '') {
-          this.handleSearchAction()
-        }
-      },
-      immediate: true
-    }
-  }
+    methods: {
+        handleSearchAction() {
+            this.$emit('input', this.searchText)
+            createBookmark(this.$router)
+        },
+    },
+    name: 'SearchComponent',
+    props: {
+        value: {
+            required: false,
+            type: String,
+        },
+    },
+    watch: {
+        searchText: {
+        // Add handler to support html5 clear search action
+            handler: function(val) {
+                if (val === '') {
+                    this.handleSearchAction()
+                }
+            },
+            immediate: true,
+        },
+        value: {
+            handler: function(val) {
+                if (val === '') {
+                    this.searchText = ''
+                }
+            },
+            immediate: true,
+        },
+
+    },
 }

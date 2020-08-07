@@ -38,8 +38,8 @@ let vuePack
 // Maps tasks to entrypoints.
 const entrypoint = {
     html: 'index.html',
-    js: 'js/app.js',
-    scss: 'scss/molgenis/app.scss',
+    js: 'molgenis.js',
+    scss: 'scss/molgenis/molgenis.scss',
     vue: 'components/**/*.vue',
 }
 
@@ -64,8 +64,7 @@ tasks.assets = new Task('assets', async function() {
     })
 
     await Promise.all([
-        fs.copy(path.join(settings.dir.theme, 'audio'), path.join(settings.dir.build, 'static', 'audio')),
-        fs.copy(path.join(settings.dir.theme, 'fonts'), path.join(settings.dir.build, 'static', 'fonts')),
+        fs.copy(path.join(settings.dir.theme, settings.molgenis.theme.name, 'fonts'), path.join(settings.dir.build, 'static', 'fonts')),
     ])
 })
 
@@ -95,7 +94,7 @@ tasks.js = new Task('js', async function(file) {
             await fs.copy(file, path.join(settings.dir.build, 'static', file.replace(settings.dir.molgenis, '')))
         } else {
             targets = (await globby([
-                path.join(settings.dir.base, '**', '*.js'),
+                path.join(settings.dir.base, settings.build.target, '**', '*.js'),
                 `!${path.join(settings.dir.base, 'node_modules')}`,
             ]))
 
@@ -205,13 +204,11 @@ tasks.watch = new Task('watch', async function() {
             })
 
         chokidar.watch([
-            path.join('!', settings.dir.molgenis, 'js', 'templates.js'), // Templates are handled by the Vue task
+            path.join('!', settings.dir.molgenis, 'templates.js'), // Templates are handled by the Vue task
             path.join(settings.dir.molgenis, '**', '*.js'),
-            path.join(settings.dir.sig11, '**', '*.js'),
-            path.join(settings.dir.sip, '**', '*.js'),
         ]).on('change', async(file) => {
             await tasks.js.start(entrypoint.js, file)
-            tinylr.changed('app.js')
+            tinylr.changed('molgenis.js')
         })
 
         chokidar.watch(path.join(settings.dir.molgenis, '**', '*.vue')).on('change', async() => {
@@ -221,7 +218,7 @@ tasks.watch = new Task('watch', async function() {
 
         chokidar.watch(path.join(settings.dir.molgenis, '**', '*.scss')).on('change', async() => {
             await tasks.scss.start(entrypoint.scss)
-            tinylr.changed('app.css')
+            tinylr.changed('molgenis.css')
         })
 
         chokidar.watch(path.join(settings.dir.molgenis, 'index.html')).on('change', async() => {
@@ -245,11 +242,11 @@ tasks.watch = new Task('watch', async function() {
         .option('optimized', {alias: 'o', default: false, description: 'Optimized production mode', type: 'boolean'})
         .middleware(async(argv) => {
             if (!settings.version) {
-                settings.version = JSON.parse((await fs.readFile(path.join(settings.dir.molgenis, 'package.json')))).version
+                settings.version = JSON.parse((await fs.readFile(path.join(settings.dir[settings.build.target], 'package.json')))).version
             }
 
             // Make sure the required build directories exist.
-            await fs.mkdirp(path.join(settings.dir.build, 'static', 'js'))
+            await fs.mkdirp(path.join(settings.dir.build, 'static'))
             settings.optimized = argv.optimized
             if (settings.optimized) {
                 tasks.watch.log(`build optimization: ${chalk.green('enabled')}`)
@@ -260,10 +257,10 @@ tasks.watch = new Task('watch', async function() {
 
         .command('assets', 'collect and optimize assets', () => {}, () => {tasks.assets.start()})
         .command('build', `build ${settings.build.target} package`, () => {}, () => {tasks.build.start()})
+        .command('config', 'list build config', () => {}, () => buildInfo(cli))
         .command('html', 'generate index.html', () => {}, () => {tasks.html.start(entrypoint.html)})
         .command('js', `prepare ${settings.build.target} JavaScript`, () => {}, () => {tasks.js.start(entrypoint.js)})
         .command('scss', 'compile stylesheets (SCSS)', () => {}, () => {tasks.scss.start(entrypoint.scss)})
-        .command('vars', 'list build variables', () => {}, () => buildInfo(cli))
         .command('vue', 'compile Vue templates (ESM)', () => {}, () => {tasks.vue.start(entrypoint.vue)})
         .command('watch', `${settings.build.target} development modus`, () => {}, () => {tasks.watch.start()})
         .demandCommand()

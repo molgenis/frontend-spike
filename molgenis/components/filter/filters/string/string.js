@@ -1,28 +1,14 @@
-import Vue from 'vue'
 
-import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import Vue from 'vue'
+
+
 library.add(faTimes)
 
 export default Vue.extend({
-    name: 'StringFilter',
     components: { FontAwesomeIcon },
-    props: {
-        name: {
-            type: String,
-            required: true,
-        },
-        placeholder: {
-            type: String,
-            required: false,
-            default: () => '',
-        },
-        value: {
-            type: String,
-            default: () => '',
-        },
-    },
     computed: {
         model: {
             get() {
@@ -33,4 +19,21 @@ export default Vue.extend({
             },
         },
     },
+    name: 'StringFilter',
+    props: {
+        name: {
+            required: true,
+            type: String,
+        },
+        placeholder: {
+            default: () => '',
+            required: false,
+            type: String,
+        },
+        value: {
+            default: () => '',
+            type: String,
+        },
+    },
+
 })

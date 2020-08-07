@@ -1,26 +1,36 @@
-import Vue from 'vue'
-import FiltersView from './FiltersView'
-import ToastComponent from '@/components/explorer/utils/ToastComponent'
 import DataView from './DataView'
-import { mapActions, mapMutations, mapState } from 'vuex'
-import { library } from '@fortawesome/fontawesome-svg-core'
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
+import FiltersView from './FiltersView'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
 import PageHeaderView from './PageHeaderView'
+import ToastComponent from '@molgenis/molgenis/components/explorer/utils/ToastComponent'
+import Vue from 'vue'
+import { mapActions, mapMutations, mapState } from 'vuex'
+
 
 library.add(faChevronUp)
 
 const deleteConfirmOptions = {
-    okVariant: 'danger',
-    okTitle: 'Delete',
     cancelTitle: 'Cancel',
-    hideHeaderClose: false,
     centered: true,
+    hideHeaderClose: false,
+    okTitle: 'Delete',
+    okVariant: 'danger',
 }
 
 export default Vue.extend({
-    name: 'MainView',
-    components: { FiltersView, DataView, ToastComponent, FontAwesomeIcon, PageHeaderView },
+    async beforeRouteUpdate(to, from, next) {
+        await this.fetchViewData(to.params.entity)
+        next()
+    },
+    components: {
+        DataView,
+        FiltersView,
+        FontAwesomeIcon,
+        PageHeaderView,
+        ToastComponent,
+    },
     computed: {
         ...mapState('explorer', [
             'filters',
@@ -30,10 +40,19 @@ export default Vue.extend({
             'tableName',
         ]),
     },
+    created() {
+        this.$eventBus.$on('delete-item', (data) => {
+            this.handeldeleteItem(data)
+        })
+        this.fetchViewData(this.$route.params.entity)
+    },
     data() {
         return {
             loading: false,
         }
+    },
+    destroyed() {
+        this.$eventBus.$off('delete-item')
     },
     methods: {
         ...mapMutations('explorer', [
@@ -48,13 +67,6 @@ export default Vue.extend({
             'fetchTableViewData',
             'fetchTableMeta',
         ]),
-        async handeldeleteItem(itemId) {
-            const msg = 'Are you sure you want to delete this item ?'
-            const isDeleteConfirmed = await this.$bvModal.msgBoxConfirm(msg, deleteConfirmOptions)
-            if (isDeleteConfirmed) {
-                this.deleteRow({ rowId: itemId })
-            }
-        },
         async fetchViewData(tableName) {
             if (this.tableName !== tableName) {
                 this.loading = true
@@ -68,18 +80,13 @@ export default Vue.extend({
             }
             this.loading = false
         },
+        async handeldeleteItem(itemId) {
+            const msg = 'Are you sure you want to delete this item ?'
+            const isDeleteConfirmed = await this.$bvModal.msgBoxConfirm(msg, deleteConfirmOptions)
+            if (isDeleteConfirmed) {
+                this.deleteRow({ rowId: itemId })
+            }
+        },
     },
-    created() {
-        this.$eventBus.$on('delete-item', (data) => {
-            this.handeldeleteItem(data)
-        })
-        this.fetchViewData(this.$route.params.entity)
-    },
-    destroyed() {
-        this.$eventBus.$off('delete-item')
-    },
-    async beforeRouteUpdate(to, from, next) {
-        await this.fetchViewData(to.params.entity)
-        next()
-    },
+    name: 'MainView',
 })

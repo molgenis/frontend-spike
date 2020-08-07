@@ -1,12 +1,17 @@
+import TableSelect from '@molgenis/molgenis/components/explorer/table-select/table-select.js'
+import TableSettingsButton from '@molgenis/molgenis/components/explorer/table-settings-button/table-settings-button.js'
+import ToolbarView from '../toolbar/toolbar.js'
 import Vue from 'vue'
-import ToolbarView from './ToolbarView'
-import TableSelect from '@/components/explorer/TableSelect'
-import TableSettingsButton from '@/components/explorer/utils/TableSettingsButton'
 import { mapActions, mapState } from 'vuex'
 
+
 export default Vue.extend({
-    name: 'PageHeaderView',
-    components: { ToolbarView, TableSettingsButton, TableSelect },
+
+    components: {
+        TableSelect,
+        TableSettingsButton,
+        ToolbarView,
+    },
     computed: {
         ...mapState('explorer', [
             'tableName',
@@ -29,4 +34,5 @@ export default Vue.extend({
     mounted() {
         this.getGroupTabels({ package: this.tableMeta.package })
     },
+    name: 'PageHeaderView',
 })

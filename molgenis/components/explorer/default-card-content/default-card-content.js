@@ -1,74 +1,77 @@
-import Vue from 'vue'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faSearch, faChevronUp, faChevronRight, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import Vue from 'vue'
+import { faChevronRight, faChevronUp, faEdit, faSearch, faTrash } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faSearch, faChevronRight, faChevronUp, faEdit, faTrash)
 
 export default Vue.extend({
-  name: 'DefaultCardContent',
-  data: () => {
-    return {
-      cardState: 'closed'
-    }
-  },
-  props: {
-    dataLabel: {
-      type: String,
-      required: true
+    components: { FontAwesomeIcon },
+    computed: {
+        dataToShow() {
+            if (this.cardState === 'closed') {
+                const elementsToShow = Object.keys(this.dataContents).slice(0, this.collapseLimit)
+                return elementsToShow.reduce((accumulator, key) => {
+                    accumulator[key] = this.dataContents[key]
+                    return accumulator
+                }, {})
+            } else {
+                return this.dataContents
+            }
+        },
+        detailLink() {
+            return `/menu/main/dataexplorer/details/${this.dataTable}/${this.dataId}`
+        },
+        expandBtnText() {
+            return this.cardState === 'closed' ? 'Expand' : 'Collapse'
+        },
     },
-    dataId: {
-      type: String,
-      required: true
+    data: () => {
+        return {
+            cardState: 'closed',
+        }
     },
-    dataTable: {
-      type: String,
-      required: true
+
+
+    methods: {
+        goToDetails() {
+            window.location.assign(this.detailLink)
+        },
+        handleExpandBtnClicked() {
+            if (this.cardState === 'closed') {
+                this.cardState = 'open'
+                this.$emit('expandDefaultCard')
+            } else {
+                this.cardState = 'closed'
+            }
+        },
     },
-    dataContents: {
-      type: Object,
-      required: true
+    name: 'DefaultCardContent',
+    props: {
+        collapseLimit: {
+            default: () => 5,
+            type: Number,
+        },
+        dataContents: {
+            required: true,
+            type: Object,
+        },
+        dataId: {
+            required: true,
+            type: String,
+        },
+        dataLabel: {
+            required: true,
+            type: String,
+        },
+        dataTable: {
+            required: true,
+            type: String,
+        },
+
+        numberOfAttributes: {
+            required: true,
+            type: Number,
+        },
     },
-    numberOfAttributes: {
-      type: Number,
-      required: true
-    },
-    collapseLimit: {
-      type: Number,
-      default: () => 5
-    }
-  },
-  components: { FontAwesomeIcon },
-  computed: {
-    expandBtnText () {
-      return this.cardState === 'closed' ? 'Expand' : 'Collapse'
-    },
-    dataToShow () {
-      if (this.cardState === 'closed') {
-        const elementsToShow = Object.keys(this.dataContents).slice(0, this.collapseLimit)
-        return elementsToShow.reduce((accumulator, key) => {
-          accumulator[key] = this.dataContents[key]
-          return accumulator
-        }, {})
-      } else {
-        return this.dataContents
-      }
-    },
-    detailLink () {
-      return `/menu/main/dataexplorer/details/${this.dataTable}/${this.dataId}`
-    }
-  },
-  methods: {
-    goToDetails () {
-      window.location.assign(this.detailLink)
-    },
-    handleExpandBtnClicked () {
-      if (this.cardState === 'closed') {
-        this.cardState = 'open'
-        this.$emit('expandDefaultCard')
-      } else {
-        this.cardState = 'closed'
-      }
-    }
-  }
 })

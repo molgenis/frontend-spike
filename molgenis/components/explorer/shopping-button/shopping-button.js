@@ -1,25 +1,26 @@
-import Vue from 'vue'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faShoppingCart, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
 import { mapMutations } from 'vuex'
+import Vue from 'vue'
+import { faMinus, faPlus, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+
 
 library.add(faShoppingCart, faMinus, faPlus)
 
 export default Vue.extend({
-  name: 'ShoppingButton',
-  props: {
-    id: {
-      type: String,
-      required: true
+    components: { FontAwesomeIcon },
+    methods: {
+        ...mapMutations(['toggleShoppingItems']),
     },
-    isSelected: {
-      type: Boolean,
-      required: true
-    }
-  },
-  methods: {
-    ...mapMutations(['toggleShoppingItems'])
-  },
-  components: { FontAwesomeIcon }
+    name: 'ShoppingButton',
+    props: {
+        id: {
+            required: true,
+            type: String,
+        },
+        isSelected: {
+            required: true,
+            type: Boolean,
+        },
+    },
 })

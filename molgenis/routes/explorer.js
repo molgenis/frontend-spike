@@ -1,4 +1,4 @@
-import MainView from '@/views/MainView.vue'
+import MainView from '@molgenis/molgenis/components/views/main/main.js'
 
 export default [
     {

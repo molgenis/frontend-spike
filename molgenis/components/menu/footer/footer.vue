@@ -1,7 +1,7 @@
-<template>
+<component>
     <footer class="footer">
         <div class="container font-italic text-muted text-center">
-            <div v-if="additionalMessage" class="mg-additional-footer-message" v-html="additionalMessage" />
+            <div class="mg-additional-footer-message" v-html="additionalMessage" v-if="additionalMessage" />
             <div>
                 This database was created using the open source <a :href="molgenisSite">MOLGENIS software </a>
                 <span v-if="version">
@@ -19,4 +19,4 @@
             </p>
         </div>
     </footer>
-</template>
+</component>

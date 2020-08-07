@@ -1,13 +1,14 @@
 export default {
-    name: 'FooterComponent',
-    props: ['molgenisFooter'],
     data: function() {
         return {
             additionalMessage: this.molgenisFooter.additionalMessage,
-            version: this.molgenisFooter.version,
-            buildDate: this.molgenisFooter.buildDate,
             appVersion: this.molgenisFooter.appVersion,
+            buildDate: this.molgenisFooter.buildDate,
             molgenisSite: this.molgenisFooter.molgenisSite,
+            version: this.molgenisFooter.version,
         }
     },
+    name: 'FooterComponent',
+    props: ['molgenisFooter'],
+
 }

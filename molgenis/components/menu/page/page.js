@@ -1,11 +1,10 @@
 import api from '@molgenis/molgenis-api-client'
 import CookieWall from './CookieWall.vue'
-import HeaderComponent from './HeaderComponent.vue'
 import FooterComponent from './FooterComponent.vue'
+import HeaderComponent from './HeaderComponent.vue'
 
 export default {
-    name: 'PageComponent',
-    components: { CookieWall, HeaderComponent, FooterComponent },
+    components: { CookieWall, FooterComponent, HeaderComponent},
     data() {
         return {
             context: null,
@@ -19,4 +18,5 @@ export default {
             this.$emit('contextLoaded', context)
         })
     },
+    name: 'PageComponent',
 }

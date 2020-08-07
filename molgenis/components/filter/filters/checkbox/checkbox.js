@@ -1,38 +1,4 @@
 export default {
-    props: {
-        name: {
-            required: true,
-            type: String,
-        },
-        label: {
-            required: false,
-            type: String,
-            default: () => '',
-        },
-        options: {
-            required: true,
-            type: [Function],
-        },
-        value: {
-            type: Array,
-            default: () => [],
-        },
-        bulkOperation: {
-            type: Boolean,
-            required: false,
-            default: () => true,
-        },
-        maxVisibleOptions: {
-            type: Number,
-            default: () => undefined,
-        },
-    },
-    data() {
-        return {
-            resolvedOptions: [],
-            sliceOptions: this.maxVisibleOptions && this.resolvedOptions && this.maxVisibleOptions < this.resolvedOptions.length,
-        }
-    },
     computed: {
         selection: {
             get() {
@@ -41,9 +7,6 @@ export default {
             set(value) {
                 this.$emit('input', value.length === 0 ? undefined : value)
             },
-        },
-        visibleOptions() {
-            return this.sliceOptions ? this.resolvedOptions.slice(0, this.maxVisibleOptions) : (typeof this.resolvedOptions === 'function' ? [] : this.resolvedOptions)
         },
         showToggleSlice() {
             return this.maxVisibleOptions && this.maxVisibleOptions < this.resolvedOptions.length
@@ -54,19 +17,20 @@ export default {
         toggleSliceText() {
             return this.sliceOptions ? `Show ${this.resolvedOptions.length - this.maxVisibleOptions} more` : 'Show less'
         },
-    },
-    watch: {
-        resolvedOptions() {
-            this.sliceOptions = this.showToggleSlice
-        },
-        maxVisibleOptions() {
-            this.sliceOptions = this.showToggleSlice
+        visibleOptions() {
+            return this.sliceOptions ? this.resolvedOptions.slice(0, this.maxVisibleOptions) : (typeof this.resolvedOptions === 'function' ? [] : this.resolvedOptions)
         },
     },
     created() {
         this.options().then(response => {
             this.resolvedOptions = response
         })
+    },
+    data() {
+        return {
+            resolvedOptions: [],
+            sliceOptions: this.maxVisibleOptions && this.resolvedOptions && this.maxVisibleOptions < this.resolvedOptions.length,
+        }
     },
     methods: {
         toggleSelect() {
@@ -76,4 +40,41 @@ export default {
             this.sliceOptions = !this.sliceOptions
         },
     },
+    props: {
+        bulkOperation: {
+            default: () => true,
+            required: false,
+            type: Boolean,
+        },
+        label: {
+            default: () => '',
+            required: false,
+            type: String,
+        },
+        maxVisibleOptions: {
+            default: () => undefined,
+            type: Number,
+        },
+        name: {
+            required: true,
+            type: String,
+        },
+        options: {
+            required: true,
+            type: [Function],
+        },
+        value: {
+            default: () => [],
+            type: Array,
+        },
+    },
+    watch: {
+        maxVisibleOptions() {
+            this.sliceOptions = this.showToggleSlice
+        },
+        resolvedOptions() {
+            this.sliceOptions = this.showToggleSlice
+        },
+    },
+
 }

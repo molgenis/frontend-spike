@@ -1,9 +1,9 @@
-<template>
+<component>
     <div class="row">
         <div class="col">
             <ol
-                v-if="!query"
                 class="breadcrumb"
+                v-if="!query"
             >
                 <li class="breadcrumb-item">
                     <router-link :to="{name: 'navigator-root'}">
@@ -42,4 +42,4 @@
             </ol>
         </div>
     </div>
-</template>
+</component>

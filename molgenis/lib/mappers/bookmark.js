@@ -1,4 +1,4 @@
-import store from '@/store/store'
+import store from '@molgenis/molgenis/store/store.js'
 import * as LZString from 'lz-string'
 
 // can be name or label

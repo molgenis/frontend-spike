@@ -1,41 +1,47 @@
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
     faExclamationTriangle,
     faSpinner,
     faTimes,
 } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+
 library.add(faTimes, faExclamationTriangle, faSpinner)
 
 export default {
+    beforeMount() {
+        if (this.value && this.value.length > 0) {
+            this.initializeFilter()
+        }
+    },
     components: { FontAwesomeIcon },
-    props: {
-        name: {
-            required: true,
-            type: String,
+    computed: {
+        foundOptionCount() {
+            return this.inputOptions.length
         },
-        placeholder: {
-            default: () => '',
-            required: false,
-            type: String,
+        selection: {
+            get() {
+                return this.value
+            },
+            set(value) {
+                this.$emit('input', value.length === 0 ? undefined : value)
+            },
         },
-        label: {
-            type: String,
-            required: false,
-            default: () => '',
+        showMoreText() {
+            const remaining = this.foundOptionCount - this.showCount
+            if (remaining <= this.maxVisibleOptions) {
+                return `Show remaining ${remaining}`
+            } else {
+                return `Show ${this.maxVisibleOptions} more`
+            }
         },
-        options: {
-            type: Function,
-            required: true,
+        slicedOptions: function() {
+            return this.inputOptions.slice(0, this.showCount)
         },
-        value: {
-            type: Array,
-            default: () => [],
-        },
-        maxVisibleOptions: {
-            type: Number,
-            default: () => 10,
-        },
+    },
+    created() {
+        this.showCount = this.maxVisibleOptions
     },
     data() {
         return {
@@ -46,28 +52,42 @@ export default {
             triggerQuery: Number,
         }
     },
-    computed: {
-        selection: {
-            get() {
-                return this.value
-            },
-            set(value) {
-                this.$emit('input', value.length === 0 ? undefined : value)
-            },
+    methods: {
+        async initializeFilter() {
+            const fetched = await this.options(false, 'in', this.value.join(','))
+            this.inputOptions = fetched
         },
-        slicedOptions: function() {
-            return this.inputOptions.slice(0, this.showCount)
+        showMore() {
+            this.showCount += this.maxVisibleOptions
         },
-        foundOptionCount() {
-            return this.inputOptions.length
+
+    },
+    props: {
+        label: {
+            default: () => '',
+            required: false,
+            type: String,
         },
-        showMoreText() {
-            const remaining = this.foundOptionCount - this.showCount
-            if (remaining <= this.maxVisibleOptions) {
-                return `Show remaining ${remaining}`
-            } else {
-                return `Show ${this.maxVisibleOptions} more`
-            }
+        maxVisibleOptions: {
+            default: () => 10,
+            type: Number,
+        },
+        name: {
+            required: true,
+            type: String,
+        },
+        options: {
+            required: true,
+            type: Function,
+        },
+        placeholder: {
+            default: () => '',
+            required: false,
+            type: String,
+        },
+        value: {
+            default: () => [],
+            type: Array,
         },
     },
     watch: {
@@ -105,23 +125,5 @@ export default {
                 }
             }, 500)
         },
-    },
-    created() {
-        this.showCount = this.maxVisibleOptions
-    },
-    beforeMount() {
-        if (this.value && this.value.length > 0) {
-            this.initializeFilter()
-        }
-    },
-    methods: {
-        async initializeFilter() {
-            const fetched = await this.options(false, 'in', this.value.join(','))
-            this.inputOptions = fetched
-        },
-        showMore() {
-            this.showCount += this.maxVisibleOptions
-        },
-
     },
 }

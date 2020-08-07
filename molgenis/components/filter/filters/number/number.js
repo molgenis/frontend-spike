@@ -1,36 +1,9 @@
 import Vue from 'vue'
 import VueSlider from 'vue-slider-component'
-import 'vue-slider-component/theme/default.css'
+// import 'vue-slider-component/theme/default.css'
 
 export default Vue.extend({
     components: { VueSlider },
-    name: 'NumberFilter',
-    props: {
-        name: {
-            type: String,
-            required: true,
-        },
-        min: {
-            type: Number,
-            default: () => Number.MIN_SAFE_INTEGER,
-        },
-        max: {
-            type: Number,
-            default: () => Number.MAX_SAFE_INTEGER,
-        },
-        step: {
-            type: Number,
-            default: () => 1,
-        },
-        value: {
-            type: Number,
-            default: () => null,
-        },
-        useSlider: {
-            type: Boolean,
-            default: () => false,
-        },
-    },
     computed: {
         model: {
             get() {
@@ -44,6 +17,34 @@ export default Vue.extend({
                     this.$emit('input', parseFloat(value))
                 }
             },
+        },
+    },
+    name: 'NumberFilter',
+    props: {
+
+        max: {
+            default: () => Number.MAX_SAFE_INTEGER,
+            type: Number,
+        },
+        min: {
+            default: () => Number.MIN_SAFE_INTEGER,
+            type: Number,
+        },
+        name: {
+            required: true,
+            type: String,
+        },
+        step: {
+            default: () => 1,
+            type: Number,
+        },
+        useSlider: {
+            default: () => false,
+            type: Boolean,
+        },
+        value: {
+            default: () => null,
+            type: Number,
         },
     },
 })

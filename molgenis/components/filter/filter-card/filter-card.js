@@ -1,67 +1,69 @@
-import Vue from 'vue'
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCaretRight, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import Vue from 'vue'
+import { faCaretRight, faTimes } from '@fortawesome/free-solid-svg-icons'
+
+
 library.add(faCaretRight, faTimes)
 
 export default Vue.extend({
-  name: 'FilterCard',
-  components: { FontAwesomeIcon },
-  props: {
-    name: {
-      type: String,
-      required: true
+    components: { FontAwesomeIcon },
+    computed: {
+        iconStyle() {
+            return {
+                transform: `rotate(${this.isOpen ? 90 : 0}deg)`,
+                transition: 'transform 0.2s',
+            }
+        },
     },
-    label: {
-      type: String,
-      required: false,
-      default: () => ''
+    data() {
+        return {
+            isOpen: this.collapsable ? !this.collapsed : true,
+        }
     },
-    collapsed: {
-      type: Boolean,
-      required: false,
-      default: () => true
+    methods: {
+        removeFilter() {
+            this.$emit('removeFilter', this.name)
+        },
+        toggleState() {
+            if (this.collapsable) {
+                this.isOpen = !this.isOpen
+                return this.isOpen
+            }
+            return false
+        },
     },
-    collapsable: {
-      type: Boolean,
-      required: false,
-      default: () => true
+    name: 'FilterCard',
+    props: {
+        canRemove: {
+            default: () => false,
+            required: false,
+            type: Boolean,
+        },
+        collapsable: {
+            default: () => true,
+            required: false,
+            type: Boolean,
+        },
+        collapsed: {
+            default: () => true,
+            required: false,
+            type: Boolean,
+        },
+        description: {
+            default: () => '',
+            required: false,
+            type: String,
+        },
+        label: {
+            default: () => '',
+            required: false,
+            type: String,
+        },
+        name: {
+            required: true,
+            type: String,
+        },
     },
-    description: {
-      type: String,
-      required: false,
-      default: () => ''
-    },
-    canRemove: {
-      type: Boolean,
-      required: false,
-      default: () => false
-    }
-  },
-  data () {
-    return {
-      isOpen: this.collapsable ? !this.collapsed : true
-    }
-  },
-  computed: {
-    iconStyle () {
-      return {
-        transform: `rotate(${this.isOpen ? 90 : 0}deg)`,
-        transition: 'transform 0.2s'
-      }
-    }
-  },
-  methods: {
-    removeFilter () {
-      this.$emit('removeFilter', this.name)
-    },
-    toggleState () {
-      if (this.collapsable) {
-        this.isOpen = !this.isOpen
-        return this.isOpen
-      }
-      return false
-    }
-  }
 })

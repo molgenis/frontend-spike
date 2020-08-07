@@ -8,8 +8,8 @@ import {
   moveResources,
   updateResource,
   downloadResources
-} from '@/utils/api.js'
-import {ADD_ALERTS, RESET_CLIPBOARD, SET_FOLDER, SET_RESOURCES, ADD_JOB, UPDATE_JOB, SET_SELECTED_RESOURCES } from '@/store/mutations/navigator'
+} from '@molgenis/molgenis/lib/utils/api.js'
+import {ADD_ALERTS, RESET_CLIPBOARD, SET_FOLDER, SET_RESOURCES, ADD_JOB, UPDATE_JOB, SET_SELECTED_RESOURCES } from '@molgenis/molgenis/store/mutations/navigator.js'
 
 export const FETCH_RESOURCES = '__FETCH_RESOURCES__'
 export const FETCH_RESOURCES_BY_QUERY = '__FETCH_RESOURCES_BY_QUERY__'

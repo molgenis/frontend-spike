@@ -1,29 +1,11 @@
 import { mapState } from 'vuex'
-import { REMOVE_JOB } from '@/store/mutations/navigator'
+import { REMOVE_JOB } from '@molgenis/molgenis/store/mutations/navigator.js'
 
 export default {
-    name: 'Jobs',
     computed: {
         ...mapState('navigator', ['jobs']),
     },
     methods: {
-        getVariant: function(job) {
-            let variant
-            switch (job.status) {
-            case 'RUNNING':
-                variant = 'info'
-                break
-            case 'SUCCESS':
-                variant = 'success'
-                break
-            case 'FAILED':
-                variant = 'danger'
-                break
-            default:
-                throw new Error('unexpected job status ' + job.status)
-            }
-            return variant
-        },
         getIcon: function(job) {
             let icon
             switch (job.status) {
@@ -41,6 +23,23 @@ export default {
             }
             return icon
         },
+        getVariant: function(job) {
+            let variant
+            switch (job.status) {
+            case 'RUNNING':
+                variant = 'info'
+                break
+            case 'SUCCESS':
+                variant = 'success'
+                break
+            case 'FAILED':
+                variant = 'danger'
+                break
+            default:
+                throw new Error('unexpected job status ' + job.status)
+            }
+            return variant
+        },
         removeJob: function(job) {
             this.$store.commit('navigator/' + REMOVE_JOB, job)
         },
@@ -48,4 +47,5 @@ export default {
             return job.status === 'RUNNING' && job.progress && job.progressMax
         },
     },
+    name: 'Jobs',
 }

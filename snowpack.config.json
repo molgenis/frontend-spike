@@ -1,0 +1,6 @@
+{
+  "mount": {
+    "molgenis": "/build",
+    "public": "/build"
+  }
+}

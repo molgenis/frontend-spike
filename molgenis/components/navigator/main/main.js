@@ -1,19 +1,42 @@
 import _ from 'lodash'
-import { mapGetters } from 'vuex'
-import { FETCH_RESOURCES_BY_FOLDER, FETCH_RESOURCES_BY_QUERY } from '@/store/actions/navigator'
 import Alerts from './Alerts'
 import Jobs from './Jobs'
-import NavigatorSearch from './NavigatorSearch'
-import NavigatorBreadcrumb from './NavigatorBreadcrumb'
+import { mapGetters } from 'vuex'
 import NavigatorActions from './NavigatorActions'
+import NavigatorBreadcrumb from './NavigatorBreadcrumb'
+import NavigatorSearch from './NavigatorSearch'
 import NavigatorTable from './NavigatorTable'
+import { FETCH_RESOURCES_BY_FOLDER, FETCH_RESOURCES_BY_QUERY } from '@molgenis/molgenis/store/actions/navigator.js'
+
 
 export default {
-    name: 'Navigator',
-    components: {Alerts, Jobs, NavigatorSearch, NavigatorBreadcrumb, NavigatorActions, NavigatorTable},
+    components: {
+        Alerts,
+        Jobs,
+        NavigatorActions,
+        NavigatorBreadcrumb,
+        NavigatorSearch,
+        NavigatorTable,
+    },
     computed: {
         ...mapGetters('navigator', ['query', 'folderId']),
     },
+    methods: {
+        fetchResourcesByPackage: function() {
+            this.$store.dispatch('navigator/' + FETCH_RESOURCES_BY_FOLDER, this.folderId)
+        },
+        fetchResourcesByQuery: function() {
+            this.$store.dispatch('navigator/' + FETCH_RESOURCES_BY_QUERY, this.query)
+        },
+    },
+    mounted: function() {
+        if (this.query) {
+            this.fetchResourcesByQuery()
+        } else {
+            this.fetchResourcesByPackage()
+        }
+    },
+    name: 'Navigator',
     watch: {
         '$route'(to, from) {
             if (to.query && (to.query.q !== from.query.q)) {
@@ -25,21 +48,6 @@ export default {
             } else if (to.params.folderId !== from.params.folderId) {
                 this.fetchResourcesByPackage()
             }
-        },
-    },
-    mounted: function() {
-        if (this.query) {
-            this.fetchResourcesByQuery()
-        } else {
-            this.fetchResourcesByPackage()
-        }
-    },
-    methods: {
-        fetchResourcesByQuery: function() {
-            this.$store.dispatch('navigator/' + FETCH_RESOURCES_BY_QUERY, this.query)
-        },
-        fetchResourcesByPackage: function() {
-            this.$store.dispatch('navigator/' + FETCH_RESOURCES_BY_FOLDER, this.folderId)
         },
     },
 }

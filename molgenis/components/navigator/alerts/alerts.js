@@ -1,8 +1,7 @@
 import { mapState } from 'vuex'
-import { REMOVE_ALERT } from '@/store/mutations/navigator'
+import { REMOVE_ALERT } from '@molgenis/molgenis/store/mutations/navigator.js'
 
 export default {
-    name: 'Alerts',
     computed: {
         ...mapState('navigator', ['alerts']),
     },
@@ -31,4 +30,5 @@ export default {
             this.$store.commit('navigator/' + REMOVE_ALERT, index)
         },
     },
+    name: 'Alerts',
 }

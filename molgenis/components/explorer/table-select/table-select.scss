@@ -1,0 +1,22 @@
+.bread-crumb-select {
+    color: black;
+    padding-right: 2rem;
+}
+
+.bread-crumb-select > h1 {
+    display: inline;
+}
+
+.bread-crumb-select > svg {
+    display: none;
+    vertical-align: 0.2rem;
+}
+
+.bread-crumb-select:hover > svg {
+    display: inline;
+}
+
+.bread-crumb-dropdown >>> .bread-crumb-item-dropdown {
+    padding-left: 0;
+    padding-bottom: 0;
+}

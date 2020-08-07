@@ -1,0 +1,19 @@
+.cookiewall {
+    font-size: 1.2rem;
+    margin: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1060; /* bootstrap 4 popover z-index */
+}
+
+.cookiewall-leave-active {
+    max-height: 400px;
+    opacity: 1;
+    transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
+}
+
+.cookiewall-leave-to {
+    max-height: 0;
+    opacity: 0;
+    padding: 0;
+}

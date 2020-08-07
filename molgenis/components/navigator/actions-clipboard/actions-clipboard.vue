@@ -1,0 +1,55 @@
+<component>
+    <span>
+        <div
+            :title="$t('action-cut')"
+            class="btn-tooltip-wrapper"
+            v-b-tooltip.d500
+        >
+            <b-btn
+                :disabled="!canCut"
+                @click="selectClipboardResources('CUT')"
+                variant="secondary"
+            >
+                <font-awesome-icon
+                    :class="{'fa-disabled' : !canCut}"
+                    icon="cut"
+                    size="lg"
+                />
+            </b-btn>
+        </div>&nbsp;
+        <div
+            v-b-tooltip.d500
+            class="btn-tooltip-wrapper"
+            :title="$t('action-copy')"
+        >
+            <b-btn
+                :disabled="!canCopy"
+                variant="secondary"
+                @click="selectClipboardResources('COPY')"
+            >
+                <font-awesome-icon
+                    :class="{'fa-disabled' : !canCopy}"
+                    icon="clone"
+                    size="lg"
+                />
+            </b-btn>
+        </div>&nbsp;
+        <div
+            v-b-tooltip.d500
+            class="btn-tooltip-wrapper"
+            :title="$t('action-paste')"
+        >
+            <b-btn
+                :disabled="!canPaste"
+                variant="secondary"
+                @click="pasteClipboardResources"
+            >
+                <font-awesome-icon
+                    :class="{'fa-disabled' : !canPaste}"
+                    icon="paste"
+                    size="lg"
+                />
+            </b-btn>
+        </div>&nbsp;
+    </span>
+</component>

@@ -1,0 +1,7 @@
+.dragdrop .drag-handle {
+    cursor: grab;
+}
+
+.dragdrop.dragging .drag-handle {
+    cursor: grabbing;
+}

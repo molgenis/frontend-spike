@@ -1,0 +1,21 @@
+{
+  "name": "@molgenis/theme-default",
+  "main": "theme.js",
+  "type": "module",
+  "version": "1.3.0",
+  "description": "Molgenis default theme",
+  "files": [
+    "src",
+    "theme.js"
+  ],
+  "author": "https://github.com/open-voip-alliance/ca11/graphs/contributors",
+  "license": "Unlicense",
+  "homepage": "https://github.com/open-voip-alliance/ca11#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/open-voip-alliance/ca11.git"
+  },
+  "bugs": {
+    "url": "https://github.com/open-voip-alliance/ca11/issues"
+  }
+}

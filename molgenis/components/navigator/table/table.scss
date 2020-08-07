@@ -1,0 +1,14 @@
+.table-container {
+    height: 70vh; /* no page scrollbar when using default header and footer */
+    overflow-y: auto;
+    width: 100%;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.compact {
+    white-space: nowrap;
+    width: 1px;
+}

@@ -1,0 +1,28 @@
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCog } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faCog)
+
+const SETTINGS_APP_URL = '/plugin/data-row-edit'
+
+export default {
+  name: 'TableSettingsButton',
+  components: { FontAwesomeIcon },
+  props: {
+    settingsTableId: {
+      type: String,
+      required: true
+    },
+    settingsRowId: {
+      type: String,
+      required: false
+    }
+  },
+  computed: {
+    href () {
+      const href = `${SETTINGS_APP_URL}/${this.settingsTableId}`
+      return this.settingsRowId ? `${href}/${this.settingsRowId}` : href
+    }
+  }
+}

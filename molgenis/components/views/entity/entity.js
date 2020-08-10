@@ -1,9 +1,9 @@
-import ExplorerCard from '../components/explorer/dataView/ExplorerCard'
+import ExplorerCard from '/molgenis/components/explorer/explorer-card/explorer-card.js'
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import TableHeader from '../components/explorer/dataView/TableHeader'
-import TableRow from '../components/explorer/dataView/TableRow'
+import TableHeader from '/molgenis/components/explorer/table-header/table-header.js'
+import TableRow from '/molgenis/components/explorer/table-row/table-row.js'
 import { mapActions, mapState } from 'vuex'
 
 

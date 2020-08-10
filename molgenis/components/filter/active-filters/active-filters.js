@@ -2,12 +2,11 @@
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import Vue from 'vue'
 
 
 library.add(faTimes)
 
-export default Vue.extend({
+export default {
     components: { FontAwesomeIcon },
     data() {
         return {
@@ -141,4 +140,4 @@ export default Vue.extend({
             immediate: true,
         },
     },
-})
+}

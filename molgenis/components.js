@@ -1,51 +1,54 @@
-
-
-// Use Vuepack naming convention for templates.
-import About from './components/about/about.js'
-
-
-export default function(app) {
-    app.templates = templates
-
-    const components = {
-        About,
-    }
-
-
-    for (const name of Object.keys(components)) {
-        const definition = components[name](app)
-        let component
-        if (definition.components) {
-            Object.assign(components, definition.components)
-            component = definition.component
-
-            for (const [name, component] of Object.entries(definition.components)) {
-                let _component = component(app, definition.component)
-                _component = Object.assign(_component, {
-                    render: app.templates[name].r,
-                    staticRenderFns: app.templates[name].s,
-                })
-
-                components[name] = Vue.component(name, _component)
-            }
-        } else {
-            component = definition
-        }
-        Object.assign(component, {
-            render: templates[name].r,
-            staticRenderFns: templates[name].s,
-        })
-
-        components[name] = Vue.component(name, component)
-
-    }
-
-    for (const name of Object.keys(templates)) {
-        if (!components[name]) {
-            app.logger.warn(`component missing for template: ${name}`)
-        }
-    }
-
-
-    return components
-}
+import Main from '/molgenis/components/main/main.js'
+import ExplorerCustomCardContent from '/molgenis/components/explorer/custom-card-content/custom-card-content.js'
+import ExplorerDefaultCardContent from '/molgenis/components/explorer/default-card-content/default-card-content.js'
+import ExplorerEndOfResults from '/molgenis/components/explorer/end-of-results/end-of-results.js'
+import ExplorerExplorerCard from '/molgenis/components/explorer/explorer-card/explorer-card.js'
+import ExplorerSearch from '/molgenis/components/explorer/search/search.js'
+import ExplorerShoppingButton from '/molgenis/components/explorer/shopping-button/shopping-button.js'
+import ExplorerTableHeader from '/molgenis/components/explorer/table-header/table-header.js'
+import ExplorerTableRow from '/molgenis/components/explorer/table-row/table-row.js'
+import ExplorerTableSelect from '/molgenis/components/explorer/table-select/table-select.js'
+import ExplorerTableSettingsButton from '/molgenis/components/explorer/table-settings-button/table-settings-button.js'
+import ExplorerToast from '/molgenis/components/explorer/toast/toast.js'
+import FilterActiveFilters from '/molgenis/components/filter/active-filters/active-filters.js'
+import FilterAddFilterModal from '/molgenis/components/filter/add-filter-modal/add-filter-modal.js'
+import FilterFilterCard from '/molgenis/components/filter/filter-card/filter-card.js'
+import FilterFilterContainer from '/molgenis/components/filter/filter-container/filter-container.js'
+import MenuCookieWall from '/molgenis/components/menu/cookie-wall/cookie-wall.js'
+import MenuDropdownItems from '/molgenis/components/menu/dropdown-items/dropdown-items.js'
+import MenuFooter from '/molgenis/components/menu/footer/footer.js'
+import MenuHeader from '/molgenis/components/menu/header/header.js'
+import MenuHeaderImage from '/molgenis/components/menu/header-image/header-image.js'
+import MenuNavbar from '/molgenis/components/menu/navbar/navbar.js'
+import MenuPage from '/molgenis/components/menu/page/page.js'
+import NavigatorActions from '/molgenis/components/navigator/actions/actions.js'
+import NavigatorActionsClipboard from '/molgenis/components/navigator/actions-clipboard/actions-clipboard.js'
+import NavigatorActionsCreateEdit from '/molgenis/components/navigator/actions-create-edit/actions-create-edit.js'
+import NavigatorActionsDelete from '/molgenis/components/navigator/actions-delete/actions-delete.js'
+import NavigatorActionsTransfer from '/molgenis/components/navigator/actions-transfer/actions-transfer.js'
+import NavigatorAlerts from '/molgenis/components/navigator/alerts/alerts.js'
+import NavigatorBreadcrumb from '/molgenis/components/navigator/breadcrumb/breadcrumb.js'
+import NavigatorJobs from '/molgenis/components/navigator/jobs/jobs.js'
+import NavigatorMain from '/molgenis/components/navigator/main/main.js'
+import NavigatorModalPackageCreate from '/molgenis/components/navigator/modal-package-create/modal-package-create.js'
+import NavigatorModalPackageUpdate from '/molgenis/components/navigator/modal-package-update/modal-package-update.js'
+import NavigatorModalResourceDelete from '/molgenis/components/navigator/modal-resource-delete/modal-resource-delete.js'
+import NavigatorSearch from '/molgenis/components/navigator/search/search.js'
+import NavigatorTable from '/molgenis/components/navigator/table/table.js'
+import ViewsCard from '/molgenis/components/views/card/card.js'
+import ViewsClipboard from '/molgenis/components/views/clipboard/clipboard.js'
+import ViewsData from '/molgenis/components/views/data/data.js'
+import ViewsEntity from '/molgenis/components/views/entity/entity.js'
+import ViewsFilters from '/molgenis/components/views/filters/filters.js'
+import ViewsMain from '/molgenis/components/views/main/main.js'
+import ViewsPageHeader from '/molgenis/components/views/page-header/page-header.js'
+import ViewsSelectLayout from '/molgenis/components/views/select-layout/select-layout.js'
+import ViewsTable from '/molgenis/components/views/table/table.js'
+import ViewsToolbar from '/molgenis/components/views/toolbar/toolbar.js'
+import FilterFiltersCheckbox from '/molgenis/components/filter/filters/checkbox/checkbox.js'
+import FilterFiltersDatetime from '/molgenis/components/filter/filters/datetime/datetime.js'
+import FilterFiltersMulti from '/molgenis/components/filter/filters/multi/multi.js'
+import FilterFiltersNumber from '/molgenis/components/filter/filters/number/number.js'
+import FilterFiltersRange from '/molgenis/components/filter/filters/range/range.js'
+import FilterFiltersString from '/molgenis/components/filter/filters/string/string.js'
+export default {Main, ExplorerCustomCardContent, ExplorerDefaultCardContent, ExplorerEndOfResults, ExplorerExplorerCard, ExplorerSearch, ExplorerShoppingButton, ExplorerTableHeader, ExplorerTableRow, ExplorerTableSelect, ExplorerTableSettingsButton, ExplorerToast, FilterActiveFilters, FilterAddFilterModal, FilterFilterCard, FilterFilterContainer, MenuCookieWall, MenuDropdownItems, MenuFooter, MenuHeader, MenuHeaderImage, MenuNavbar, MenuPage, NavigatorActions, NavigatorActionsClipboard, NavigatorActionsCreateEdit, NavigatorActionsDelete, NavigatorActionsTransfer, NavigatorAlerts, NavigatorBreadcrumb, NavigatorJobs, NavigatorMain, NavigatorModalPackageCreate, NavigatorModalPackageUpdate, NavigatorModalResourceDelete, NavigatorSearch, NavigatorTable, ViewsCard, ViewsClipboard, ViewsData, ViewsEntity, ViewsFilters, ViewsMain, ViewsPageHeader, ViewsSelectLayout, ViewsTable, ViewsToolbar, FilterFiltersCheckbox, FilterFiltersDatetime, FilterFiltersMulti, FilterFiltersNumber, FilterFiltersRange, FilterFiltersString}

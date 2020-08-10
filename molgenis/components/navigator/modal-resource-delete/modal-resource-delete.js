@@ -1,4 +1,4 @@
-import { DELETE_SELECTED_RESOURCES } from '@molgenis/molgenis/store/actions/navigator.js'
+import { DELETE_SELECTED_RESOURCES } from '/molgenis/store/actions/navigator.js'
 
 export default {
     methods: {

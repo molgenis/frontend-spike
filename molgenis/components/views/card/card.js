@@ -1,4 +1,4 @@
-import ExplorerCard from '../components/explorer/dataView/ExplorerCard'
+import ExplorerCard from '/molgenis/components/explorer/explorer-card/explorer-card.js'
 import { mapActions, mapGetters, mapState } from 'vuex'
 
 export default {

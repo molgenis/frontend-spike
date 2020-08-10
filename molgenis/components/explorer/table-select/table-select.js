@@ -1,6 +1,4 @@
-import Vue from 'vue'
-
-export default Vue.extend({
+export default {
     name: 'TableSelect',
     props: {
         label: {
@@ -12,4 +10,4 @@ export default Vue.extend({
             type: Array,
         },
     },
-})
+}

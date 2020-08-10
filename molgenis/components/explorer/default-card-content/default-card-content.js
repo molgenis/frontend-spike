@@ -1,11 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import Vue from 'vue'
 import { faChevronRight, faChevronUp, faEdit, faSearch, faTrash } from '@fortawesome/free-solid-svg-icons'
+
 
 library.add(faSearch, faChevronRight, faChevronUp, faEdit, faTrash)
 
-export default Vue.extend({
+export default {
     components: { FontAwesomeIcon },
     computed: {
         dataToShow() {
@@ -74,4 +74,4 @@ export default Vue.extend({
             type: Number,
         },
     },
-})
+}

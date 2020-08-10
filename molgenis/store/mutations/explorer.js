@@ -1,4 +1,4 @@
-import { applyFilters } from '@molgenis/molgenis/mappers/bookmark.js'
+import { applyFilters } from '/molgenis/lib/mappers/bookmark.js'
 import Vue from 'vue'
 
 

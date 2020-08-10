@@ -1,5 +1,6 @@
-import HeaderImage from './HeaderImage.vue'
-import NavBar from './NavBar.vue'
+import HeaderImage from '../header-image/header-image.js'
+import NavBar from '../navbar/navbar.js'
+
 
 export default {
     components: { HeaderImage, NavBar },

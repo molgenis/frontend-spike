@@ -1,12 +1,12 @@
 import _ from 'lodash'
-import Alerts from './Alerts'
-import Jobs from './Jobs'
+import Alerts from '../alerts/alerts.js'
+import Jobs from '../jobs/jobs.js'
 import { mapGetters } from 'vuex'
-import NavigatorActions from './NavigatorActions'
-import NavigatorBreadcrumb from './NavigatorBreadcrumb'
-import NavigatorSearch from './NavigatorSearch'
-import NavigatorTable from './NavigatorTable'
-import { FETCH_RESOURCES_BY_FOLDER, FETCH_RESOURCES_BY_QUERY } from '@molgenis/molgenis/store/actions/navigator.js'
+import NavigatorActions from '../actions/actions.js'
+import NavigatorBreadcrumb from '../breadcrumb/breadcrumb.js'
+import NavigatorSearch from '../search/search.js'
+import NavigatorTable from '../table/table.js'
+import { FETCH_RESOURCES_BY_FOLDER, FETCH_RESOURCES_BY_QUERY } from '/molgenis/store/actions/navigator.js'
 
 
 export default {

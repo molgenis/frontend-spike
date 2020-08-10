@@ -1,17 +1,16 @@
-import Vue from 'vue'
+// import explorerRoutes from './routes/explorer.js'
+// import navigatorRoutes from './routes/navigator.js'
 import Router from 'vue-router'
-import navigatorRoutes from './routes/navigator'
-import explorerRoutes from './routes/explorer'
+import Vue from 'vue'
+
 
 Vue.use(Router)
 
 let routes = []
-routes = routes.concat(navigatorRoutes).concat(explorerRoutes)
-
-console.log(routes)
+// routes = routes.concat(navigatorRoutes).concat(explorerRoutes)
 
 export default new Router({
-  mode: 'history',
-  base: '/',
-  routes
+    base: '/',
+    mode: 'history',
+    routes,
 })

@@ -2,13 +2,12 @@
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import Vue from 'vue'
 import VueSlider from 'vue-slider-component'
 
 
 library.add(faTimes)
 
-export default Vue.extend({
+export default {
     components: { FontAwesomeIcon, VueSlider },
     data: function() {
         return {
@@ -70,4 +69,4 @@ export default Vue.extend({
             }
         },
     },
-})
+}

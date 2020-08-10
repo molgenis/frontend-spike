@@ -1,4 +1,4 @@
-import { DOWNLOAD_SELECTED_RESOURCES } from '@molgenis/molgenis/store/actions/navigator.js'
+import { DOWNLOAD_SELECTED_RESOURCES } from '/molgenis/store/actions/navigator.js'
 import { mapGetters, mapState } from 'vuex'
 
 export default {

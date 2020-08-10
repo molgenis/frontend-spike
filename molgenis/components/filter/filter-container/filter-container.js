@@ -1,7 +1,7 @@
-import * as components from './filters'
+import * as components from '../filters/index.js'
 import AddFilterModal from '../add-filter-modal/add-filter-modal.js'
 import draggable from 'vuedraggable'
-import { FilterCard } from '.'
+import FilterCard from '../filter-card/filter-card.js'
 
 
 export default {

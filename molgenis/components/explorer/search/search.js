@@ -1,4 +1,4 @@
-import { createBookmark } from '@molgenis/molgenis/mappers/bookmark.js'
+import { createBookmark } from '/molgenis/lib/mappers/bookmark.js'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'

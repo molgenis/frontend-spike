@@ -1,10 +1,10 @@
-import * as dataRepository from '@molgenis/molgenis/lib/repository/data.js'
-import * as metaDataRepository from '@molgenis/molgenis/lib/repository/metaData.js'
-import * as metaDataService from '@molgenis/molgenis/lib/repository/metaDataService'
-import * as metaFilterMapper from '@molgenis/molgenis/lib/mappers/metaFilter.js'
+import * as dataRepository from '/molgenis/lib/repository/data.js'
+import * as metaDataRepository from '/molgenis/lib/repository/metadata.js'
+import * as metaDataService from '/molgenis/lib/repository/metadata-service.js'
+import * as metaFilterMapper from '/molgenis/lib/mappers/metafilter.js'
 
 import api from '@molgenis/molgenis-api-client'
-import { tryAction } from '@molgenis/molgenis/store/helpers.js'
+import { tryAction } from '/molgenis/store/helpers.js'
 
 
 export default {

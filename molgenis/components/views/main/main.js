@@ -1,11 +1,10 @@
-import DataView from './DataView'
+import DataView from '../data/data.js'
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
-import FiltersView from './FiltersView'
+import FiltersView from '../filters/filters.js'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import PageHeaderView from './PageHeaderView'
-import ToastComponent from '@molgenis/molgenis/components/explorer/utils/ToastComponent'
-import Vue from 'vue'
+import PageHeaderView from '../page-header/page-header.js'
+import ToastComponent from '/molgenis/components/explorer/toast/toast.js'
 import { mapActions, mapMutations, mapState } from 'vuex'
 
 
@@ -19,7 +18,7 @@ const deleteConfirmOptions = {
     okVariant: 'danger',
 }
 
-export default Vue.extend({
+export default {
     async beforeRouteUpdate(to, from, next) {
         await this.fetchViewData(to.params.entity)
         next()
@@ -89,4 +88,4 @@ export default Vue.extend({
         },
     },
     name: 'MainView',
-})
+}

@@ -1,5 +1,5 @@
 import { mapState } from 'vuex'
-import { UPDATE_RESOURCE } from '@molgenis/molgenis/store/actions/navigator.js'
+import { UPDATE_RESOURCE } from '/molgenis/store/actions/navigator.js'
 
 export default {
     computed: {

@@ -1,21 +1,23 @@
-import Vue from 'vue'
-import { sync } from 'vuex-router-sync'
-import components from './components.js'
-import store from './store/store'
-import router from './router/router.js'
-import App from './App'
-
+import App from '/molgenis/components/main/main.js'
 import BootstrapVue from 'bootstrap-vue'
-
+import vuepack from './vuepack.js'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import i18n from '@molgenis/molgenis-i18n-js'
 import { library } from '@fortawesome/fontawesome-svg-core'
+import router from './router.js'
+import { SET_SHOW_HIDDEN_RESOURCES } from '/molgenis/store/mutations/navigator.js'
+import store from './store/store.js'
+import { sync } from 'vuex-router-sync'
+import Vue from 'vue'
+
 import { faCheckCircle, faFolderOpen, faHourglass, faTimesCircle } from '@fortawesome/free-regular-svg-icons'
 import { faClone, faCut, faDownload, faEdit, faHome, faList, faPaste, faPlus, faSearch, faTimes, faTrash, faUpload } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-import i18n from '@molgenis/molgenis-i18n-js'
-import { SET_SHOW_HIDDEN_RESOURCES } from '@molgenis/molgenis/store/mutations/navigator.js'
 
-const {lng, fallbackLng, isSuperUser} = window.__INITIAL_STATE__
+const lng = 'en'
+const fallbackLng = 'en'
+const isSuperUser = true
+
 Vue.config.productionTip = false
 Vue.prototype.$eventBus = new Vue()
 
@@ -34,19 +36,15 @@ library.add(faCheckCircle, faClone, faCut, faEdit, faDownload, faFolderOpen, faH
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(BootstrapVue)
 
-Vue.use(i18n, {
-    lng,
-    fallbackLng: fallbackLng,
-    namespace: 'navigator',
-    callback() {
-    /* eslint-disable no-new */
-        global.app = new Vue({
-            components: { App },
-            el: '#app',
-            router,
-            store,
-            template: '<App />',
-        })
-        store.commit('navigator/' + SET_SHOW_HIDDEN_RESOURCES, isSuperUser)
-    },
+const app = {components: vuepack()}
+app.vm = new Vue({
+    components: { App },
+    el: '#app',
+    router,
+    store,
+    template: '<App />',
 })
+
+globalThis.app = app
+store.commit('navigator/' + SET_SHOW_HIDDEN_RESOURCES, isSuperUser)
+

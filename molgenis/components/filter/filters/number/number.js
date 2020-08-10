@@ -1,8 +1,7 @@
-import Vue from 'vue'
 import VueSlider from 'vue-slider-component'
 // import 'vue-slider-component/theme/default.css'
 
-export default Vue.extend({
+export default {
     components: { VueSlider },
     computed: {
         model: {
@@ -47,4 +46,4 @@ export default Vue.extend({
             type: Number,
         },
     },
-})
+}

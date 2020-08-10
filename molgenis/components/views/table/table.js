@@ -1,7 +1,7 @@
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import TableHeader from '@molgenis/molgenis/components/explorer/table-header/table-header.js'
-import TableRow from '@molgenis/molgenis/components/explorer/table-row/table-row.js'
+import TableHeader from '/molgenis/components/explorer/table-header/table-header.js'
+import TableRow from '/molgenis/components/explorer/table-row/table-row.js'
 import { mapActions, mapGetters, mapState } from 'vuex'
 
 

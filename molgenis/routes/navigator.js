@@ -1,14 +1,14 @@
-import Navigator from '../../components/navigator/Navigator'
+import Navigator from '/molgenis/components/navigator/main/main.js'
 
 export default [
     {
+        component: Navigator,
         name: 'navigator',
         path: '/navigator',
-        component: Navigator
     },
     {
+        component: Navigator,
         name: 'navigator-folder',
         path: '/navigator/:folderId',
-        component: Navigator
-    }
+    },
 ]

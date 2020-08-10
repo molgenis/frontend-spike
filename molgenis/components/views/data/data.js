@@ -1,11 +1,10 @@
-import ActiveFilters from '@molgenis/molgenis/filter/ActiveFilters.vue'
-import ClipboardView from './ClipboardView'
-import SelectLayoutView from './SelectLayoutView'
-import Vue from 'vue'
+import ActiveFilters from '/molgenis/components/filter/active-filters/active-filters.js'
+import ClipboardView from '../clipboard/clipboard.js'
+import SelectLayoutView from '../select-layout/select-layout.js'
 import { mapMutations, mapState } from 'vuex'
 
 
-export default Vue.extend({
+export default {
 
     components: {
         ActiveFilters,
@@ -54,4 +53,4 @@ export default Vue.extend({
         },
     },
     name: 'DataView',
-})
+}

@@ -1,6 +1,4 @@
-import Vue from 'vue'
-
-export default Vue.extend({
+export default {
     name: 'ToastComponent',
     props: {
         message: {
@@ -12,4 +10,4 @@ export default Vue.extend({
             type: String,
         },
     },
-})
+}

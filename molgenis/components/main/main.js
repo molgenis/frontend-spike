@@ -1,4 +1,4 @@
-import PageComponent from '@molgenis/molgenis/menu/page/page.js'
+import PageComponent from '/molgenis/components/menu/page/page.js'
 
 
 export default {

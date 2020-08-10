@@ -1,10 +1,10 @@
-import CustomCardContent from './custom-card-content/custom-card-content.js'
-import DefaultCardContent from './default-card-content/default-card-content.js'
+import CustomCardContent from '../custom-card-content/custom-card-content.js'
+import DefaultCardContent from '../default-card-content/default-card-content.js'
 import ShoppingButton from '../shopping-button/shopping-button.js'
 import Vue from 'vue'
 
 
-export default Vue.extend({
+export default {
     components: { CustomCardContent, DefaultCardContent, ShoppingButton },
     methods: {
         handleDefaultCardExpand() {
@@ -53,4 +53,4 @@ export default Vue.extend({
             type: Number,
         },
     },
-})
+}

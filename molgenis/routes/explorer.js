@@ -1,18 +1,18 @@
-import MainView from '@molgenis/molgenis/components/views/main/main.js'
+import MainView from '/molgenis/components/views/main/main.js'
 
 export default [
     {
-        path: '/explorer/:entity',
+        component: MainView,
         name: 'dataexplorer-entity',
-        component: MainView
+        path: '/explorer/:entity',
     },
     {
-        path: '/explorer/*',
         name: 'dataexplorer',
+        path: '/explorer/*',
         redirect: {
             name: 'dataexplorer-entity',
-            params: { entity: 'root_hospital_patients' }
-        }
-    }
+            params: { entity: 'root_hospital_patients' },
+        },
+    },
 ]
 

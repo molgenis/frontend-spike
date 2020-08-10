@@ -2,12 +2,11 @@
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import Vue from 'vue'
 
 
 library.add(faPlus)
 
-export default Vue.extend({
+export default {
     components: { FontAwesomeIcon },
     computed: {
         options() {
@@ -44,4 +43,4 @@ export default Vue.extend({
             type: Array,
         },
     },
-})
+}

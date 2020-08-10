@@ -1,7 +1,7 @@
 import DropDownItems from '../dropdown-items/dropdown-items.js'
-import eventUtilService from '@molgenis/molgenis/lib/service/event-util.js'
-import languageRepository from '@molgenis/molgenis/lib/repository/language.js'
-import languageService from '@molgenis/molgenis/lib/service/language.js'
+import eventUtilService from '/molgenis/lib/service/event-util.js'
+import languageRepository from '/molgenis/lib/repository/language.js'
+import languageService from '/molgenis/lib/service/language.js'
 
 
 const href = (item) => item.params ? `${item.id}?${item.params}` : item.id

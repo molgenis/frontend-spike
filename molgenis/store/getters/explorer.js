@@ -1,4 +1,4 @@
-import { createRSQLQuery } from '@molgenis/molgenis/mappers/rsql.js'
+import { createRSQLQuery } from '/molgenis/lib/mappers/rsql.js'
 
 export default {
     filterRsql: (state) =>

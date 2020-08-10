@@ -1,6 +1,5 @@
-import Vue from 'vue'
 
-export default Vue.extend({
+export default {
     name: 'EndOfResults',
     props: {
         dataDisplayLimit: {
@@ -8,4 +7,4 @@ export default Vue.extend({
             type: Number,
         },
     },
-})
+}

@@ -1,5 +1,5 @@
-import { SET_CLIPBOARD } from '@molgenis/molgenis/store/mutations/navigator.js'
-import { COPY_CLIPBOARD_RESOURCES, MOVE_CLIPBOARD_RESOURCES } from '@molgenis/molgenis/store/actions/navigator.js'
+import { SET_CLIPBOARD } from '/molgenis/store/mutations/navigator.js'
+import { COPY_CLIPBOARD_RESOURCES, MOVE_CLIPBOARD_RESOURCES } from '/molgenis/store/actions/navigator.js'
 import { mapGetters, mapState } from 'vuex'
 
 

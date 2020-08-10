@@ -2,16 +2,16 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Molgenis - FAIR data</title>
+        <title>Molgenis - For Scientific Data</title>
         <meta name="theme-color" content="<%=settings.molgenis.theme.colors['brand']%>"/>
         <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'/>
-        <link rel="icon" href="/static/img/logo.png"/>
-        <link href="/static/molgenis.css" rel="stylesheet"/>
+        <link rel="icon" href="/img/logo.png"/>
+        <link href="/molgenis.css" rel="stylesheet"/>
         <script>globalThis.env = <% print(JSON.stringify(settings.molgenis)) %></script>
-        <%if (settings.molgenis.imports) { %>
+        <%if (imports) { %>
         <script type="importmap">
             {
-            "imports": <% - print(JSON.stringify(settings.molgenis.imports)); %>
+            "imports": <% - print(JSON.stringify(imports)); %>
             }
         </script>
         <% } %>
@@ -20,5 +20,5 @@
         <div id="app"></div>
     </body>
 
-    <script type="module" src="/static/molgenis/molgenis.js"></script>
+    <script type="module" src="/molgenis/molgenis.js"></script>
 </html>

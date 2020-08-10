@@ -1,4 +1,4 @@
-import { CREATE_RESOURCE } from '@molgenis/molgenis/store/actions/navigator.js'
+import { CREATE_RESOURCE } from '/molgenis/store/actions/navigator.js'
 import { mapGetters } from 'vuex'
 
 

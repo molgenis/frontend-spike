@@ -1,20 +1,17 @@
 version: "3.7"
 services:
   nginx:
+    image: nginx
     environment:
-      MOLGENIS_HOST: ${MOLGENIS_HOST:-host.docker.internal}
-    image: ${MOLGENIS_FRONTEND:-molgenis/molgenis-frontend:latest}
+      MOLGENIS_HOST: ${MOLGENIS_HOST:-localhost}
     container_name: nginx
     ports:
       - 80:80
     network_mode: ${NETWORK_MODE:-bridge}
     volumes:
-      - ./backend.conf.template:/etc/nginx/proxy.d/backend.conf.template
-    command: >
-      /bin/bash -c "envsubst \"`for v in $$(compgen -v);do printf '$${%s} ' $$v;done`'\"
-      < /etc/nginx/proxy.d/backend.conf.template
-      > /etc/nginx/proxy.d/backend.conf
-      && nginx -g 'daemon off;'"
+      - ./nginx/sites-enabled:/etc/nginx/sites-enabled
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ../build:/usr/share/nginx/html
   molgenis:
     image: ${MOLGENIS_REPOSITORY}:${MOLGENIS_TAG}
     container_name: molgenis
@@ -85,7 +82,11 @@ services:
     container_name: opencpu
     ports:
       - 8004:8004
+      - 8787:8787
     network_mode: ${NETWORK_MODE:-bridge}
+    volumes:
+      - ./opencpu/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
+      - ./opencpu/ports.conf:/etc/apache2/ports.conf
 
 volumes:
   db-data:

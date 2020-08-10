@@ -1,13 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import SearchComponent from '@molgenis/molgenis/components/explorer/search/search.js'
-import Vue from 'vue'
+import SearchComponent from '/molgenis/components/explorer/search/search.js'
 import { faPlusSquare, faShoppingBag, faShoppingCart, faSlidersH, faStore, faTh, faThList } from '@fortawesome/free-solid-svg-icons'
 import { mapMutations, mapState } from 'vuex'
 
 library.add(faShoppingCart, faTh, faThList, faSlidersH, faStore, faShoppingBag, faPlusSquare)
 
-export default Vue.extend({
+export default {
     components: { FontAwesomeIcon, SearchComponent },
     computed: {
         ...mapState('explorer', [
@@ -45,4 +44,4 @@ export default Vue.extend({
         },
     },
     name: 'ToolbarView',
-})
+}

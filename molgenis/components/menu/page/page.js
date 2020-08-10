@@ -1,7 +1,7 @@
 import api from '@molgenis/molgenis-api-client'
-import CookieWall from './CookieWall.vue'
-import FooterComponent from './FooterComponent.vue'
-import HeaderComponent from './HeaderComponent.vue'
+import CookieWall from '../cookie-wall/cookie-wall.js'
+import FooterComponent from '../footer/footer.js'
+import HeaderComponent from '../header/header.js'
 
 export default {
     components: { CookieWall, FooterComponent, HeaderComponent},

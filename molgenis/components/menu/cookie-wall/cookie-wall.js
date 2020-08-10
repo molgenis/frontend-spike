@@ -1,4 +1,4 @@
-import { findValueInList, setCookie } from '@molgenis/molgenis/lib/service/cookie.js'
+import { findValueInList, setCookie } from '/molgenis/lib/service/cookie.js'
 
 const cookieAliveTime = 365 // in days
 

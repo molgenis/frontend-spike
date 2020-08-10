@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { fetchMetaDataByURL } from '@molgenis/molgenis/lib/repository/metadata.js'
+import { fetchMetaDataByURL } from '/molgenis/lib/repository/metadata.js'
 import { toRsqlValue } from '@molgenis/rsql'
 
 

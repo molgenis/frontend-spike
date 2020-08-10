@@ -1,5 +1,5 @@
 import { mapState } from 'vuex'
-import {DESELECT_ALL_RESOURCES, DESELECT_RESOURCE, SELECT_ALL_RESOURCES, SELECT_RESOURCE} from '@molgenis/molgenis/store/actions/navigator.js'
+import {DESELECT_ALL_RESOURCES, DESELECT_RESOURCE, SELECT_ALL_RESOURCES, SELECT_RESOURCE} from '/molgenis/store/actions/navigator.js'
 
 export default {
 

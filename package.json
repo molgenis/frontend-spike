@@ -14,7 +14,7 @@
     "lint": "yarn lint:js;yarn lint:scss",
     "lint:js": "eslint \"{molgenis}/**/{*.js,*.vue}\"",
     "lint:scss": "stylelint 'molgenis/**/*.scss'",
-    "prepare": "yarn icons;snowpack --exclude \"molgenis/test/**\" --include \"{molgenis/**/*.js}\" --dest build/static/web_modules",
+    "prepare": "yarn icons;snowpack --dest build/lib",
     "release": "standard-version"
   },
   "husky": {

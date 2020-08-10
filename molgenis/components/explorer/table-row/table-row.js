@@ -1,7 +1,7 @@
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import ShoppingButton from '../utils/ShoppingButton'
+import ShoppingButton from '../shopping-button/shopping-button.js'
 
 
 library.add(faEdit)

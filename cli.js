@@ -54,7 +54,7 @@ tasks.assets = new Task('assets', async function() {
     })
 
     await imagemin([path.join(settings.dir.theme, 'img', '*.{jpg,png}')], {
-        destination: path.join(settings.dir.build, 'static', 'img'),
+        destination: path.join(settings.dir.build, 'img'),
         plugins: [
             imageminJpegtran(),
             imageminPngquant({
@@ -64,7 +64,7 @@ tasks.assets = new Task('assets', async function() {
     })
 
     await Promise.all([
-        fs.copy(path.join(settings.dir.theme, settings.molgenis.theme.name, 'fonts'), path.join(settings.dir.build, 'static', 'fonts')),
+        fs.copy(path.join(settings.dir.theme, settings.molgenis.theme.name, 'fonts'), path.join(settings.dir.build, 'fonts')),
     ])
 })
 
@@ -79,10 +79,14 @@ tasks.build = new Task('build', async function() {
 })
 
 tasks.html = new Task('html', async function() {
+    const importMap = JSON.parse((await fs.readFile(path.join(settings.dir.build, 'lib', 'import-map.json'))))
+    for (let [reference, location] of Object.entries(importMap.imports)) {
+        importMap.imports[reference] = `/${path.join('lib', location)}`
+    }
+
     const indexFile = await fs.readFile(path.join(settings.dir.molgenis, 'index.html'))
     const compiled = _.template(indexFile)
-    const html = compiled({settings})
-
+    const html = compiled(Object.assign({settings}, {imports: importMap.imports}))
     await fs.writeFile(path.join(settings.dir.build, 'index.html'), html)
 })
 
@@ -91,14 +95,14 @@ tasks.js = new Task('js', async function(file) {
         // Snowpack only requires a light-weight copy action to the build dir.
         let targets
         if (file) {
-            await fs.copy(file, path.join(settings.dir.build, 'static', file.replace(settings.dir.molgenis, '')))
+            await fs.copy(file, path.join(settings.dir.build, file.replace(settings.dir.base, '')))
         } else {
             targets = (await globby([
                 path.join(settings.dir.base, settings.build.target, '**', '*.js'),
                 `!${path.join(settings.dir.base, 'node_modules')}`,
             ]))
 
-            targets.map((i) => fs.copy(i, path.join(settings.dir.build, 'static', i.replace(settings.dir.base, ''))))
+            targets.map((i) => fs.copy(i, path.join(settings.dir.build, i.replace(settings.dir.base, ''))))
             await Promise.all(targets)
         }
 
@@ -113,7 +117,7 @@ tasks.js = new Task('js', async function(file) {
                 })],
         })
 
-        const target = path.join(settings.dir.build, 'static', `${this.ep.filename}.js`)
+        const target = path.join(settings.dir.build, `${this.ep.filename}.js`)
 
         await bundle.write({
             file: target,
@@ -129,8 +133,8 @@ tasks.js = new Task('js', async function(file) {
 
 tasks.scss = new Task('scss', async function() {
     let target = {
-        css: path.join(settings.dir.build, 'static', `${this.ep.filename}.css`),
-        map: path.join(settings.dir.build, 'static', `${this.ep.filename}.css.map`),
+        css: path.join(settings.dir.build, `${this.ep.filename}.css`),
+        map: path.join(settings.dir.build, `${this.ep.filename}.css.map`),
     }
 
     return new Promise((resolve, reject) => {
@@ -169,16 +173,25 @@ tasks.scss = new Task('scss', async function() {
 
 tasks.vue = new Task('vue', async function() {
     if (!vuePack) {
-        const pathfilter = settings.dir.molgenis.split('/').concat(['components']).filter((i) => i)
-        vuePack = new VuePack({pathfilter})
+        const importFilter = settings.dir.base
+        const pathFilter = settings.dir.molgenis.split('/').concat(['components']).filter((i) => i)
+        vuePack = new VuePack({importFilter, pathFilter})
     }
+
+    const componentTargets = await globby([path.join(settings.dir.molgenis, 'components', '**', '*.js')])
+    for (let target of componentTargets) {
+        target = target.replace(settings.dir.base, '')
+    }
+
     const targets = await globby([path.join(settings.dir.molgenis, this.ep.raw)])
-    const templates = await vuePack.compile(targets)
+    const {components, templates} = await vuePack.compile(targets)
+
     // This is an exceptional build target, because it is not
     // a module that is available from Node otherwise.
     await Promise.all([
+        fs.writeFile(path.join(settings.dir.molgenis, 'components.js'), components),
         fs.writeFile(path.join(settings.dir.molgenis, 'templates.js'), templates),
-        fs.writeFile(path.join(settings.dir.build, 'static', 'templates.js'), templates),
+        fs.writeFile(path.join(settings.dir.build, 'templates.js'), templates),
     ])
 })
 
@@ -186,7 +199,7 @@ tasks.watch = new Task('watch', async function() {
     await tasks.build.start()
     return new Promise((resolve) => {
         var app = connect()
-        app.use(mount('/static', serveStatic(path.join(settings.dir.build, 'static'))))
+        app.use(mount('/static', serveStatic(path.join(settings.dir.build))))
             .use(async(req, res, next) => {
                 if (req.url.includes('livereload.js')) {
                     next()
@@ -246,7 +259,7 @@ tasks.watch = new Task('watch', async function() {
             }
 
             // Make sure the required build directories exist.
-            await fs.mkdirp(path.join(settings.dir.build, 'static'))
+            await fs.mkdirp(path.join(settings.dir.build))
             settings.optimized = argv.optimized
             if (settings.optimized) {
                 tasks.watch.log(`build optimization: ${chalk.green('enabled')}`)

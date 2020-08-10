@@ -1,15 +1,14 @@
-import { createBookmark } from '../mappers/bookmarkMapper'
+import { createBookmark } from '/molgenis/lib/mappers/bookmark.js'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
-import FilterContainer from '@molgenis/molgenis/filter/FilterContainer.vue'
+import FilterContainer from '/molgenis/components/filter/filter-container/filter-container.js'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import Vue from 'vue'
 import { mapMutations, mapState } from 'vuex'
 
 
 library.add(faChevronLeft)
 
-export default Vue.extend({
+export default {
     components: { FilterContainer, FontAwesomeIcon },
     computed: {
         ...mapState('explorer', [
@@ -76,4 +75,4 @@ export default Vue.extend({
             } else this.setComponentRoute(false)
         },
     },
-})
+}

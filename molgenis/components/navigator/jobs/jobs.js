@@ -1,5 +1,5 @@
 import { mapState } from 'vuex'
-import { REMOVE_JOB } from '@molgenis/molgenis/store/mutations/navigator.js'
+import { REMOVE_JOB } from '/molgenis/store/mutations/navigator.js'
 
 export default {
     computed: {

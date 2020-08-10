@@ -1,11 +1,10 @@
-import TableSelect from '@molgenis/molgenis/components/explorer/table-select/table-select.js'
-import TableSettingsButton from '@molgenis/molgenis/components/explorer/table-settings-button/table-settings-button.js'
+import TableSelect from '/molgenis/components/explorer/table-select/table-select.js'
+import TableSettingsButton from '/molgenis/components/explorer/table-settings-button/table-settings-button.js'
 import ToolbarView from '../toolbar/toolbar.js'
-import Vue from 'vue'
 import { mapActions, mapState } from 'vuex'
 
 
-export default Vue.extend({
+export default {
 
     components: {
         TableSelect,
@@ -35,4 +34,4 @@ export default Vue.extend({
         this.getGroupTabels({ package: this.tableMeta.package })
     },
     name: 'PageHeaderView',
-})
+}

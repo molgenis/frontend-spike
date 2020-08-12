@@ -26,11 +26,6 @@ export default {
             return this.selectedResources[0].type
         },
     },
-    data() {
-        return {
-            metadataManagerUrl: window.__INITIAL_STATE__.pluginUrls['metadata-manager'],
-        }
-    },
     methods: {
         downloadSelectedResources: function() {
             this.$store.dispatch('navigator/' + DOWNLOAD_SELECTED_RESOURCES)

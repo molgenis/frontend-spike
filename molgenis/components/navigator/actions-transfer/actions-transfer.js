@@ -12,15 +12,9 @@ export default {
             return this.importWizardUrl && !this.query
         },
     },
-    data() {
-        return {
-            importWizardUrl: window.__INITIAL_STATE__.pluginUrls['importwizard'],
-        }
-    },
     methods: {
         downloadSelectedResources: function() {
             this.$store.dispatch('navigator/' + DOWNLOAD_SELECTED_RESOURCES)
         },
     },
-    name: 'NavigatorActionsTransfer',
 }

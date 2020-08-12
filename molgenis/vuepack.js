@@ -3,13 +3,13 @@ import templates from './templates.js'
 import Vue from 'vue'
 
 
-export default function() {
+export default function(app) {
     let definitions = {}
     for (const name of Object.keys(components)) {
         let definition
         // A closure function to provide additional context.
         if (components[name].apply) {
-            definition = components[name]({})
+            definition = components[name](app)
         } else {
             definition = components[name]
         }
@@ -27,7 +27,6 @@ export default function() {
             console.warn(`component missing for template: ${name}`)
         }
     }
-
 
     return definitions
 }

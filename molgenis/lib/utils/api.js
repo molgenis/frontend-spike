@@ -13,6 +13,7 @@ export function fetchJob(job) {
 export function getResourcesByFolderId(folderId) {
     const uri = folderId ? NAVIGATOR_URI + '/get?folderId=' + encodeURIComponent(
         folderId) : NAVIGATOR_URI + '/get'
+    console.log('URI', uri)
     return api.get(uri).catch(throwAlertError).then(toFolderState)
 }
 

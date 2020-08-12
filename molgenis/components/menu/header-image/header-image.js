@@ -1,5 +1,4 @@
 export default {
-    name: 'HeaderImage',
     props: {
         imgMaxHeight: {
             required: true,

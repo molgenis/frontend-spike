@@ -28,25 +28,27 @@ export default {
     data() {
         return {
             allSelected: false,
-            dataExplorerUrl: window.__INITIAL_STATE__.pluginUrls['dataexplorer'],
-            fields: {
-                description: {
-                    class: 'd-none d-md-table-cell',
-                    label: this.$t('table-col-header-description'),
-                    sortable: false,
+            fields: [
+                {
+                    'class': 'compact align-middle',
+                    key: 'selected',
                     tdClass: this.cellClass,
                 },
-                label: {
+                {
                     class: 'text-nowrap',
-                    label: this.$t('table-col-header-name'),
+                    key: 'label',
+                    label: this.$t('name'),
                     sortable: true,
                     tdClass: this.cellClass,
                 },
-                selected: {
-                    'class': 'compact align-middle',
+                {
+                    class: 'd-none d-md-table-cell',
+                    key: 'description',
+                    label: this.$t('description'),
+                    sortable: false,
                     tdClass: this.cellClass,
                 },
-            },
+            ],
             filter: null,
         }
     },

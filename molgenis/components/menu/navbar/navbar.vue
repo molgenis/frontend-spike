@@ -1,6 +1,6 @@
 <component>
-    <div class="molgenis-header-container">
-        <nav :class="{ 'navbar-expand-md': !showHamburger }" class="navbar navbar-light bg-light">
+    <div class="molgenis-navbar">
+        <nav :class="{ 'navbar-expand-md': !showHamburger }" class="navbar navbar-light">
             <a
                 :href="`/menu/main/${href(molgenisMenu.menu.items[0])}`" class="navbar-brand"
                 v-if="molgenisMenu.navBarLogo"
@@ -40,7 +40,7 @@
                             >
                                 {{ item.label }}
                             </a>
-                            <drop-down-items :items="item.items" :parent="item" />
+                            <MenuDropdownItems :items="item.items" :parent="item" />
                         </li>
                     </template>
                 </ul>

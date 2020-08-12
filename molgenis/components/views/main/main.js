@@ -1,10 +1,5 @@
-import DataView from '../data/data.js'
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
-import FiltersView from '../filters/filters.js'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import PageHeaderView from '../page-header/page-header.js'
-import ToastComponent from '/molgenis/components/explorer/toast/toast.js'
 import { mapActions, mapMutations, mapState } from 'vuex'
 
 
@@ -22,13 +17,6 @@ export default {
     async beforeRouteUpdate(to, from, next) {
         await this.fetchViewData(to.params.entity)
         next()
-    },
-    components: {
-        DataView,
-        FiltersView,
-        FontAwesomeIcon,
-        PageHeaderView,
-        ToastComponent,
     },
     computed: {
         ...mapState('explorer', [

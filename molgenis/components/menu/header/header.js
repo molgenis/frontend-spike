@@ -1,9 +1,4 @@
-import HeaderImage from '../header-image/header-image.js'
-import NavBar from '../navbar/navbar.js'
-
-
 export default {
-    components: { HeaderImage, NavBar },
     data() {
         return {
             headerHeight: null,

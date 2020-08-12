@@ -188,10 +188,11 @@ tasks.vue = new Task('vue', async function() {
 
     // This is an exceptional build target, because it is not
     // a module that is available from Node otherwise.
+    console.log(path.join(settings.dir.build, 'templates.js'))
     await Promise.all([
         fs.writeFile(path.join(settings.dir.molgenis, 'components.js'), components),
         fs.writeFile(path.join(settings.dir.molgenis, 'templates.js'), templates),
-        fs.writeFile(path.join(settings.dir.build, 'templates.js'), templates),
+        fs.writeFile(path.join(settings.dir.build, 'molgenis', 'templates.js'), templates),
     ])
 })
 

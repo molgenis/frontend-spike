@@ -1,16 +1,16 @@
 <component>
-    <div class="container-fluid my-2">
-        <toast-component
+    <div class="container-fluid">
+        <ExplorerToast
             -toast-close-btn-clicked="clearToast"
             :message="toast.message"
             :type="toast.type"
             class="toast-component mt-2"
             v-if="toast"
         />
-        <page-header-view v-if="!loading" />
+        <ViewsPageHeader v-if="!loading" />
         <div class="flex-mainview d-flex" :class="{'hidefilters': filters.hideSidebar}">
             <div class="flex-filter">
-                <filters-view v-if="!loading" />
+                <ViewsFilters v-if="!loading" />
             </div>
             <div class="flex-data ml-4">
                 <button
@@ -24,7 +24,7 @@
                     <span class="ml-2">Filters</span>
                 </button>
 
-                <data-view v-if="!loading" />
+                <ViewsData v-if="!loading" />
             </div>
         </div>
     </div>

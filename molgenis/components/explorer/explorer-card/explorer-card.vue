@@ -14,12 +14,12 @@
                 </custom-card-content>
                 <default-card-content
                     v-else
-                    -expand-default-card="handleDefaultCardExpand"
                     :collapse-limit="collapseLimit"
                     :data-contents="dataContents"
                     :data-id="dataId"
                     :data-label="dataLabel"
                     :data-table="dataTable"
+                    :expand-default-card="handleDefaultCardExpand"
                     :number-of-attributes="numberOfAttributes"
                 >
                     <template v-slot:shopping-button>

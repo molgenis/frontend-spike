@@ -14,6 +14,6 @@ const getters = {
     },
     nrClipboardResources: (state) => state.clipboard ? state.clipboard.resources.length : 0,
     nrSelectedResources: (state) => state.selectedResources.length,
-    query: (state, getters, rootState) => rootState.route.query.q,
+    query: (state, getters, rootState) => rootState.route ? rootState.route.query.q : null,
 }
 export default getters

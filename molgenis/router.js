@@ -1,16 +1,56 @@
-// import explorerRoutes from './routes/explorer.js'
-// import navigatorRoutes from './routes/navigator.js'
 import Router from 'vue-router'
 import Vue from 'vue'
 
-
 Vue.use(Router)
 
-let routes = []
-// routes = routes.concat(navigatorRoutes).concat(explorerRoutes)
 
-export default new Router({
-    base: '/',
-    mode: 'history',
-    routes,
-})
+export default (app) => {
+    return new Router({
+        base: '/',
+        mode: 'history',
+        routes: [
+            {
+                component: app.components.ViewsMain,
+                name: 'dataexplorer-entity',
+                path: '/explorer/:entity',
+            },
+            {
+                name: 'dataexplorer',
+                path: '/explorer/*',
+                redirect: {
+                    name: 'dataexplorer-entity',
+                    params: { entity: 'root_hospital_patients' },
+                },
+            },
+
+            {
+                component: DataRowEdit,
+                path: '/:dataTableId/:dataRowId', // edit existing row
+                props: true,
+            },
+            {
+                component: DataRowEdit,
+                path: '/:dataTableId', // add new row
+                props: true,
+            },
+            {
+                path: '/',
+                redirect: to => {
+                    window.location.href = window.location.origin + dataExplorerBaseUrl
+                },
+            },
+
+            {
+                component: app.components.NavigatorMain,
+                name: 'navigator',
+                path: '/navigator',
+            },
+            {
+                component: app.components.NavigatorMain,
+                name: 'navigator-folder',
+                path: '/navigator/:folderId',
+            },
+        ],
+    })
+}
+

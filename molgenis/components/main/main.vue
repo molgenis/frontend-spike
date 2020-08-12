@@ -1,6 +1,5 @@
 <component>
-    RENDER
-    <page-component id="app" v-on:context-loaded="handleContextLoaded">
+    <MenuPage id="app" v-on:context-loaded="handleContextLoaded">
         <router-view />
-    </page-component>
+    </MenuPage>
 </component>

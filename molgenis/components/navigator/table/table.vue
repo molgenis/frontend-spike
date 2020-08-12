@@ -34,14 +34,8 @@
                 slot="label"
                 slot-scope="label"
             >
-                <span v-if="label.item.type === 'ENTITY_TYPE' && dataExplorerUrl">
-                    <a :href="dataExplorerUrl + '?entity=' + label.item.id + '&hideselect=true'" v-if="legacy.explorer">
-                        <font-awesome-icon
-                            fixed-width
-                            icon="list"
-                        /> {{ label.item.label }}
-                    </a>
-                    <router-link v-else :to="{name: 'dataexplorer-entity', params: {entity: label.item.id}}">
+                <span v-if="label.item.type === 'ENTITY_TYPE'">
+                    <router-link :to="{name: 'dataexplorer-entity', params: {entity: label.item.id}}">
                         <font-awesome-icon
                             fixed-width
                             icon="list"

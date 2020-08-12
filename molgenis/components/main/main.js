@@ -1,8 +1,8 @@
-import PageComponent from '/molgenis/components/menu/page/page.js'
+// import PageComponent from '/molgenis/components/menu/page/page.js'
 
 
 export default {
-    components: { PageComponent },
+    // components: { PageComponent },
     methods: {
         handleContextLoaded(context) {
             console.log(context)

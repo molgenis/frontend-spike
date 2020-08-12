@@ -1,4 +1,4 @@
 const state = {
-  context: null
+    context: null,
 }
 export default state

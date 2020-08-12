@@ -29,6 +29,11 @@ services:
       - MINIO_ACCESS_KEY=molgenis
       - MINIO_SECRET_KEY=molgenis
       - "CATALINA_OPTS=-Xmx1g -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled"
+    depends_on:
+      - postgres
+      - elasticsearch
+      - minio
+      - opencpu
   postgres:
     image: postgres:11-alpine
     container_name: postgres

@@ -1,0 +1,42 @@
+<component>
+    <b-modal
+        id="packageCreateModal"
+        ref="packageCreateModal"
+        :cancel-title="$t('create-package-cancel-text')"
+        :ok-title="$t('create-package-ok-text')"
+        :title="$t('create-package-title')"
+        @ok="handleOk"
+        @shown="resetForm"
+    >
+        <b-form
+            :validated="validated"
+            @submit.stop.prevent="handleSubmit"
+        >
+            <b-form-group
+                id="packageLabelInputGroup"
+                :invalid-feedback="$t('package-input-label-invalid')"
+                :label="$t('package-input-label') + ' *'"
+                label-for="packageNameInput"
+            >
+                <b-form-input
+                    id="packageLabelInput"
+                    ref="createPackageLabelInput"
+                    required
+                    type="text"
+                    v-model="form.label"
+                />
+            </b-form-group>
+            <b-form-group
+                id="packageDescriptionInputGroup"
+                :label="$t('package-input-description')"
+                label-for="packageDescriptionInput"
+            >
+                <b-form-input
+                    id="packageDescriptionInput"
+                    v-model="form.description"
+                    type="text"
+                />
+            </b-form-group>
+        </b-form>
+    </b-modal>
+</component>

@@ -1,0 +1,19 @@
+<component>
+    <div
+        :title="$t('action-delete')"
+        class="btn-tooltip-wrapper"
+        v-b-tooltip.d500
+    >
+        <b-btn
+            :disabled="!canDelete"
+            v-b-modal-resource-delete-modal
+            variant="danger"
+        >
+            <font-awesome-icon
+                :class="{'fa-disabled': !canDelete}"
+                icon="trash"
+                size="lg"
+            />
+        </b-btn>
+    </div>
+</component>

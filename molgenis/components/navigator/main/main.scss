@@ -1,0 +1,38 @@
+@media (min-width: 1200px) {
+    .container {
+        width: 1199px;
+    }
+}
+
+.job-alerts {
+    bottom: 60px; /* default footer height */
+    left: 1rem;
+    right: 1rem;
+}
+
+@media (min-width: 1200px) {
+    .job-alerts {
+        left: 75%;
+    }
+}
+
+.navigator-search {
+    margin-bottom: 1rem;
+}
+
+.navigator-actions {
+    margin-bottom: 2rem;
+}
+
+.btn.disabled {
+    cursor: not-allowed !important;
+}
+
+.btn-tooltip-wrapper {
+    display: inline;
+    padding: 0.375rem 0;
+}
+
+.fa-disabled {
+    opacity: 0.6;
+}

@@ -1,0 +1,59 @@
+server {
+  listen 80;
+  server_name localhost;
+  access_log /var/log/nginx/localhost.access.log;
+  error_log /var/log/nginx/localhost.error.log;
+
+  location ~ ^/(css|js|menu|app-ui-context|api|login|plugin|img)/? {
+    proxy_set_header Host $http_host;
+    proxy_pass http://127.0.0.1:8080;
+  }
+
+  #
+  # We use this configuration in all configuration that is using unpkg.com
+  # All the redirects done by unpkg.com are handled here.
+  # unpkg.com redirects 2 or 3 times depending on the url you initially post
+  #
+  location @handle_redirect {
+      # drop routing information from urls that do not start with `/dist/`
+      rewrite ^/([^/]*)/([^/]*)/(?!dist/).*$ /$1/$2 last;
+      proxy_intercept_errors on;
+      error_page 301 302 307 = @handle_redirect;
+      set $frontend_host 'https://unpkg.com';
+      set $saved_redirect_location '$upstream_http_location';
+
+      proxy_pass $frontend_host$saved_redirect_location;
+      # Do not cache these redirects too long
+      expires 10m;
+   }
+
+
+   location /@molgenis-experimental/molgenis-app-lifelines-webshop/ {
+       proxy_pass https://unpkg.com/@molgenis-experimental/molgenis-app-lifelines-webshop@2.5.2/;
+       proxy_intercept_errors on;
+       recursive_error_pages on;
+       error_page 301 302 307 = @handle_redirect;
+   }
+
+
+   location /@molgenis-experimental/ {
+       proxy_pass https://unpkg.com/@molgenis-experimental/;
+       proxy_intercept_errors on;
+       recursive_error_pages on;
+       error_page 301 302 307 = @handle_redirect;
+   }
+
+   location /@molgenis-ui/ {
+       proxy_pass https://unpkg.com/@molgenis-ui/;
+       proxy_intercept_errors on;
+       recursive_error_pages on;
+       error_page 301 302 307 = @handle_redirect;
+   }
+
+
+  location / {
+    root /usr/share/nginx/html/;
+    index index.html;
+    try_files try_files $uri $uri/ /index.html;
+  }
+}

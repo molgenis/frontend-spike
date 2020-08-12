@@ -1,0 +1,21 @@
+<component>
+    <div>
+        <b-input-group>
+            <b-form-input
+                :max="max"
+                :min="min"
+                :step="step"
+                type="number"
+                v-model="model"
+            />
+        </b-input-group>
+        <vue-slider
+            v-if="useSlider"
+            v-model="model"
+            class="mt-2"
+            :interval="step"
+            :max="max"
+            :min="min"
+        />
+    </div>
+</component>

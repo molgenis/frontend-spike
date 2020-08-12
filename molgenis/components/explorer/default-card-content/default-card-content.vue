@@ -2,13 +2,9 @@
     <div>
         <h5 class="card-title mg-default-card-title">
             {{dataLabel}}
-            <a
-                :href="'/plugin/data-row-edit/' + dataTable + '/' + dataId"
-                class="btn btn-sm btn-link ml-1"
-                role="button"
-            >
+            <router-link :to="{name: 'data-row-edit', params: {dataTableId: dataTable, dataRowId: dataId}}" class="btn btn-sm btn-link ml-1">
                 <font-awesome-icon icon="edit" />
-            </a>
+            </router-link>
             <button
                 class="btn btn-sm btn-link"
                 role="button"

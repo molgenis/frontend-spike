@@ -3,6 +3,7 @@ server {
   server_name localhost;
   access_log /var/log/nginx/localhost.access.log;
   error_log /var/log/nginx/localhost.error.log;
+  client_max_body_size 10M;
 
   location ~ ^/(css|js|menu|app-ui-context|api|login|plugin|img)/? {
     proxy_set_header Host $http_host;

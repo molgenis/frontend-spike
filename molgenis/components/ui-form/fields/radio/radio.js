@@ -23,7 +23,7 @@ export default {
     props: {
         field: {
             required: true,
-            type: FormField,
+            // type: FormField,
         },
         fieldState: {
             required: false,

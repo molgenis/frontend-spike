@@ -1,5 +1,7 @@
-import VueForm from 'vue-form'
+import detectLang from '/molgenis/lib/helpers/ui-form/lang-detect.js'
+
 import VueCode from 'vue-code'
+import VueForm from 'vue-form'
 
 // import 'codemirror/lib/codemirror.css'
 // import 'codemirror/mode/htmlmixed/htmlmixed'
@@ -16,9 +18,6 @@ import VueCode from 'vue-code'
 // import 'codemirror/addon/search/jump-to-line.js'
 // import 'codemirror/addon/dialog/dialog.css'
 // import 'codemirror/addon/dialog/dialog.js'
-
-// import detectLang from '../../util/helpers/langDetect'
-
 
 export default {
     components: {
@@ -63,7 +62,7 @@ export default {
     props: {
         field: {
             required: true,
-            type: FormField,
+            // type: FormField,
         },
         fieldState: {
             required: false,

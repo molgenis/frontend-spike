@@ -40,28 +40,22 @@ const buildFormData = (data, fields) => {
 const doPost = (uri, formData, formFields) => {
     const containsFileData = isFileIncluded(formData, formFields)
     const options = {
+        body: containsFileData ? buildFormData(formData, formFields) : JSON.stringify(formData),
+        credentials: 'same-origin',
         headers: {
             'Accept': 'application/json',
             'X-Requested-With': 'XMLHttpRequest',
         },
-        body: containsFileData ? buildFormData(formData, formFields) : JSON.stringify(formData),
         method: 'POST',
-        credentials: 'same-origin',
     }
 
     return api.post(uri, options, containsFileData)
 }
 
-/**
- * Fetch for edit-response mixes data and metadata,
- * this function creates a new object with separate properties for data and metadata, similar to the
- * fetch for create response
- * @param response
- * @returns Promise{{meta: *, rowData: *}}
- */
+
 const parseEditResponse = (response) => {
     // noinspection JSUnusedLocalSymbols
-    const { _meta, _href, ...rowData } = response
+    const { _href, _meta, ...rowData } = response
     return Promise.resolve({meta: _meta, rowData: rowData})
 }
 

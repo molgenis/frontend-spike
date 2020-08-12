@@ -50,5 +50,4 @@ app.vm.$mount(document.querySelector('#app'))
 export default app
 
 globalThis.app = app
-store.commit('navigator/' + SET_SHOW_HIDDEN_RESOURCES, isSuperUser)
 

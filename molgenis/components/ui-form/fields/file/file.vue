@@ -11,7 +11,7 @@
         >
         <div class="form-group">
             <label
-                :class="{ 'is-invalid' : this.fieldState && this.fieldState.$invalid && (this.fieldState.$touched || this.fieldState.$submitted || this.fieldState.$dirty)}"
+                :class="{ 'is-invalid' : fieldState && fieldState.$invalid && (fieldState.$touched || fieldState.$submitted || fieldState.$dirty)}"
                 :for="field.id"
             >
                 {{ field.label }}

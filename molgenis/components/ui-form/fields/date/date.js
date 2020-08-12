@@ -1,26 +1,30 @@
-import VueForm from 'vue-form'
+// import { Dutch } from 'flatpickr/dist/l10n/nl.js'
 import flatPickr from 'vue-flatpickr-component'
-// import 'flatpickr/dist/flatpickr.css'
+// import { French } from 'flatpickr/dist/l10n/fr.js'
+// import { German } from 'flatpickr/dist/l10n/de.js'
+// import { Italian } from 'flatpickr/dist/l10n/it.js'
 import moment from 'moment'
-import { Dutch } from 'flatpickr/dist/l10n/nl.js'
-import { French } from 'flatpickr/dist/l10n/fr.js'
-import { German } from 'flatpickr/dist/l10n/de.js'
-import { Italian } from 'flatpickr/dist/l10n/it.js'
-import { Portuguese } from 'flatpickr/dist/l10n/pt.js'
-import { Spanish } from 'flatpickr/dist/l10n/es.js'
+// import { Portuguese } from 'flatpickr/dist/l10n/pt.js'
+// import { Spanish } from 'flatpickr/dist/l10n/es.js'
+import VueForm from 'vue-form'
+// import 'flatpickr/dist/flatpickr.css'
 
-const flatpickerLangMap = {
-    de: German,
-    es: Spanish,
-    fr: French,
-    it: Italian,
-    nl: Dutch,
-    pt: Portuguese,
-}
+const flatpickerLangMap = {}
+// const flatpickerLangMap = {
+//     de: German,
+//     es: Spanish,
+//     fr: French,
+//     it: Italian,
+//     nl: Dutch,
+//     pt: Portuguese,
+// }
 
 const DATE_TIME_DISPLAY = 'Y-MM-DD\\THH:mm:ssZ'
 
 export default {
+    components: {
+        flatPickr,
+    },
     created() {
         if (flatpickerLangMap[this.$lng]) {
             this.config.locale = flatpickerLangMap[this.$lng]

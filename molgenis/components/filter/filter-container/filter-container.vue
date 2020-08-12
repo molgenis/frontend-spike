@@ -30,9 +30,9 @@
             >
                 <transition-group>
                     <filter-card
-                        -remove-filter="removeFilter(filter.name)"
                         :can-remove="canEdit"
                         :key="filter.name"
+                        @remove-filter="removeFilter(filter.name)"
                         v-bind="filter"
                         v-for="filter in listOfVisibleFilters"
                     >

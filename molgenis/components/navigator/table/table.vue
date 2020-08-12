@@ -35,7 +35,7 @@
                 slot-scope="label"
             >
                 <span v-if="label.item.type === 'ENTITY_TYPE'">
-                    <router-link :to="{name: 'dataexplorer-entity', params: {entity: label.item.id}}">
+                    <router-link :to="{name: 'explorer-entity', params: {entity: label.item.id}}">
                         <font-awesome-icon
                             fixed-width
                             icon="list"

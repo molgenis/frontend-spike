@@ -11,33 +11,29 @@ export default (app) => {
         routes: [
             {
                 component: app.components.ViewsMain,
-                name: 'dataexplorer-entity',
+                name: 'explorer-entity',
                 path: '/explorer/:entity',
             },
             {
                 name: 'dataexplorer',
-                path: '/explorer/*',
+                path: '/explorer*',
                 redirect: {
-                    name: 'dataexplorer-entity',
+                    name: 'explorer-entity',
                     params: { entity: 'root_hospital_patients' },
                 },
             },
 
             {
-                component: DataRowEdit,
-                path: '/:dataTableId/:dataRowId', // edit existing row
+                component: app.components.DataRowEdit,
+                name: 'data-row-edit',
+                path: '/data-row/:dataTableId/:dataRowId',
                 props: true,
             },
             {
-                component: DataRowEdit,
-                path: '/:dataTableId', // add new row
+                component: app.components.DataRowEdit,
+                name: 'data-row-new',
+                path: '/data-row/:dataTableId',
                 props: true,
-            },
-            {
-                path: '/',
-                redirect: to => {
-                    window.location.href = window.location.origin + dataExplorerBaseUrl
-                },
             },
 
             {

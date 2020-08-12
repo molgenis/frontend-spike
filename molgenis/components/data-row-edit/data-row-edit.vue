@@ -21,10 +21,10 @@
 
         <form-component
             id="data-row-edit-form"
-            -value-change="onValueChanged"
             :form-fields="formFields"
             :form-state="formState"
             :initial-form-data="formData"
+            @value-change="onValueChanged"
         />
 
         <div class="row">

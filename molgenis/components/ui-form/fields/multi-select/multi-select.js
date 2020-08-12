@@ -54,7 +54,7 @@ export default {
         },
         field: {
             required: true,
-            type: FormField,
+            // type: FormField,
         },
         fieldState: {
             required: false,

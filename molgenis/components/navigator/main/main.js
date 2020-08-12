@@ -16,13 +16,13 @@ export default {
         },
     },
     mounted: function() {
+        // store.commit('navigator/' + SET_SHOW_HIDDEN_RESOURCES, isSuperUser)
         if (this.query) {
             this.fetchResourcesByQuery()
         } else {
             this.fetchResourcesByPackage()
         }
     },
-    name: 'Navigator',
     watch: {
         '$route'(to, from) {
             if (to.query && (to.query.q !== from.query.q)) {

@@ -1,13 +1,19 @@
 import VueForm from 'vue-form'
-import FormFieldMessages from '../FormFieldMessages'
 
 let debounceTime = 500
 
 export default {
+    data() {
+        return {
+            // Store a local value to prevent changing the parent state
+            localValue: this.value,
+        }
+    },
+    mixins: [VueForm],
     props: {
         field: {
             required: true,
-            type: FormField,
+            // type: FormField,
         },
         fieldState: {
             required: false,
@@ -33,13 +39,6 @@ export default {
             required: false,
             type: String,
         },
-    },
-    mixins: [VueForm],
-    data() {
-        return {
-            // Store a local value to prevent changing the parent state
-            localValue: this.value,
-        }
     },
     watch: {
         localValue() {

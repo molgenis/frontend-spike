@@ -21,7 +21,7 @@ export default {
         }
         repository.fetch(this.dataTableId, this.dataRowId).then(resp => {
             this.dataTableLabel = resp.meta.label
-            const mappedData = mapper.generateForm(resp.meta, resp.rowData, mapperOptions)
+            const mappedData = EntityToFormMapper.generateForm(resp.meta, resp.rowData, mapperOptions)
             this.formFields = mappedData.formFields
             this.formData = mappedData.formData
             this.showForm = true
@@ -30,7 +30,6 @@ export default {
     data() {
         return {
             alert: null,
-            dataExplorerBaseUrl: window.__INITIAL_STATE__.dataExplorerBaseUrl,
             dataTableLabel: '',
             formData: {},
             formFields: [],

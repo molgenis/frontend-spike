@@ -1,24 +1,13 @@
-# mg-frontend
+# Molgenis
+Small introduction about Molgenis.
 
-## Project setup
-```
-yarn install
-```
+## Install
 
-### Compiles and hot-reloads for development
+```bash
+git clone git@github.com:molgenis/frontend-spike.git
+cd frontend-spike
+yarn
+cp molgenis/.molgenisrc .molgenisrc
+docker-compose -f docker/docker-compose.yml up
+./cli watch
 ```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

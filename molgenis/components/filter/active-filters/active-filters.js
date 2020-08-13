@@ -1,13 +1,11 @@
 
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 
 
 library.add(faTimes)
 
 export default {
-    components: { FontAwesomeIcon },
     data() {
         return {
             activeValues: [],
@@ -121,7 +119,6 @@ export default {
             return this.filters.filter(filter => filter.name === key)[0]
         },
     },
-    name: 'ActiveFilters',
     props: {
         filters: {
             required: true,

@@ -10,7 +10,7 @@
                 @click="selectClipboardResources('CUT')"
                 variant="secondary"
             >
-                <font-awesome-icon
+                <Icon
                     :class="{'fa-disabled' : !canCut}"
                     icon="cut"
                     size="lg"
@@ -27,7 +27,7 @@
                 variant="secondary"
                 @click="selectClipboardResources('COPY')"
             >
-                <font-awesome-icon
+                <Icon
                     :class="{'fa-disabled' : !canCopy}"
                     icon="clone"
                     size="lg"
@@ -44,7 +44,7 @@
                 variant="secondary"
                 @click="pasteClipboardResources"
             >
-                <font-awesome-icon
+                <Icon
                     :class="{'fa-disabled' : !canPaste}"
                     icon="paste"
                     size="lg"

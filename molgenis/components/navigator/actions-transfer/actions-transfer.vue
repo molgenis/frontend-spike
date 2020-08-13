@@ -10,7 +10,7 @@
                 :href="importWizardUrl + (folder ? '?selectedPackage=' + folder.id : '')"
                 variant="secondary"
             >
-                <font-awesome-icon
+                <Icon
                     :class="{'fa-disabled' : !canUpload}"
                     icon="upload"
                     size="lg"
@@ -27,7 +27,7 @@
                 variant="secondary"
                 @click="downloadSelectedResources"
             >
-                <font-awesome-icon
+                <Icon
                     :class="{'fa-disabled' : !canDownload}"
                     icon="download"
                     size="lg"

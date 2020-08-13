@@ -1,7 +1,5 @@
 import { createBookmark } from '/molgenis/lib/mappers/bookmark.js'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
-import FilterContainer from '/molgenis/components/filter/filter-container/filter-container.js'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { mapMutations, mapState } from 'vuex'
 
@@ -9,7 +7,6 @@ import { mapMutations, mapState } from 'vuex'
 library.add(faChevronLeft)
 
 export default {
-    components: { FilterContainer, FontAwesomeIcon },
     computed: {
         ...mapState('explorer', [
             'filters',
@@ -65,7 +62,6 @@ export default {
             this.addBookmark()
         },
     },
-    name: 'FiltersView',
     watch: {
         '$route.query': function(query) {
             // need to check if component triggered query, if so ignore.

@@ -18,7 +18,7 @@
                     variant="outline-secondary"
                     @click.prevent="setRangeValue(0, null)"
                 >
-                    <font-awesome-icon icon="times" />
+                    <Icon icon="times" />
                 </b-button>
             </b-input-group-append>
         </b-input-group>
@@ -39,7 +39,7 @@
                     variant="outline-secondary"
                     @click.prevent="setRangeValue(1, null)"
                 >
-                    <font-awesome-icon icon="times" />
+                    <Icon icon="times" />
                 </b-button>
             </b-input-group-append>
         </b-input-group>

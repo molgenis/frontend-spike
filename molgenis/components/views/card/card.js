@@ -1,8 +1,7 @@
-import ExplorerCard from '/molgenis/components/explorer/explorer-card/explorer-card.js'
 import { mapActions, mapGetters, mapState } from 'vuex'
 
+
 export default {
-    components: { ExplorerCard },
     computed: {
         ...mapState('explorer', ['tableMeta', 'shoppedEntityItems', 'tableSettings', 'tableName']),
         ...mapGetters('explorer', ['filterRsql']),

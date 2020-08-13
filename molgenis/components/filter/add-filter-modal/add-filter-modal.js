@@ -1,13 +1,11 @@
 
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 
 
 library.add(faPlus)
 
 export default {
-    components: { FontAwesomeIcon },
     computed: {
         options() {
             return this.filters.map(it => ({

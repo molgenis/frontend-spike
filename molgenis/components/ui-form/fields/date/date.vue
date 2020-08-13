@@ -23,18 +23,14 @@
                         title="Toggle"
                         type="button"
                     >
-                        <i class="fa fa-calendar">
-                            <span aria-hidden="true" class="sr-only">Toggle</span>
-                        </i>
+                        <Icon icon="calendar" />
                     </button>
                     <button
                         v-if="!isRequired" class="date-field-clear-btn btn btn-outline-secondary"
                         title="Clear" type="button"
                         @click="clearValue"
                     >
-                        <i class="fa fa-times">
-                            <span aria-hidden="true" class="sr-only">Clear</span>
-                        </i>
+                        <Icon icon="times" />
                     </button>
                 </div>
             </div>

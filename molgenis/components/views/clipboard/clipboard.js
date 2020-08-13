@@ -1,7 +1,4 @@
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import TableHeader from '/molgenis/components/explorer/table-header/table-header.js'
-import TableRow from '/molgenis/components/explorer/table-row/table-row.js'
 import { faChevronLeft, faShoppingBag } from '@fortawesome/free-solid-svg-icons'
 import { mapActions, mapMutations, mapState } from 'vuex'
 
@@ -9,12 +6,6 @@ import { mapActions, mapMutations, mapState } from 'vuex'
 library.add(faShoppingBag, faChevronLeft)
 
 export default {
-
-    components: {
-        FontAwesomeIcon,
-        TableHeader,
-        TableRow,
-    },
     computed: {
         ...mapState('explorer', ['tableMeta', 'shoppedEntityItems', 'tableData', 'tableName']),
         entitiesToShow() {
@@ -43,7 +34,5 @@ export default {
         isSelected(entity) {
             return this.shoppedEntityItems.includes(this.getEntityId(entity))
         },
-
     },
-    name: 'ClipboardView',
 }

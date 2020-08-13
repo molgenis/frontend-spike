@@ -9,7 +9,7 @@
                     title="Hide Filters"
                     type="button"
                 >
-                    <font-awesome-icon icon="chevron-left" />
+                    <Icon icon="chevron-left" />
                 </button>
             </div>
             <div class="p-2">

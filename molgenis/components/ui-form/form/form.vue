@@ -6,12 +6,12 @@
                 class="btn btn-sm btn-outline-secondary toggle-btn"
                 type="button"
             >
-                <i :class="{'fa-eye-slash': showOptionalFields, 'fa-eye': !showOptionalFields}" class="fa show-fields-icon" />
+                <Icon :icon="showOptionalFields ? 'eye' : 'eye-slash'" />
             </button>
         </div>
 
         <template v-for="field in formFields">
-            <form-field-component
+            <UiFormFormField
                 :key="field.id"
                 class="mg-ui-form-field"
                 :event-bus="eventBus"

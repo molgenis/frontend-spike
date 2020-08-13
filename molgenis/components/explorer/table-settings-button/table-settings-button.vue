@@ -5,7 +5,7 @@
         title="Table settings"
         type="button"
     >
-        <font-awesome-icon icon="cog" />
+        <Icon icon="cog" />
         Table settings
     </a>
 </component>

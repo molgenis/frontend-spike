@@ -1,4 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
     faExclamationTriangle,
@@ -15,7 +14,6 @@ export default {
             this.initializeFilter()
         }
     },
-    components: { FontAwesomeIcon },
     computed: {
         foundOptionCount() {
             return this.inputOptions.length

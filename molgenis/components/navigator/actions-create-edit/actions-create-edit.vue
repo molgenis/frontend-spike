@@ -10,20 +10,20 @@
                 variant="primary"
             >
                 <template slot="button-content">
-                    <font-awesome-icon
+                    <Icon
                         :class="{'fa-disabled' : !canCreate}"
                         icon="plus"
                         size="lg"
                     />
                 </template>
                 <b-dd-item v-b-modal.packageCreateModal>
-                    <font-awesome-icon :icon="['far', 'folder-open']" /> {{ 'action-create-package' | i18n }}
+                    <Icon :icon="['far', 'folder-open']" /> {{ 'action-create-package' | i18n }}
                 </b-dd-item>
                 <b-dd-item
                     v-if="metadataManagerUrl"
                     :href="metadataManagerUrl"
                 >
-                    <font-awesome-icon icon="list" /> {{ 'action-create-entity-type' | i18n }}
+                    <Icon icon="list" /> {{ 'action-create-entity-type' | i18n }}
                 </b-dd-item>
             </b-dd>
         </div>&nbsp;
@@ -39,7 +39,7 @@
                 :disabled="!canEdit"
                 variant="secondary"
             >
-                <font-awesome-icon
+                <Icon
                     :class="{'fa-disabled' : !canEdit}"
                     icon="edit"
                     size="lg"
@@ -52,7 +52,7 @@
                 :href="metadataManagerUrl + '/' + selectedResources[0].id"
                 variant="secondary"
             >
-                <font-awesome-icon
+                <Icon
                     :class="{'fa-disabled' : !canEdit}"
                     icon="edit"
                     size="lg"
@@ -64,7 +64,7 @@
                 :disabled="true"
                 variant="secondary"
             >
-                <font-awesome-icon
+                <Icon
                     :class="{'fa-disabled' : !canEdit}"
                     icon="edit"
                     size="lg"

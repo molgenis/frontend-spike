@@ -1,7 +1,7 @@
 <component>
     <tr>
         <td v-if="isShop">
-            <shopping-button :id="id" :is-selected="isSelected" />
+            <ExplorerShoppingButton :id="id" :is-selected="isSelected" />
         </td>
         <td v-else>
             <div aria-label="row actions" class="btn-group" role="group">
@@ -10,14 +10,14 @@
                     role="button"
                     @click="$eventBus.$emit('delete-item', id)"
                 >
-                    <font-awesome-icon icon="trash" />
+                    <Icon icon="trash" />
                 </button>
                 <a
                     class="btn btn-sm btn-link"
                     :href="'/plugin/data-row-edit/' + tableName + '/' + id"
                     role="button"
                 >
-                    <font-awesome-icon icon="edit" />
+                    <Icon icon="edit" />
                 </a>
             </div>
         </td>

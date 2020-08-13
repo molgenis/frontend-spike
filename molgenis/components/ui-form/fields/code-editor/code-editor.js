@@ -1,23 +1,21 @@
+import 'codemirror/mode/htmlmixed/htmlmixed.js'
+import 'codemirror/mode/javascript/javascript.js'
+import 'codemirror/mode/python/python.js'
+import 'codemirror/mode/r/r.js'
+import 'codemirror/addon/hint/show-hint.js'
+import 'codemirror/addon/hint/javascript-hint.js'
+import 'codemirror/addon/hint/html-hint.js'
+import 'codemirror/addon/hint/anyword-hint.js'
+import 'codemirror/addon/search/search.js'
+import 'codemirror/addon/search/searchcursor.js'
+import 'codemirror/addon/search/jump-to-line.js'
+import 'codemirror/addon/dialog/dialog.js'
+
 import detectLang from '/molgenis/lib/helpers/ui-form/lang-detect.js'
 
 import VueCode from 'vue-code'
 import VueForm from 'vue-form'
 
-// import 'codemirror/lib/codemirror.css'
-// import 'codemirror/mode/htmlmixed/htmlmixed'
-// import 'codemirror/mode/javascript/javascript'
-// import 'codemirror/mode/python/python'
-// import 'codemirror/mode/r/r'
-// import 'codemirror/addon/hint/show-hint.js'
-// import 'codemirror/addon/hint/show-hint.css'
-// import 'codemirror/addon/hint/javascript-hint.js'
-// import 'codemirror/addon/hint/html-hint.js'
-// import 'codemirror/addon/hint/anyword-hint.js'
-// import 'codemirror/addon/search/search.js'
-// import 'codemirror/addon/search/searchcursor.js'
-// import 'codemirror/addon/search/jump-to-line.js'
-// import 'codemirror/addon/dialog/dialog.css'
-// import 'codemirror/addon/dialog/dialog.js'
 
 export default {
     components: {
@@ -58,7 +56,6 @@ export default {
         },
     },
     mixins: [VueForm],
-    name: 'CodeEditorFieldComponent',
     props: {
         field: {
             required: true,

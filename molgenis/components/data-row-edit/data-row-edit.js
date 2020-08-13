@@ -1,14 +1,9 @@
 import * as repository from '/molgenis/lib/repository/data-row.js'
 import EntityToFormMapper from '/molgenis/lib/mappers/ui-form.js'
-import FormComponent from '/molgenis/components/ui-form/form/form.js'
 
-// import '../../node_modules/@molgenis/molgenis-ui-form/dist/static/css/molgenis-ui-form.css'
 
 export default {
-    components: {
-        FormComponent,
-    },
-    created: function() {
+    created: async function() {
         const mapperOptions = {
             booleanLabels: {
                 falseLabel: this.$t('data-row-edit-boolean-false'),
@@ -19,13 +14,19 @@ export default {
             showNonVisibleAttributes: true,
 
         }
-        repository.fetch(this.dataTableId, this.dataRowId).then(resp => {
+
+
+        try {
+            const resp = await repository.fetch(this.dataTableId, this.dataRowId)
             this.dataTableLabel = resp.meta.label
             const mappedData = EntityToFormMapper.generateForm(resp.meta, resp.rowData, mapperOptions)
+
             this.formFields = mappedData.formFields
             this.formData = mappedData.formData
             this.showForm = true
-        }, this.handleError)
+        } catch(err) {
+            this.this.handleError(err)
+        }
     },
     data() {
         return {

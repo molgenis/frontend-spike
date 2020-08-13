@@ -1,0 +1,29 @@
+// Colors (https://drive.google.com/file/d/19S27cWKfD3VqHPP3wg9Yi-3JllTa_Dm5/view)
+$body-bg: rgb(250, 250, 250);
+$primary: #017ffd;//MAIN BLUE
+$blue: #017ffd;//MAIN BLUE
+$secondary: #005ec4;//SUB BLUE
+$red: #f36969;//RED
+$green: #5dffac;//MAIN GREEN
+$teal: #00bd55;//SUB GREEN
+
+$gray-100: #fafafa;// DARK
+$gray-900: #353535;// LIGHT GREY
+
+$info: $secondary;
+
+$border-radius: 0;
+
+$font-family-sans-serif: 'IBM_Plex_sans';
+$font-family-monospace: 'IBM_Plex_mono';
+
+// Inputs
+$input-btn-font-family: $font-family-monospace;
+$input-btn-focus-width: 0;
+$input-bg: $gray-100;
+
+// Buttons
+$font-size-lg: 1rem;
+$btn-font-weight: 600;
+
+$btn-focus-box-shadow: none;

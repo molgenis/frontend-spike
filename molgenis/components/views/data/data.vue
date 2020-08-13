@@ -2,18 +2,18 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col">
-                <clipboard-view v-if="showShoppingCart" />
+                <ViewsClipboard v-if="showShoppingCart" />
                 <div v-else>
                     <div class="row">
                         <div class="col">
-                            <active-filters
+                            <FilterActiveFilters
                                 :filters="filterDefinitions"
                                 :value="activeFilterSelections"
                                 @input="saveFilterState"
                             />
                         </div>
                     </div>
-                    <select-layout-view />
+                    <ViewsSelectLayout />
                 </div>
             </div>
         </div>

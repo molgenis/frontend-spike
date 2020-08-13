@@ -13,13 +13,13 @@
                     variant="outline-secondary"
                     @click.prevent="query= ''"
                 >
-                    <font-awesome-icon
+                    <Icon
                         v-if="isLoading"
                         class="fa-spin"
                         icon="spinner"
                         size="xs"
                     />
-                    <font-awesome-icon
+                    <Icon
                         v-else
                         icon="times"
                     />
@@ -42,7 +42,7 @@
         >
             {{ showMoreText }}
         </b-link>
-        <font-awesome-icon
+        <Icon
             v-if="foundOptionCount >= 100"
             v-b-popover.hover="'There are 100 or more results found, only the first 100 are available. Please refine your search.'"
             class="warning text-danger"

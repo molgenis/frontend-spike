@@ -1,5 +1,3 @@
-
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCaretRight, faTimes } from '@fortawesome/free-solid-svg-icons'
 
@@ -7,7 +5,6 @@ import { faCaretRight, faTimes } from '@fortawesome/free-solid-svg-icons'
 library.add(faCaretRight, faTimes)
 
 export default {
-    components: { FontAwesomeIcon },
     computed: {
         iconStyle() {
             return {
@@ -33,7 +30,6 @@ export default {
             return false
         },
     },
-    name: 'FilterCard',
     props: {
         canRemove: {
             default: () => false,

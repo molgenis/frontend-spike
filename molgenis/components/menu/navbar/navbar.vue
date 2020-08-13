@@ -1,13 +1,9 @@
 <component>
     <div class="molgenis-navbar">
         <nav :class="{ 'navbar-expand-md': !showHamburger }" class="navbar navbar-light">
-            <a
-                :href="`/menu/main/${href(molgenisMenu.menu.items[0])}`" class="navbar-brand"
-                v-if="molgenisMenu.navBarLogo"
-            >
+            <router-link class="btn btn-sm btn-link ml-1" to="/">
                 <img :src="molgenisMenu.navBarLogo" alt="brand-logo" class="molgenis-navbar-logo">
-            </a>
-            <a v-else class="navbar-brand" href="/">Home</a>
+            </router-link>
 
             <button
                 aria-controls="navbar-content" aria-expanded="false"
@@ -21,28 +17,12 @@
 
             <div id="navbar-content" class="collapse navbar-collapse">
                 <ul ref="mgNavBarNav" class="navbar-nav mr-auto">
-                    <template v-for="(item, index) in molgenisMenu.menu.items">
-                        <li
-                            v-if="item.type === 'plugin' && item.id !== 'home'" :key="index"
-                            :class="['nav-item', {'active': isSelectedPlugin(item.id)}]"
-                        >
-                            <router-link class="nav-link" :to="{name: item.id}">
-                                <font-awesome-icon />{{ item.label }}
-                            </router-link>
-                        </li>
-
-                        <li v-else-if="item.id !== 'home'" :key="index" class="nav-item dropdown">
-                            <a
-                                :id="item.id" aria-expanded="false"
-                                aria-haspopup="true"
-                                class="nav-link dropdown-toggle"
-                                data-toggle="dropdown"
-                            >
-                                {{ item.label }}
-                            </a>
-                            <MenuDropdownItems :items="item.items" :parent="item" />
-                        </li>
-                    </template>
+                    <router-link class="nav-link" :to="{name: 'navigator'}">
+                        <Icon />Navigator
+                    </router-link>
+                    <router-link class="nav-link" :to="{name: 'explorer'}">
+                        <Icon />Explorer
+                    </router-link>
                 </ul>
 
                 <ul class="navbar-nav justify-content">
@@ -68,27 +48,26 @@
                 <ul class="navbar-nav justify-content-end">
                     <li class="nav-item">
                         <a class="nav-link" :href="molgenisMenu.helpLink.href" target="_blank">
-                            {{ molgenisMenu.helpLink.label }}
+                            <Icon icon="question" />
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <form
-                            id="logout-form" action="/logout"
-                            class="form-inline"
-                            method="post"
+                    <li class="nav-item dropdown">
+                        <a
+                            aria-haspopup="true"
+                            class="nav-link dropdown-toggle" data-toggle="dropdown"
                         >
-                            <button
-                                v-if="molgenisMenu.authenticated" id="signout-button"
-                                class="btn btn-outline-secondary"
-                                type="button"
-                                @click="logout"
-                            >
-                                Sign out
-                            </button>
-
-                            <a v-else class="btn btn-outline-primary" href="/login">Sign in</a>
-                        </form>
+                            Account
+                        </a><component>
+                            <div aria-labelledby="importdata" class="dropdown-menu dropdown-menu-right">
+                                <router-link class="dropdown-item" :to="{name: 'settings', params: {setting: 'sys_set_app'}}">
+                                    <Icon />Settings
+                                </router-link>
+                                <router-link class="dropdown-item" :to="{name: 'account-logout'}">
+                                    <Icon />Sign out
+                                </router-link>
+                            </div>
+                        </component>
                     </li>
                 </ul>
             </div>

@@ -5,10 +5,10 @@
         </div>
         <div v-else>
             <button @click="closeShoppingCart" class="btn btn-primary cart-back mr-2" v-if="entitiesToShow.length > 5">
-                <font-awesome-icon icon="chevron-left" /> Back
+                <Icon icon="chevron-left" /> Back
             </button>
             <button v-if="entitiesToShow.length > 5" class="btn btn-success cart-order mr-2">
-                <font-awesome-icon icon="shopping-bag" /> Order
+                <Icon icon="shopping-bag" /> Order
             </button>
             <table class="table">
                 <table-header :is-shop="true" :visible-columns="visibleColumns" />
@@ -27,10 +27,10 @@
             </table>
         </div>
         <button class="btn btn-primary cart-back mr-2" @click="closeShoppingCart">
-            <font-awesome-icon icon="chevron-left" /> Back
+            <Icon icon="chevron-left" /> Back
         </button>
         <button v-if="entitiesToShow.length > 0" class="btn btn-success cart-order mr-2">
-            <font-awesome-icon icon="shopping-bag" /> Order
+            <Icon icon="shopping-bag" /> Order
         </button>
     </div>
 </component>

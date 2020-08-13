@@ -6,7 +6,7 @@
             variant="outline-secondary"
         >
             Add a filter
-            <font-awesome-icon
+            <Icon
                 class="ml-1"
                 icon="plus"
             />

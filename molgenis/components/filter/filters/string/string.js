@@ -1,13 +1,11 @@
 
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 
 
 library.add(faTimes)
 
 export default {
-    components: { FontAwesomeIcon },
     computed: {
         model: {
             get() {
@@ -18,7 +16,6 @@ export default {
             },
         },
     },
-    name: 'StringFilter',
     props: {
         name: {
             required: true,

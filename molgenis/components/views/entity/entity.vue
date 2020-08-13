@@ -10,7 +10,7 @@
         <div v-else-if="dataDisplayLayout==='cards'" class="row">
             <div class="col">
                 <div class="card-columns">
-                    <explorer-card
+                    <ExplorerExplorerCard
                         v-for="(entity, index) in entitiesToShow"
                         :id="getEntityId(entity)"
                         :key="index"
@@ -27,9 +27,9 @@
         <div v-else class="row">
             <div class="col">
                 <table class="table">
-                    <table-header :header="tableHeaderToShow" :is-shop="isShop" />
+                    <ExplorerTableHeader :header="tableHeaderToShow" :is-shop="isShop" />
                     <tbody>
-                        <table-row
+                        <ExplorerTableRow
                             v-for="(entity, index) in entitiesToShow"
                             :id="getEntityId(entity)"
                             :key="index"
@@ -45,7 +45,7 @@
         <div v-if="shoppingFilter && isShop" class="row">
             <div class="col">
                 <button class="btn btn-success m-1">
-                    <font-awesome-icon icon="shopping-bag" />
+                    <Icon icon="shopping-bag" />
                     Order
                 </button>
             </div>

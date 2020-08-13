@@ -1,13 +1,10 @@
 import { createBookmark } from '/molgenis/lib/mappers/bookmark.js'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 
 library.add(faSearch)
 
 export default {
-
-    components: { FontAwesomeIcon },
     data() {
         return {
             searchText: this.value,
@@ -19,7 +16,6 @@ export default {
             createBookmark(this.$router)
         },
     },
-    name: 'SearchComponent',
     props: {
         value: {
             required: false,

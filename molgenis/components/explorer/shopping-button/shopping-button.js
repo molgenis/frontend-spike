@@ -1,4 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { mapMutations } from 'vuex'
 import { faMinus, faPlus, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
@@ -7,7 +6,6 @@ import { faMinus, faPlus, faShoppingCart } from '@fortawesome/free-solid-svg-ico
 library.add(faShoppingCart, faMinus, faPlus)
 
 export default {
-    components: { FontAwesomeIcon },
     methods: {
         ...mapMutations(['toggleShoppingItems']),
     },

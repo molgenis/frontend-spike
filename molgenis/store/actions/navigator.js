@@ -76,11 +76,9 @@ export default {
         })
     },
     [FETCH_RESOURCES_BY_FOLDER]({commit}, folderId) {
-        console.log('FOO12 123')
         getResourcesByFolderId(folderId).then(data => {
             // if folder changed, then remove selection
             // if folder same, then update selection
-
             commit(SET_FOLDER, data.folder)
             commit(SET_RESOURCES, data.resources)
         }).catch(error => {

@@ -1,6 +1,9 @@
 .molgenis-navbar {
     background: #fff;
     border-bottom: 1px solid #eee;
+    font-family: 'bebas_neueregular';
+    margin-bottom: 20px;
+    text-transform: uppercase;
 }
 
 .molgenis-navbar-logo {
@@ -13,5 +16,6 @@
 
 .navbar-light .navbar-nav .nav-link {
     color: #017ffd;
-    font-weight: bold;
+    font-size: 1.1rem;
+    // font-weight: bold;
 }

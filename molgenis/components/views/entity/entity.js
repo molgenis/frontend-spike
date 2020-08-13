@@ -1,22 +1,12 @@
-import ExplorerCard from '/molgenis/components/explorer/explorer-card/explorer-card.js'
+
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import TableHeader from '/molgenis/components/explorer/table-header/table-header.js'
-import TableRow from '/molgenis/components/explorer/table-row/table-row.js'
 import { mapActions, mapState } from 'vuex'
 
 
 library.add(faShoppingBag)
 
 export default {
-
-    components: {
-        ExplorerCard,
-        FontAwesomeIcon,
-        TableHeader,
-        TableRow,
-    },
     computed: {
         ...mapState('explorer', ['dataDisplayLayout', 'shoppingFilter', 'tableMeta', 'shoppedEntityItems', 'defaultEntityData', 'tableData']),
         entitiesToShow() {
@@ -49,7 +39,6 @@ export default {
             return this.shoppedEntityItems.includes(this.getEntityId(entity))
         },
     },
-    name: 'EntityView',
     props: {
         isShop: {
             default: () => false,

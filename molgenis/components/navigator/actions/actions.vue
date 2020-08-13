@@ -1,16 +1,16 @@
 <component>
     <div class="row">
         <div class="col">
-            <NavigatorActionsCreateEdit class="button-last" />
-            <NavigatorActionsClipboard class="button-last" />
-            <NavigatorActionsTransfer class="button-last" />
+            <NavigatorActionsCreateEdit class="d-inline button-last" />
+            <NavigatorActionsClipboard class="d-inline button-last" />
+            <NavigatorActionsTransfer class="d-inline button-last" />
             <div class="float-right">
-                <NavigatorActionsDelete />
+                <NavigatorActionsDelete class="d-inline" />
             </div>
         </div>
-        <NavigatorModalPackageCreate />
-        <NavigatorModalPackageUpdate />
-        <NavigatorModalResourceDelete />
+        <NavigatorModalPackageCreate class="d-inline" />
+        <NavigatorModalPackageUpdate class="d-inline" />
+        <NavigatorModalResourceDelete class="d-inline" />
     </div>
 </component>
 

@@ -12,7 +12,7 @@
                 :title="label"
                 class="title mr-3 px-1"
             >
-                <font-awesome-icon
+                <Icon
                     :style="iconStyle"
                     class="mr-2"
                     icon="caret-right"
@@ -24,7 +24,7 @@
                     class="remove-button"
                     @click.stop="removeFilter"
                 >
-                    <font-awesome-icon icon="times" />
+                    <Icon icon="times" />
                 </span>
             </div>
         </b-card-header>

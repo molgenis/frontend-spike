@@ -1,6 +1,5 @@
 
-<component class="container">
-    <!-- Alert container -->
+<component class="c-data-row-edit container">
     <div class="row">
         <div class="col-md-12">
             <div
@@ -18,8 +17,7 @@
 
     <div v-if="showForm">
         <h1>{{dataTableLabel}}</h1>
-
-        <form-component
+        <UiFormForm
             id="data-row-edit-form"
             :form-fields="formFields"
             :form-state="formState"
@@ -34,7 +32,7 @@
                     class="btn btn-secondary"
                     @click.prevent="goBackToPluginCaller"
                 >
-                    {{ 'data-row-edit-cancel-button-label' | i18n }}
+                    {{ $t('cancel') }}
                 </button>
 
                 <button
@@ -45,7 +43,7 @@
                     type="submit"
                     @click.prevent="onSubmit"
                 >
-                    {{ 'data-row-edit-save-button-label' | i18n }}
+                    {{ $t('save') }}
                 </button>
 
                 <button

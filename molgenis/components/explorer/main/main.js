@@ -68,7 +68,6 @@ export default {
             this.loading = false
         },
         async handeldeleteItem(itemId) {
-            console.log(this)
             const msg = 'Are you sure you want to delete this item ?'
             const isDeleteConfirmed = await this.$bvModal.msgBoxConfirm(msg, deleteConfirmOptions)
             if (isDeleteConfirmed) {

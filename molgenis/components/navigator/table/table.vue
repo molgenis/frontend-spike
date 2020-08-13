@@ -36,21 +36,21 @@
             >
                 <span v-if="label.item.type === 'ENTITY_TYPE'">
                     <router-link :to="{name: 'explorer-entity', params: {entity: label.item.id}}">
-                        <font-awesome-icon
+                        <Icon
                             fixed-width
                             icon="list"
                         /> {{ label.item.label }}
                     </router-link>
                 </span>
                 <span v-else-if="label.item.type === 'ENTITY_TYPE' || label.item.type === 'ENTITY_TYPE_ABSTRACT'">
-                    <font-awesome-icon
+                    <Icon
                         fixed-width
                         icon="list"
                     /> {{ label.item.label }}
                 </span>
                 <span v-else>
                     <router-link :to="{name: 'navigator-folder', params: {folderId: label.item.id}}">
-                        <font-awesome-icon
+                        <Icon
                             fixed-width
                             :icon="['far', 'folder-open']"
                         /> {{ label.item.label }}

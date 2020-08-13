@@ -1,8 +1,11 @@
 import eventUtilService from '/molgenis/lib/service/event-util.js'
+import { faQuestion } from '@fortawesome/free-solid-svg-icons'
 import languageRepository from '/molgenis/lib/repository/language.js'
 import languageService from '/molgenis/lib/service/language.js'
+import { library } from '@fortawesome/fontawesome-svg-core'
 
 
+library.add(faQuestion)
 const href = (item) => item.params ? `${item.id}?${item.params}` : item.id
 
 export default {

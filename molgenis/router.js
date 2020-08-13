@@ -9,20 +9,21 @@ export default (app) => {
         base: '/',
         mode: 'history',
         routes: [
+            // explorer
             {
-                component: app.components.ViewsMain,
-                name: 'explorer-entity',
-                path: '/explorer/:entity',
-            },
-            {
-                name: 'dataexplorer',
+                name: 'explorer',
                 path: '/explorer*',
                 redirect: {
                     name: 'explorer-entity',
                     params: { entity: 'root_hospital_patients' },
                 },
             },
-
+            {
+                component: app.components.ExplorerMain,
+                name: 'explorer-entity',
+                path: '/explorer/:entity',
+            },
+            // data-row
             {
                 component: app.components.DataRowEdit,
                 name: 'data-row-edit',
@@ -35,7 +36,7 @@ export default (app) => {
                 path: '/data-row/:dataTableId',
                 props: true,
             },
-
+            // navigator
             {
                 component: app.components.NavigatorMain,
                 name: 'navigator',
@@ -45,6 +46,12 @@ export default (app) => {
                 component: app.components.NavigatorMain,
                 name: 'navigator-folder',
                 path: '/navigator/:folderId',
+            },
+            // settings
+            {
+                component: app.components.SettingsMain,
+                name: 'settings',
+                path: '/settings/:setting',
             },
         ],
     })

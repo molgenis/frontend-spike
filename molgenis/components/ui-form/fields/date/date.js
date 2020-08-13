@@ -1,15 +1,21 @@
-// import { Dutch } from 'flatpickr/dist/l10n/nl.js'
 import flatPickr from 'vue-flatpickr-component'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import moment from 'moment'
+import VueForm from 'vue-form'
+import { faCalendar, faTimes } from '@fortawesome/free-solid-svg-icons'
+
+
+library.add(faCalendar, faTimes)
+
+const flatpickerLangMap = {}
+
+// import { Dutch } from 'flatpickr/dist/l10n/nl.js'
 // import { French } from 'flatpickr/dist/l10n/fr.js'
 // import { German } from 'flatpickr/dist/l10n/de.js'
 // import { Italian } from 'flatpickr/dist/l10n/it.js'
-import moment from 'moment'
 // import { Portuguese } from 'flatpickr/dist/l10n/pt.js'
 // import { Spanish } from 'flatpickr/dist/l10n/es.js'
-import VueForm from 'vue-form'
-// import 'flatpickr/dist/flatpickr.css'
 
-const flatpickerLangMap = {}
 // const flatpickerLangMap = {
 //     de: German,
 //     es: Spanish,
@@ -73,7 +79,6 @@ export default {
         },
     },
     mixins: [VueForm],
-    name: 'DateFieldComponent',
     props: {
         field: {
             required: true,

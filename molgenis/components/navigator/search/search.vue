@@ -1,15 +1,16 @@
 <component>
-    <div class="row justify-content-center">
+    <div class="row">
         <div class="col-md-6">
             <b-input-group>
                 <b-form-input
-                    :placeholder="$t('search-input-placeholder')"
+                    :placeholder="$t('search in packages')"
                     type="text"
                     v-model="query"
                 />
                 <b-input-group-append>
-                    <b-btn variant="secondary">
-                        <font-awesome-icon icon="search" />
+                    <b-btn variant="primary">
+                        <Icon icon="search" />
+                        {{ $t('search') }}
                     </b-btn>
                 </b-input-group-append>
             </b-input-group>

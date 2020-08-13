@@ -2,7 +2,7 @@
     <fieldset :class="{ 'required-field': isRequired }" :id="field.id + '-fs'" v-show="isVisible">
         <!-- Render checkbox field -->
         <template v-if="field.type === 'checkbox'">
-            <checkbox-field-component
+            <cUiFormFieldsCheckbox
                 :field="field"
                 :field-state="fieldState"
                 :is-required="isRequired"
@@ -13,7 +13,7 @@
 
         <!-- Render code editor field-->
         <template v-else-if="field.type === 'html' || field.type === 'script'">
-            <code-editor-field-component
+            <UiFormFieldsCodeEditor
                 v-model="formData[field.id]"
                 :field="field"
                 :field-state="fieldState"
@@ -24,7 +24,7 @@
 
         <!-- Render file field -->
         <template v-else-if="field.type === 'file'">
-            <file-field-component
+            <UiFormFieldsFile
                 v-model="formData[field.id]"
                 :field="field"
                 :field-state="fieldState"
@@ -41,7 +41,7 @@
             <hr>
 
             <div :class="'pl-' + ((level + 1) * 2)">
-                <form-field-component
+                <UiFormFormField
                     v-for="child in field.children"
                     :key="child.id"
                     :event-bus="eventBus"
@@ -57,7 +57,7 @@
 
         <!-- Render multi select field -->
         <template v-else-if="field.type === 'multi-select'">
-            <multi-select-field-component
+            <UiFormFieldsMultiSelect
                 v-model="formData[field.id]"
                 :allow-adding-options="formComponentOptions.allowAddingOptions"
                 :event-bus="eventBus"
@@ -71,7 +71,7 @@
 
         <!-- Render radio field -->
         <template v-else-if="field.type === 'radio'">
-            <radio-field-component
+            <UiFormFieldsRadio
                 v-model="formData[field.id]"
                 :field="field"
                 :field-state="fieldState"
@@ -83,7 +83,7 @@
 
         <!-- Render single select field -->
         <template v-else-if="field.type === 'single-select'">
-            <single-select-field-component
+            <UiFormFieldsSingleSelect
                 v-model="formData[field.id]"
                 :allow-adding-options="formComponentOptions.allowAddingOptions"
                 :event-bus="eventBus"
@@ -97,7 +97,7 @@
 
         <!-- Render text area field -->
         <template v-else-if="field.type === 'text-area'">
-            <text-area-field-component
+            <UiFormFieldsTextArea
                 v-model="formData[field.id]"
                 :field="field"
                 :field-state="fieldState"
@@ -109,7 +109,7 @@
 
         <!-- Render date field -->
         <template v-else-if="field.type === 'date' || field.type === 'date-time'">
-            <date-field-component
+            <UiFormFieldsDate
                 v-model="formData[field.id]"
                 :field="field"
                 :field-state="fieldState"
@@ -121,7 +121,7 @@
 
         <!-- Render email, url, password, integer, long, decimal, and text fields -->
         <template v-else>
-            <typed-field-component
+            <UiFormFieldsTyped
                 v-model="formData[field.id]"
                 :field="field"
                 :field-state="fieldState"

@@ -4,7 +4,7 @@
         <div class="form-group">
             <label :for="field.id">{{ field.label }}</label>
             <div :class="{'border border-danger': isInvalid}">
-                <vue-code
+                <VueCode
                     :id="field.id"
                     :name="field.id"
                     :options="options"

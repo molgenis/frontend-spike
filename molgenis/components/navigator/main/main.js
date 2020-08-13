@@ -1,6 +1,9 @@
 import _ from 'lodash'
 import { mapGetters } from 'vuex'
+import { SET_SHOW_HIDDEN_RESOURCES } from '/molgenis/store/mutations/navigator.js'
+import store from '/molgenis/store/store.js'
 import { FETCH_RESOURCES_BY_FOLDER, FETCH_RESOURCES_BY_QUERY } from '/molgenis/store/actions/navigator.js'
+
 
 export default {
     computed: {
@@ -8,7 +11,6 @@ export default {
     },
     methods: {
         fetchResourcesByPackage: function() {
-            console.log('navigator/' + this.folderId)
             this.$store.dispatch('navigator/' + FETCH_RESOURCES_BY_FOLDER, this.folderId)
         },
         fetchResourcesByQuery: function() {
@@ -16,7 +18,8 @@ export default {
         },
     },
     mounted: function() {
-        // store.commit('navigator/' + SET_SHOW_HIDDEN_RESOURCES, isSuperUser)
+        // Show hidden resources (moved from molgenis.js)
+        store.commit('navigator/' + SET_SHOW_HIDDEN_RESOURCES, true)
         if (this.query) {
             this.fetchResourcesByQuery()
         } else {

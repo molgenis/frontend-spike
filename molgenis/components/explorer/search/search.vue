@@ -16,7 +16,7 @@
                         class="btn btn-outline-secondary"
                         type="submit"
                     >
-                        <font-awesome-icon icon="search" />
+                        <Icon icon="search" />
                     </button>
                 </div>
             </div>

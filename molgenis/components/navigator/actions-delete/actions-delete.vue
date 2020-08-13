@@ -9,7 +9,7 @@
             v-b-modal-resource-delete-modal
             variant="danger"
         >
-            <font-awesome-icon
+            <Icon
                 :class="{'fa-disabled': !canDelete}"
                 icon="trash"
                 size="lg"

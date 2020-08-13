@@ -1,8 +1,6 @@
 import DateRangePicker from 'vue2-daterange-picker'
-// import 'vue2-daterange-picker/dist/vue2-daterange-picker.css'
 
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 
 
@@ -14,7 +12,7 @@ const emptyDateRange = {
 }
 
 export default {
-    components: { DateRangePicker, FontAwesomeIcon },
+    components: { DateRangePicker },
     computed: {
         formattedDate: function() {
             const date = this.dateRange

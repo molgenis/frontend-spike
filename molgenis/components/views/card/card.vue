@@ -1,6 +1,6 @@
 <component>
     <div class="card-deck mx-n2">
-        <explorer-card
+        <ExplorerExplorerCard
             :collapse-limit="tableSettings.collapseLimit"
             :custom-code="tableSettings.customCardCode"
             :data-contents="entity"

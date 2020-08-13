@@ -1,7 +1,11 @@
 import { isValidSchema } from '/molgenis/lib/service/schema.js'
+import { library } from '@fortawesome/fontawesome-svg-core'
 import Vue from 'vue'
 import VueForm from 'vue-form'
+import { faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons'
 
+
+library.add(faEye, faEyeSlash)
 
 export default {
     computed: {

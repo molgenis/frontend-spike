@@ -7,7 +7,7 @@
             >
                 <li class="breadcrumb-item">
                     <router-link :to="{name: 'navigator-root'}">
-                        <font-awesome-icon icon="home" />
+                        <Icon icon="home" />
                     </router-link>
                 </li>
                 <li
@@ -30,7 +30,7 @@
             >
                 <li class="breadcrumb-item">
                     <router-link :to="{name: 'navigator-root'}">
-                        <font-awesome-icon icon="home" />
+                        <Icon icon="home" />
                     </router-link>
                 </li>
                 <li

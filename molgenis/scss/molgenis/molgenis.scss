@@ -1,7 +1,42 @@
-$body-bg: rgb(250, 250, 250);
-$primary: #017ffd;
+@import './bootstrap';
 
-@import 'bootstrap-scss/bootstrap.scss';
+// External lib styling
+@import 'bootstrap-scss/bootstrap';
+@import 'flatpickr/dist/flatpickr';
+@import 'vue-slider-component/theme/default';
+@import 'codemirror/lib/codemirror';
+@import 'codemirror/addon/hint/show-hint';
+@import 'codemirror/addon/dialog/dialog';
+
+
+@import './defaults';
+@import './fonts';
+
+component {
+    display: block;
+}
+
 
 // Import Vue component styling using the glob loader.
 @import '../../components/**/*.scss'; /* stylelint-disable-line */
+
+@font-face {
+    font-family: 'bebas_neueregular';
+    font-style: normal;
+    font-weight: 100;
+    src: url('/fonts/BebasNeue-Regular.ttf') format('ttf');
+}
+
+@font-face {
+    font-family: 'IBM_Plex_sans';
+    font-style: normal;
+    font-weight: 100;
+    src: url('/fonts/IBMPlexSans-Regular.ttf') format('ttf');
+}
+
+@font-face {
+    font-family: 'IBM_Plex_mono';
+    font-style: normal;
+    font-weight: 100;
+    src: url('/fonts/IBMPlexMono-Regular.ttf') format('ttf');
+}

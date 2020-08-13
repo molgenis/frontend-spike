@@ -1,14 +1,10 @@
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import ShoppingButton from '../shopping-button/shopping-button.js'
 
 
 library.add(faEdit)
 
 export default {
-    components: { FontAwesomeIcon, ShoppingButton },
-    name: 'TableRow',
     props: {
         id: {
             required: true,

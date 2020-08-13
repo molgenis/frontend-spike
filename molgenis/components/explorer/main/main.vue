@@ -1,5 +1,16 @@
 <component>
     <div class="container-fluid">
+        <b-modal id="bv-modal-example" hide-footer>
+            <template v-slot:modal-title>
+                Using <code>$bvModal</code> Methods
+            </template>
+            <div class="d-block text-center">
+                <h3>Hello From This Modal!</h3>
+            </div>
+            <b-button @click="$bvModal.hide('bv-modal-example')" block class="mt-3">
+                Close Me
+            </b-button>
+        </b-modal>
         <ExplorerToast
             -toast-close-btn-clicked="clearToast"
             :message="toast.message"
@@ -20,7 +31,7 @@
                     type="button"
                     @click="setHideFilters(false)"
                 >
-                    <font-awesome-icon icon="chevron-up" />
+                    <Icon icon="chevron-up" />
                     <span class="ml-2">Filters</span>
                 </button>
 

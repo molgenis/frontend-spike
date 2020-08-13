@@ -8,11 +8,12 @@
                 <div class="jumbotron jumbotron-fluid">
                     <div class="container">
                         <h1 class="display-4">
-                            Flexible software for scientific data
+                            {{ $t('we accelerate scientific discovery') }}
                         </h1>
 
                         <p class="lead">
-                            Process, manage, query, annotate, integrate, analyse, share
+                            {{ $t('Molgenis is a driven group of developers and data scientists on a mission to deliver great infrastructure for life sciences.') }}
+                            {{ $t('We help research teams to make their data FAIR and future proof and improve the quality and speed of their research.') }}
                         </p>
                         <a
                             class="btn btn-primary btn-lg" href="https://molgenis.gitbooks.io/molgenis/content/"

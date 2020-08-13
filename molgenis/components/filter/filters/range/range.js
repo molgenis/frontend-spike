@@ -1,6 +1,4 @@
-// import 'vue-slider-component/theme/default.css'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import VueSlider from 'vue-slider-component'
 
@@ -8,7 +6,7 @@ import VueSlider from 'vue-slider-component'
 library.add(faTimes)
 
 export default {
-    components: { FontAwesomeIcon, VueSlider },
+    components: { VueSlider },
     data: function() {
         return {
             rangeValue: this.value,

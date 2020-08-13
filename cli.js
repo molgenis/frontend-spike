@@ -53,8 +53,8 @@ tasks.assets = new Task('assets', async function() {
         tpl: '',
     })
 
-    await imagemin([path.join(settings.dir.theme, 'img', '*.{jpg,png}')], {
-        destination: path.join(settings.dir.build, 'img'),
+    await imagemin([path.join(settings.dir.theme, settings.molgenis.theme.name, 'images', '*.{jpg,png,ico}')], {
+        destination: path.join(settings.dir.build, 'images'),
         plugins: [
             imageminJpegtran(),
             imageminPngquant({
@@ -188,7 +188,6 @@ tasks.vue = new Task('vue', async function() {
 
     // This is an exceptional build target, because it is not
     // a module that is available from Node otherwise.
-    console.log(path.join(settings.dir.build, 'templates.js'))
     await Promise.all([
         fs.writeFile(path.join(settings.dir.molgenis, 'components.js'), components),
         fs.writeFile(path.join(settings.dir.molgenis, 'templates.js'), templates),

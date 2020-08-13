@@ -8,7 +8,7 @@
             v-for="(item, key) in activeValues"
         >
             {{ item.label }}: {{ item.value }}
-            <font-awesome-icon
+            <Icon
                 class="ml-1"
                 icon="times"
             />

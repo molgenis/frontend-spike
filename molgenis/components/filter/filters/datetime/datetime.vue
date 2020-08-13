@@ -30,7 +30,7 @@
                 class="t-btn-clear"
                 variant="outline-secondary"
             >
-                <font-awesome-icon icon="times" />
+                <Icon icon="times" />
             </b-button>
         </b-input-group-append>
     </b-input-group>

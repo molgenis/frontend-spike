@@ -7,12 +7,12 @@
                 role="button"
                 v-if="!showShoppingCart"
             >
-                <font-awesome-icon icon="plus-square" />
+                <Icon icon="plus-square" />
                 Add
             </a>
         </div>
         <div class="col-4">
-            <search-component v-model="searchText" />
+            <ExplorerSearch v-model="searchText" />
         </div>
         <div class="col-4">
             <button
@@ -20,7 +20,7 @@
                 class="btn btn-light ml-1 float-right btn-outline-secondary card-layout"
                 @click="toggleDataDisplayLayout"
             >
-                <font-awesome-icon icon="th" />
+                <Icon icon="th" />
                 Card layout
             </button>
             <button
@@ -28,7 +28,7 @@
                 class="btn btn-light ml-1 float-right btn-outline-secondary table-layout"
                 @click="toggleDataDisplayLayout"
             >
-                <font-awesome-icon icon="th-list" />
+                <Icon icon="th-list" />
                 Table layout
             </button>
             <button
@@ -36,7 +36,7 @@
                 class="btn btn-light ml-1 float-right btn-outline-secondary show-cart"
                 @click="openShoppingCart"
             >
-                <font-awesome-icon icon="shopping-cart" />
+                <Icon icon="shopping-cart" />
                 Show cart
             </button>
         </div>

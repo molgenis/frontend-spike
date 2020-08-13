@@ -1,6 +1,7 @@
 import * as LZString from 'lz-string'
 import store from '/molgenis/store/store.js'
 
+
 // can be name or label
 function getDataTypeForFilter(filterIdentifier) {
     const filterDefinitions = store.state.filters.definition

@@ -3,7 +3,7 @@ import * as metaDataRepository from '/molgenis/lib/repository/metadata.js'
 import * as metaDataService from '/molgenis/lib/repository/metadata-service.js'
 import * as metaFilterMapper from '/molgenis/lib/mappers/metafilter.js'
 
-import api from '@molgenis/molgenis-api-client'
+import api from '@molgenis/molgenis-api-client/dist/molgenis-api-client.js'
 import { tryAction } from '/molgenis/store/helpers.js'
 
 

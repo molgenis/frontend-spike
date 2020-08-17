@@ -1,4 +1,4 @@
-import _ from 'lodash'
+// import _ from 'lodash'
 import { mapGetters } from 'vuex'
 import { SET_SHOW_HIDDEN_RESOURCES } from '/molgenis/store/mutations/navigator.js'
 import store from '/molgenis/store/store.js'

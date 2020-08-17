@@ -53,6 +53,22 @@ export default (app) => {
                 name: 'settings',
                 path: '/settings/:setting',
             },
+            // metadata
+            {
+                component: app.components.MetadataMain,
+                name: 'metadata',
+                path: '/metadata',
+            },
+            {
+                component: app.components.MetadataMain,
+                name: 'metadata-entity',
+                path: '/metadata/:entityTypeId',
+            },
+            {
+                component: app.components.MetadataMain,
+                name: 'metadata-attribute',
+                path: '/metadata/:entityTypeId/:attributeId',
+            },
         ],
     })
 }

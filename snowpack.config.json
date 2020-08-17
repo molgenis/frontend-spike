@@ -1,6 +1,6 @@
 {
-  "mount": {
-    "molgenis": "/build",
-    "public": "/build"
-  }
+    "installOptions": {
+        "dest": "build/lib"
+    },
+    "mount": {"molgenis": "/"}
 }

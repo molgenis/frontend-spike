@@ -1,4 +1,4 @@
-import api from '@molgenis/molgenis-api-client'
+import api from '@molgenis/molgenis-api-client/dist/molgenis-api-client.js'
 
 
 export default {

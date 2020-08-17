@@ -23,6 +23,9 @@
                     <router-link class="nav-link" :to="{name: 'explorer'}">
                         <Icon />Explorer
                     </router-link>
+                    <router-link class="nav-link" :to="{name: 'metadata'}">
+                        <Icon />Metadata
+                    </router-link>
                 </ul>
 
                 <ul class="navbar-nav justify-content">

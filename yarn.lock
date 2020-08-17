@@ -1179,10 +1179,10 @@
     esquery "^1.0.1"
     lodash "^4.17.15"
 
-"@garage11/vuepack@2.x.x":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@garage11/vuepack/-/vuepack-2.1.0.tgz#00ad91dd8e87242a420af0965c0ee5dff469f7c5"
-  integrity sha512-GU4DaYkcVQgUV2l/nMTzQwbqWbHGo2E84/OP5xe/MB5itbrYh6QL57MeJytD2MwuU3UOx8HkXloQ9aZt71EKcA==
+"@garage11/vuepack@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@garage11/vuepack/-/vuepack-1.0.1.tgz#3045fdebbe1edc45295887c8b9ad58b797e491ab"
+  integrity sha512-45gvVhqwSraLcu5cmDkrH6xAjTZMGDY+AW9/21hZLYSAszSt/nAC3VKVA2wQ0Mha6n7p1azlvHJijELLe/weWA==
   dependencies:
     vue-template-compiler "2.6.11"
     vue-template-es2015-compiler "1.9.1"

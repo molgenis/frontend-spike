@@ -1,0 +1,12 @@
+li {
+    list-style-type: none;
+}
+
+.node-content:hover {
+    background-color: #daeeff;
+    cursor: pointer;
+}
+
+.selected-attribute-node {
+    background-color: #8fcafe;
+}

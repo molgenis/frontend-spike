@@ -19,3 +19,9 @@ cp molgenis/.molgenisrc.defaults .molgenisrc
 docker-compose -f docker/docker-compose.yml up
 ./cli watch
 ```
+
+* Open a Chromium browser
+* Enable **experimental web platform features** under *chrome://flags*
+* Go to http://localhost and start developing
+
+> Use the [livereload extension](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) to autoreload on file-change.

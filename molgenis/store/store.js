@@ -7,6 +7,11 @@ import headerActions from './actions/header.js'
 import headerMutations from './mutations/header.js'
 import headerState from './state/header.js'
 
+import metadataActions from './actions/metadata.js'
+import metadataGetters from './getters/metadata.js'
+import metadataMutations from './mutations/metadata.js'
+import metadataState from './state/metadata.js'
+
 import navigatorActions from './actions/navigator.js'
 import navigatorGetters from './getters/navigator.js'
 import navigatorMutations from './mutations/navigator.js'
@@ -32,6 +37,13 @@ export default new Vuex.Store({
             mutations: headerMutations,
             namespaced: true,
             state: headerState,
+        },
+        metadata: {
+            actions: metadataActions,
+            getters: metadataGetters,
+            mutations: metadataMutations,
+            namespaced: true,
+            state: metadataState,
         },
         navigator: {
             actions: navigatorActions,

@@ -10,8 +10,8 @@ export default {
         Multiselect,
     },
     computed: {
-        ...mapState(['languageCodes', 'editorEntityType', 'packages', 'selectedEntityTypeId']),
-        ...mapGetters({
+        ...mapState('metadata', ['languageCodes', 'editorEntityType', 'packages', 'selectedEntityTypeId']),
+        ...mapGetters('metadata', {
             abstractEntities: 'getAbstractEntities',
             attributes: 'getEditorEntityTypeAttributes',
             isEntityTypeEdited: 'getEditorEntityTypeHasBeenEdited',

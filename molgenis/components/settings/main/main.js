@@ -1,4 +1,4 @@
-import api from '@molgenis/molgenis-api-client/dist/molgenis-api-client.js'
+import api from '@molgenis/molgenis-api-client'
 import EntityToFormMapper from '/molgenis/lib/mappers/ui-form.js'
 
 export default {

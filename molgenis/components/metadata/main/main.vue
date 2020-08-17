@@ -9,7 +9,7 @@
         <div v-if="loading" class="row">
             <div class="col">
                 <div class="row">
-                    <spinner />
+                    <MetadataSpinner />
                 </div>
             </div>
         </div>

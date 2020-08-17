@@ -15,8 +15,8 @@ export default {
         // Multiselect,
     },
     computed: {
-        ...mapState(['languageCodes', 'editorEntityType', 'attributeTypes', 'entityTypes']),
-        ...mapGetters({
+        ...mapState('metadata', ['languageCodes', 'editorEntityType', 'attributeTypes', 'entityTypes']),
+        ...mapGetters('metadata', {
             attributeTree: 'getAttributeTree',
             compoundAttributes: 'getCompoundAttributes',
             editorEntityTypeAttributes: 'getEditorEntityTypeAttributes',

@@ -1,4 +1,4 @@
-import api from '@molgenis/molgenis-api-client/dist/molgenis-api-client.js'
+import api from '@molgenis/molgenis-api-client'
 import moment from 'moment'
 import UriGenerator from '/molgenis/lib/helpers/ui-form/uri-generator.js'
 import { encodeRsqlValue, transformToRSQL } from '@molgenis/rsql'

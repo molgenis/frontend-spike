@@ -1,17 +1,17 @@
 import { CREATE_ENTITY_TYPE } from '/molgenis/store/actions/metadata.js'
 import { getConfirmBeforeLeavingProperties } from '/molgenis/store/getters/metadata.js'
-// import Multiselect from 'vue-multiselect'
+import Multiselect from 'vue-multiselect'
 import { SET_SELECTED_ENTITY_TYPE_ID } from '/molgenis/store/mutations/metadata.js'
 import { mapGetters, mapState } from 'vuex'
 
 
 export default {
     components: {
-        // Multiselect,
+        Multiselect,
     },
     computed: {
-        ...mapState(['entityTypes']),
-        ...mapGetters({
+        ...mapState('metadata', ['entityTypes']),
+        ...mapGetters('metadata', {
             isEntityTypeEdited: 'getEditorEntityTypeHasBeenEdited',
         }),
         selectedEntityType: {

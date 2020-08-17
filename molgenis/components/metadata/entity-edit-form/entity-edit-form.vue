@@ -7,7 +7,7 @@
                     <label class="col-4 col-form-label text-muted">{{ 'entity-edit-form-extends-label' | i18n
                         }}</label>
                     <div class="col">
-                        <multiselect
+                        <MultiSelect
                             :options="abstractEntities" :placeholder="$t('entity-edit-form-extends-placeholder')"
                             deselect-label=""
                             label="label" select-label=""
@@ -129,7 +129,7 @@
                     <label class="col-4 col-form-label text-muted">{{ 'entity-edit-form-package-label' | i18n
                     }}</label>
                     <div class="col">
-                        <multiselect
+                        <MultiSelect
                             v-model="package0" deselect-label=""
                             label="label"
                             :options="packages" :placeholder="$t('entity-edit-form-package-placeholder')"
@@ -145,7 +145,7 @@
                     <label class="col-4 col-form-label text-muted">{{ 'entity-edit-form-id-attribute-label' |
                         i18n }}</label>
                     <div class="col">
-                        <multiselect
+                        <MultiSelect
                             v-model="idAttribute" deselect-label=""
                             :disabled="entityTypeParent !== undefined || !editorEntityType.isNew"
                             label="label" :options="attributes"
@@ -159,7 +159,7 @@
                     <label class="col-4 col-form-label text-muted">{{ 'entity-edit-form-label-attribute-label'
                         | i18n }}</label>
                     <div class="col">
-                        <multiselect
+                        <MultiSelect
                             v-model="labelAttribute" deselect-label=""
                             label="label"
                             :options="attributes" :placeholder="$t('entity-edit-form-label-attribute-placeholder')"
@@ -172,7 +172,7 @@
                     <label class="col-4 col-form-label text-muted">{{
                         'entity-edit-form-lookup-attributes-label' | i18n }}</label>
                     <div class="col">
-                        <multiselect
+                        <MultiSelect
                             v-model="lookupAttributes"
                             deselect-label=""
                             label="label"

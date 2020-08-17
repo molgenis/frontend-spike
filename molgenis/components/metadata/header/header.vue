@@ -5,7 +5,7 @@
         </div>
 
         <div class="col-md-4 col-sm-10 col-xs-10">
-            <multiselect
+            <MultiSelect
                 :options="entityTypes" :placeholder="$t('header-entity-select-placeholder')"
                 deselect-label=""
                 label="label" select-label=""

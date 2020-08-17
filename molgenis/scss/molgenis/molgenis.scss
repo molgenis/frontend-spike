@@ -7,8 +7,10 @@
 @import 'codemirror/lib/codemirror';
 @import 'codemirror/addon/hint/show-hint';
 @import 'codemirror/addon/dialog/dialog';
+@import 'vue-multiselect/dist/vue-multiselect.min.css';
 
 @import './defaults';
 
 // Import Vue component styling using the glob loader.
 @import '../../components/**/*.scss'; /* stylelint-disable-line */
+

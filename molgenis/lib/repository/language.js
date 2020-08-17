@@ -1,4 +1,5 @@
-import api from '@molgenis/molgenis-api-client/dist/molgenis-api-client.js'
+import api from '@molgenis/molgenis-api-client'
+
 
 export default {
     async getActivelangueges() {

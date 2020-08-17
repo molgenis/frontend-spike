@@ -168,7 +168,7 @@
                         <label class="col-3 col-form-label text-muted">{{ 'attribute-edit-form-type-label' |
                             i18n }}</label>
                         <div class="col">
-                            <multiselect
+                            <MultiSelect
                                 v-model="type" deselect-label=""
                                 :options="attributeTypes" :placeholder="$t('attribute-edit-form-type-placeholder')"
                                 select-label=""
@@ -180,7 +180,7 @@
                         <label class="col-3 col-form-label text-muted">{{ 'attribute-edit-form-parent-label' |
                             i18n }}</label>
                         <div class="col">
-                            <multiselect
+                            <MultiSelect
                                 v-model="parent" deselect-label=""
                                 label="label"
                                 :options="compoundAttributes" :placeholder="$t('attribute-edit-form-parent-placeholder')"
@@ -206,7 +206,7 @@
                             'attribute-edit-form-reference-entity-label' | i18n
                         }}</label>
                         <div class="col">
-                            <multiselect
+                            <MultiSelect
                                 v-model="refEntityType" deselect-label=""
                                 label="label"
                                 :options="entityTypes" :placeholder="$t('attribute-edit-form-reference-entity-placeholder')"
@@ -275,7 +275,7 @@
                             <label class="col-3 col-form-label text-muted">{{
                                 'attribute-edit-form-mapped-by-label' | i18n }}</label>
                             <div class="col">
-                                <multiselect
+                                <MultiSelect
                                     v-model="mappedByAttribute" :custom-label="customOneToManyLabel"
                                     deselect-label=""
                                     :options="mappedByAttributes" :placeholder="$t('attribute-edit-form-mapped-by-placeholder')"

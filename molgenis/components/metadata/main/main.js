@@ -4,8 +4,8 @@ import { SET_SELECTED_ATTRIBUTE_ID, SET_SELECTED_ENTITY_TYPE_ID } from '/molgeni
 
 export default {
     computed: {
-        ...mapState(['alert', 'editorEntityType', 'loading']),
-        ...mapGetters({
+        ...mapState('metadata', ['alert', 'editorEntityType', 'loading']),
+        ...mapGetters('metadata', {
             selectedAttribute: 'getSelectedAttribute',
             selectedEntityType: 'getSelectedEntityType',
         }),

@@ -1,0 +1,28 @@
+$color-primary: #00acc7;
+$color-secondary: #276daa;
+
+$color-error: #f36969;
+$color-ok: #00bd55;
+
+$color-grey-lighest: #fafafa;
+$color-grey-darkest: #353535;
+
+$font-primary: 'bebas_neueregular';
+$font-secondary: 'IBM_Plex_sans';
+$font-mono: 'IBM_Plex_mono';
+
+$navbar-padding-x: 0;
+$navbar-padding-y: 0;
+
+.molgenis-navbar .navbar-brand {
+    margin-right: 16px;
+    padding-bottom: 0;
+    padding-top: 0;
+
+    img {
+        height: 64px;
+    }
+}
+
+
+@import 'molgenis';

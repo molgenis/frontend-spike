@@ -1,7 +1,8 @@
 .molgenis-navbar {
     background: #fff;
     border-bottom: 1px solid #eee;
-    font-family: 'bebas_neueregular';
+    font-family: $font-primary;
+    font-size: 1.1rem;
     margin-bottom: 20px;
     text-transform: uppercase;
 }
@@ -12,10 +13,4 @@
 
 .dropdown-toggle:hover {
     cursor: pointer;
-}
-
-.navbar-light .navbar-nav .nav-link {
-    color: #017ffd;
-    font-size: 1.1rem;
-    // font-weight: bold;
 }

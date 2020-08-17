@@ -1,0 +1,33 @@
+// Molgenis theme variables.
+$primary: $color-primary;
+$blue: $color-primary;
+$secondary: $color-secondary;
+
+$red: $color-error;
+$green: $color-ok;
+
+$gray-100: $color-grey-lighest;
+$gray-900: $color-grey-darkest;
+
+// Bootstrap defaults; do not override by default.
+$body-bg: rgb(250, 250, 250);
+$info: $color-secondary;
+
+$border-radius: 0;
+
+$font-family-sans-serif: 'IBM_Plex_sans' !default;
+$font-family-monospace: 'IBM_Plex_mono' !default;
+
+// Inputs
+$input-btn-font-family: $font-family-monospace;
+$input-btn-focus-width: 0;
+$input-bg: $gray-100;
+
+// Buttons
+$font-size-lg: 1rem;
+$btn-font-weight: 600;
+
+$btn-focus-box-shadow: none;
+
+
+$enable-shadows: false;

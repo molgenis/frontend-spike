@@ -1,8 +1,8 @@
 <component>
     <div class="molgenis-navbar">
-        <nav :class="{ 'navbar-expand-md': !showHamburger }" class="navbar navbar-light">
-            <router-link class="btn btn-sm btn-link ml-1" to="/">
-                <img :src="molgenisMenu.navBarLogo" alt="brand-logo" class="molgenis-navbar-logo">
+        <nav :class="{ 'navbar-expand-md': !showHamburger }" class="navbar navbar-dark bg-primary">
+            <router-link class="navbar-brand" to="/">
+                <img alt="brand-logo" class="molgenis-navbar-logo" src="/images/logo.png">
             </router-link>
 
             <button

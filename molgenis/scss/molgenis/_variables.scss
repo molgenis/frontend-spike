@@ -1,0 +1,22 @@
+
+// Colors (https://drive.google.com/file/d/19S27cWKfD3VqHPP3wg9Yi-3JllTa_Dm5/view)
+$color-primary: #017ffd !default; //MAIN BLUE
+$color-secondary: #005ec4 !default; //SUB BLUE
+
+$color-error: #f36969 !default; //RED
+$color-ok: #00bd55 !default; //SUB GREEN
+
+$color-grey-lighest: #fafafa !default;// DARK
+$color-grey-darkest: #353535 !default;// LIGHT GREY
+
+$font-primary: 'bebas_neueregular' !default;
+$font-secondary: 'IBM_Plex_sans' !default;
+$font-mono: 'IBM_Plex_mono' !default;
+
+$font-secondary: 'IBM_Plex_sans' !default;
+$font-secondary-src: '/fonts/IBMPlexSans-Regular.woff2' !default;
+
+$font-mono: 'IBM_Plex_mono' !default;
+$font-mono-src: '/fonts/IBMPlexMono-Regular.woff2' !default;
+
+@import './bootstrap';

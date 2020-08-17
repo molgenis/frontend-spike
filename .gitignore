@@ -1,3 +1,5 @@
 node_modules
 build
 molgenis/templates.js
+molgenis/components.js
+.molgenisrc

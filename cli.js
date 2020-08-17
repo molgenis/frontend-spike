@@ -30,6 +30,7 @@ import yargs from 'yargs'
 
 let settings
 
+
 const tasks = {}
 
 const cleanCSS = new CleanCSS({level: 2, returnPromise: true, sourceMap: true})
@@ -139,7 +140,7 @@ tasks.scss = new Task('scss', async function() {
 
     return new Promise((resolve, reject) => {
         sass.render({
-            file: path.join(settings.dir.molgenis, this.ep.dirname, `${this.ep.filename}.scss`),
+            file: path.join(settings.dir.theme, settings.molgenis.theme.name, 'theme.scss'),
             importer: globImporter(),
             includePaths: [
                 'node_modules',
@@ -176,11 +177,6 @@ tasks.vue = new Task('vue', async function() {
         const importFilter = settings.dir.base
         const pathFilter = settings.dir.molgenis.split('/').concat(['components']).filter((i) => i)
         vuePack = new VuePack({importFilter, pathFilter})
-    }
-
-    const componentTargets = await globby([path.join(settings.dir.molgenis, 'components', '**', '*.js')])
-    for (let target of componentTargets) {
-        target = target.replace(settings.dir.base, '')
     }
 
     const targets = await globby([path.join(settings.dir.molgenis, this.ep.raw)])
@@ -229,7 +225,10 @@ tasks.watch = new Task('watch', async function() {
             tinylr.changed('templates.js')
         })
 
-        chokidar.watch(path.join(settings.dir.molgenis, '**', '*.scss')).on('change', async() => {
+        chokidar.watch([
+            path.join(settings.dir.molgenis, '**', '*.scss'),
+            path.join(settings.dir.theme, '**', '*.scss'),
+        ]).on('change', async() => {
             await tasks.scss.start(entrypoint.scss)
             tinylr.changed('molgenis.css')
         })
@@ -237,6 +236,15 @@ tasks.watch = new Task('watch', async function() {
         chokidar.watch(path.join(settings.dir.molgenis, 'index.html')).on('change', async() => {
             await tasks.html.start(entrypoint.html)
             tinylr.changed('index.html')
+        })
+
+        chokidar.watch(path.join(settings.dir.theme, settings.molgenis.theme.name, '**', '*.{png,svg}')).on('change', () => {
+            // Chokidar doesn't notice when the file save is completed.
+            setTimeout(async() => {
+                await tasks.assets.start()
+                tinylr.changed('templates.js')
+            }, 50)
+
         })
     })
 })

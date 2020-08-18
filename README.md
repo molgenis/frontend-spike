@@ -16,12 +16,17 @@ git clone git@github.com:molgenis/frontend-spike.git
 cd frontend-spike
 yarn
 cp molgenis/.molgenisrc.defaults .molgenisrc
+cp docker/.env.example docker/.env
 docker-compose -f docker/docker-compose.yml up
 ./cli watch
 ```
 
-* Open a Chromium browser
-* Enable **experimental web platform features** under *chrome://flags*
-* Go to http://localhost and start developing
-
-> Use the [livereload extension](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) to autoreload on file-change.
+* Open a Chromium browser and visit **chrome://flags**
+* Enable **experimental web platform features**
+* Visit http://localhost/login and login using user/pw **admin/admin**
+* Go to http://localhost/menu/importdata/importwizard
+* In the following order, import from **docker/molgenis/data**:
+  * quest.xlsx
+  * eu_bbmri_eric.xlsx
+  * root.xlsx
+  * de.xlsx

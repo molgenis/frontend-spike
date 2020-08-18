@@ -3,3 +3,4 @@ build
 molgenis/templates.js
 molgenis/components.js
 .molgenisrc
+docker/.env

@@ -21,6 +21,8 @@ docker-compose -f docker/docker-compose.yml up
 ./cli watch
 ```
 
+> Wait until the Molgenis service started. You can check this by visiting http://locahost:8080
+
 * Open a Chromium browser and visit **chrome://flags**
 * Enable **experimental web platform features**
 * Visit http://localhost/login and login using user/pw **admin/admin**
@@ -30,3 +32,17 @@ docker-compose -f docker/docker-compose.yml up
   * eu_bbmri_eric.xlsx
   * root.xlsx
   * de.xlsx
+
+## Configuration
+
+### Docker host networking
+Linux users; make sure you add the following hostnames to **/etc/hosts** when
+using *NETWORK_MODE=host* (in docker/.env):
+
+```bash
+sudo echo "127.0.0.1 elasticsearch" >> /etc/hosts
+sudo echo "127.0.0.1 minio" >> /etc/hosts
+sudo echo "127.0.0.1 molgenis" >> /etc/hosts
+sudo echo "127.0.0.1 opencpu" >> /etc/hosts
+sudo echo "127.0.0.1 postgresql" >> /etc/hosts
+```

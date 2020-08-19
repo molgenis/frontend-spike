@@ -12,7 +12,7 @@
             </b-button>
         </b-modal>
         <ExplorerToast
-            -toast-close-btn-clicked="clearToast"
+            :toast-close-btn-clicked="clearToast"
             :message="toast.message"
             :type="toast.type"
             class="toast-component mt-2"

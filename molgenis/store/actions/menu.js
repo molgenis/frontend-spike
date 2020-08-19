@@ -1,4 +1,4 @@
-import api from '@molgenis/molgenis-api-client'
+import api from '/molgenis/lib/api.js'
 
 
 export const fetchContext = async({ commit }) => {

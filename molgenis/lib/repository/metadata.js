@@ -1,6 +1,6 @@
 /* eslint-disable object-curly-spacing */
 import * as mapper from './metadata-response.js'
-import axios from 'axios'
+import axios from 'axios/dist/axios.js'
 
 const metaDataCache = {}
 const metaDataCue = {}

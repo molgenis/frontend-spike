@@ -1,5 +1,5 @@
 import * as metaDataRepository from './metadata.js'
-import axios from 'axios'
+import axios from 'axios/dist/axios.js'
 import { buildExpandedAttributesQuery } from './query-builder.js'
 import { encodeRsqlValue } from '@molgenis/rsql'
 import { getAttributesfromMeta } from './metadata-service.js'

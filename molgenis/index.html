@@ -11,12 +11,8 @@
         <link rel="icon" href="/images/favicon.ico"/>
         <link href="/molgenis.css" rel="stylesheet"/>
         <script>globalThis.env = <% print(JSON.stringify(settings.molgenis)) %></script>
-        <%if (imports) { %>
-        <script type="importmap">
-            {
-            "imports": <% - print(JSON.stringify(imports)); %>
-            }
-        </script>
+        <%if (settings.importMap && !settings.optimized) { %>
+        <script type="importmap"><% - print(JSON.stringify(settings.importMap)); %></script>
         <% } %>
     </head>
     <body>

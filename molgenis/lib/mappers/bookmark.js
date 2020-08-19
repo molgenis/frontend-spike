@@ -1,4 +1,3 @@
-import * as LZString from 'lz-string'
 import store from '/molgenis/store/store.js'
 
 
@@ -16,13 +15,13 @@ function encodeBookmark(object) {
     if (object === null) return null // to clear the routing completely.
 
     const jsonString = JSON.stringify(object)
-    const compressed = LZString.compressToBase64(jsonString)
-    return { bookmark: compressed }
+    // const compressed = LZString.compressToBase64(jsonString)
+    // return { bookmark: compressed }
 }
 
 function decodeBookmark(encodedBookmark) {
-    const decompressed = LZString.decompressFromBase64(decodeURIComponent(encodedBookmark))
-    return JSON.parse(decompressed)
+    // const decompressed = LZString.decompressFromBase64(decodeURIComponent(encodedBookmark))
+    // return JSON.parse(decompressed)
 }
 
 function convertBookmarkValue(value, dataType) {

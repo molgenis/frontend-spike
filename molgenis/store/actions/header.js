@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios/dist/axios.js'
 
 export default {
     getGroupTabels: async({ commit }, payload) => {

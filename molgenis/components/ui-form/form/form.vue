@@ -1,5 +1,5 @@
 <component>
-    <vue-form :id="id" :state="formState">
+    <VueForm :id="id" :state="formState">
         <div class="text-right hide-option-fields-btn-container" v-if="options.showEyeButton">
             <button
                 :title="eyeMessage" @click="toggleOptionalFields"
@@ -23,5 +23,5 @@
                 @data-change="handleValueChange(formData)"
             />
         </template>
-    </vue-form>
+    </VueForm>
 </component>

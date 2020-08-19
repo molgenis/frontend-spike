@@ -40,7 +40,6 @@ const entrypoint = {
     html: 'index.html',
     js: 'molgenis.js',
     scss: 'scss/molgenis/molgenis.scss',
-    vue: 'components/**/*.vue',
 }
 
 tasks.assets = new Task('assets', async function() {
@@ -185,7 +184,7 @@ tasks.scss = new Task('scss', async function() {
 })
 
 tasks.vue = new Task('vue', async function() {
-    const vueFiles = await globby([path.join(settings.dir.molgenis, 'components', '/**', '*.vue')])
+    const vueFiles = await globby([path.join(settings.dir.molgenis, 'components', '**', '*.vue')])
     if (!vuePack) {
         vuePack = new VuePack({
             basePath: settings.dir.base,

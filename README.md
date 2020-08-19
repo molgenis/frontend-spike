@@ -24,7 +24,7 @@ docker-compose -f docker/docker-compose.yml up
 > Wait until the Molgenis service started. You can check this by visiting http://locahost:8080
 
 * Open a Chromium browser and visit **chrome://flags**
-* Enable **experimental web platform features**
+* Enable **Experimental Productivity Features**
 * Visit http://localhost/login and login using user/pw **admin/admin**
 * Go to http://localhost/menu/importdata/importwizard
 * In the following order, import from **docker/molgenis/data**:

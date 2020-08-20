@@ -1,4 +1,4 @@
-# Molgenis - For Scientific Data
+# Molgenis - We Accelerate Scientific Discovery
 
 MOLGENIS is a modular web application for scientific data. MOLGENIS was born from
 molecular genetics research (and was called 'molecular genetics information system')

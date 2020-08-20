@@ -29,7 +29,7 @@ docker-compose up
 * Open a Chromium browser and visit **chrome://flags**
 * Enable **Experimental Productivity Features** and restart the browser
 * Visit the [login screen](http://localhost/login); login using username/password **admin/admin**
-* Go to the [data import wizard](http://localhost/menu/importdata/) and import these files in the in the following order from **docker/molgenis/data**:
+* Go to the [data import wizard](http://localhost/menu/importdata/importwizard) and import these files in the in the following order from **docker/molgenis/data**:
   * quest.xlsx
   * eu_bbmri_eric.xlsx
   * root.xlsx

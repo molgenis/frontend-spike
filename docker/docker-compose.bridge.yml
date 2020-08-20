@@ -3,6 +3,8 @@ networks:
     driver: bridge
 services:
   nginx:
+    depends_on:
+      - molgenis
     networks:
       - mg
     ports:

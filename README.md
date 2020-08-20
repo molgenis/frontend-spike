@@ -18,11 +18,10 @@ cd frontend-spike
 yarn
 cp molgenis/.molgenisrc.defaults .molgenisrc
 cp docker/.env.example docker/.env
+./cli watch
 # Open another tab to run Docker services in the foreground:
 cd docker
 docker-compose up
-# In the first tab:
-./cli watch
 ```
 
 > Wait until the Molgenis Docker service fully started. This takes a minute or so, depending on the performance of your computer. [Verify](http://localhost:8080) that the Molgenis instance is running; you should see the Molgenis homepage.

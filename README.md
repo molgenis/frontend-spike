@@ -18,24 +18,30 @@ yarn
 cp molgenis/.molgenisrc.defaults .molgenisrc
 cp docker/.env.example docker/.env
 docker-compose -f docker/docker-compose.yml up
+# In another terminal tab:
 ./cli watch
 ```
 
-> Wait until the Molgenis service started. You can check this by visiting http://locahost:8080
+> Wait until the Molgenis Docker service fully started. This takes a minute or so, depending on the performance of your computer. [Verify](http://localhost:8080) that the Molgenis instance is running; you should see the Molgenis homepage.
 
-* Open a Chromium browser and visit **chrome://flags**
-* Enable **Experimental Productivity Features**
-* Visit http://localhost/login and login using user/pw **admin/admin**
-* Go to http://localhost/menu/importdata/importwizard
-* In the following order, import from **docker/molgenis/data**:
+* Visit the [login screen](http://localhost/login); login using username/password **admin/admin**
+
+* Go to the [data import wizard](http://localhost/menu/importdata/) and import these files in the in the following order from **docker/molgenis/data**:
   * quest.xlsx
   * eu_bbmri_eric.xlsx
   * root.xlsx
   * de.xlsx
 
+* Open a Chromium browser and visit **chrome://flags**
+* Enable **Experimental Productivity Features**
+* Visit the [SPA homepage](http://localhost)
+
+> Use the [livereload extension](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) to autoreload the browser during development.
+
 ## Configuration
 
 ### Docker host networking
+
 Linux users; make sure you add the following hostnames to **/etc/hosts** when
 using *NETWORK_MODE=host* (in docker/.env):
 

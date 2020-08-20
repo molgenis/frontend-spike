@@ -11,10 +11,10 @@ services:
   molgenis:
     container_name: molgenis
     depends_on:
-      - postgresql
       - elasticsearch
       - minio
       - opencpu
+      - postgresql
     environment:
       - molgenis.home=/home/molgenis
       - opencpu.uri.host=opencpu

@@ -12,13 +12,16 @@ the world.
 ## Install
 
 ```bash
+
 git clone git@github.com:molgenis/frontend-spike.git
 cd frontend-spike
 yarn
 cp molgenis/.molgenisrc.defaults .molgenisrc
 cp docker/.env.example docker/.env
-docker-compose -f docker/docker-compose.yml up
-# In another terminal tab:
+# Open another tab to run Docker services in the foreground:
+cd docker
+docker-compose up
+# In the first tab:
 ./cli watch
 ```
 

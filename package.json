@@ -55,7 +55,7 @@
     "imagemin-pngquant": "^8.0.0",
     "lint-staged": "^10.2.11",
     "lodash": "^4.17.15",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "node-sass-glob-importer": "^5.3.2",
     "rc": "^1.2.8",
     "rollup": "^1.31.1",

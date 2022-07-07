@@ -19,7 +19,7 @@
     "jquery": "3.4.1",
     "lodash": "^4.17.15",
     "lz-string": "1.4.4",
-    "moment": "^2.27.0",
+    "moment": "^2.29.4",
     "popper.js": "1.15.0",
     "v-runtime-template": "1.10.0",
     "vue": "^2.6.11",
